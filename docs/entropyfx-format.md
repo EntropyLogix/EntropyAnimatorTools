@@ -1,85 +1,104 @@
 # EntropyAnimator Effects Project (`.entropyfx`) format
 
-Status: public specification draft. The format is not frozen before the first
-public EntropyAnimator release.
+Status: public specification draft. Version 1 may be replaced in place before
+the first public EntropyAnimator release.
 
-## Byte order and header
+## Byte order and file header
 
-All integers use little-endian byte order. A file starts with this 16-byte
+All integers use little-endian byte order. A file starts with this 12-byte
 header:
 
 | Offset | Size | Value |
 | ---: | ---: | --- |
 | 0 | 7 | ASCII `ENTROPY` |
-| 7 | 1 | Container version (`1`) |
-| 8 | 4 | Product magic (`ANIM`) |
-| 12 | 4 | Header size (`16`) |
+| 7 | 4 | Product type `ANIM` |
+| 11 | 1 | Container version (`1`) |
 
-The brand and product magic are separate so another Entropy product can use a
-different product format without being mistaken for an animation project.
+The product type distinguishes an animation project from any future Entropy
+format without adding fields that version 1 does not use.
 
 ## Chunks
 
-The remainder is a sequence of chunks. Every chunk has a 24-byte header:
+The remainder is a sequence of chunks. Every chunk has a 13-byte header:
 
 | Offset | Size | Field |
 | ---: | ---: | --- |
-| 0 | 4 | Uppercase ASCII chunk ID |
-| 4 | 2 | Chunk version |
-| 6 | 2 | Flags; bit 0 means critical |
-| 8 | 8 | Payload length |
-| 16 | 4 | CRC32 of the payload |
-| 20 | 4 | Reserved; must be zero |
+| 0 | 3 | Uppercase ASCII letters or digits identifying the chunk |
+| 3 | 1 | Chunk version |
+| 4 | 1 | Flags; bit 0 means critical |
+| 5 | 4 | Payload length |
+| 9 | 4 | CRC32 |
 
-A reader must reject unknown critical chunks. It may ignore unknown optional
-chunks, but an editor that rewrites a project should preserve them unchanged.
-Unsupported flag bits, truncated payloads, invalid CRC32 values, and non-zero
-reserved fields are errors. CRC32 detects accidental corruption; it is not an
-authentication or security mechanism.
+The CRC32 covers the first nine bytes of the chunk header followed by the
+payload. It detects accidental corruption; it is not authentication. Version 1
+requires chunk versions from 1 through 255 and flag bits 1 through 7 to be zero.
 
-## Format limits
+A reader rejects an unknown critical chunk. An editor may ignore an unknown
+noncritical chunk while interpreting a project, but must preserve its ID,
+version and payload unchanged when rewriting that project. Truncation, a CRC
+difference, unsupported flags and invalid core-chunk criticality are errors.
 
-A version-1 project is at most 256 MiB and contains at most 1,024 chunks. One
-chunk payload is at most 128 MiB, the `RECP` payload is at most 4 MiB, one
-file descriptor is at most 16 KiB, and one UTF-8 logical file name is at most
-1,024 bytes. Writers must reject values above these limits before allocating
-the archive. Readers must reject an oversized archive, count, payload,
-descriptor, recipe, or logical name even when the surrounding bytes are
-otherwise valid.
+The 32-bit payload length describes the binary capacity of the container, not a
+promise that an application will allocate that amount. The reference tools use
+defensive application limits: 256 MiB per project, 1,024 chunks, 128 MiB per
+chunk, 4 MiB for `DAT`, 64 KiB for `INF`, 16 KiB for `OUT` and a file
+descriptor, and 1,024 UTF-8 bytes for a logical file name. Implementations may
+use lower limits if they report them as application limits rather than format
+constraints.
 
-## Version 1 chunks
+## Version 1 core chunks
 
 | ID | Count | Critical | Payload |
 | --- | ---: | --- | --- |
-| `META` | exactly 1 | yes | UTF-8 JSON metadata followed by LF |
-| `RECP` | exactly 1 | yes | UTF-8 renderer recipe JSON |
-| `SRCF` | exactly 1 | yes | File payload containing the source image |
-| `AUXF` | 0 or more | yes | One user-owned auxiliary image per chunk |
-| `EXPT` | 0 or more | no | Export profiles owned by an integration |
+| `DAT` | exactly 1 | yes | Complete UTF-8 animation recipe JSON |
+| `INF` | exactly 1 | no | User-editable project information JSON |
+| `SRC` | exactly 1 | yes | Main source image file payload |
+| `AST` | 0 or more | yes | One user-owned auxiliary image per chunk |
+| `OUT` | 0 or 1 | no | Current output preset JSON |
 
-`META` version 1 is:
+`DAT` retains the recipe's own `schemaVersion` because the recipe is also a
+standalone contract. It owns animation behavior, timing and target raster
+dimensions. It does not duplicate descriptive project information or output
+codec settings.
+
+`INF` version 1 is an object with exactly four required string fields. Empty
+strings are valid, and writers do not synthesize timestamps:
 
 ```json
-{"formatVersion":1,"kind":"entropy-animator-effects-project"}
+{"title":"","author":"","version":"","description":""}
 ```
 
-The `RECP` recipe owns animation behavior and target raster dimensions. It does
-not own a codec, container, bitrate, CRF, ZIP layout, or sprite-sheet layout.
-Those settings belong to independently versioned optional export profiles.
+`OUT` version 1 contains exactly one of these objects:
 
-`SRCF` and `AUXF` begin with a 32-bit JSON descriptor length, then the UTF-8
-descriptor, then the original encoded file bytes. The descriptor contains
-`name` and `mediaType`. Names are normalized relative paths: absolute paths,
-backslashes, empty segments, `.` segments, and `..` segments are invalid.
-Source and auxiliary names must be unique.
+```json
+{"format":"mp4_h264","bitrate":4000000}
+{"format":"png_sequence"}
+{"format":"png_sprite_sheet","columns":8}
+```
+
+An H.264 bitrate is an integer from 100,000 through 100,000,000 bits per
+second. Sprite-sheet columns are a positive integer and must also be valid for
+the recipe's frame count. When `OUT` is absent, an interactive application uses
+its last local output setting and then its initial setting without prompting.
+Saving from the editor writes the currently visible setting. A reader may open
+a project whose noncritical output preset it cannot use, but export requires an
+explicit supported selection rather than a silent substitution.
+
+`SRC` and `AST` begin with a 32-bit descriptor length, followed by the UTF-8
+JSON descriptor and then the original encoded file bytes. The descriptor has
+exactly `name` and `mediaType` fields. A name is a normalized relative path;
+absolute paths, backslashes, empty segments, `.` and `..` are invalid. All file
+names in one project are unique.
 
 Built-in sprite assets are not embedded. Recipes refer to them through a
 versioned identifier such as `builtin:sprites/v1/fireflies_atlas`. Every image
-provided by a user is embedded as `AUXF`, so the project never depends on the
+provided by a user is embedded as `AST`, so the project does not depend on its
 original filesystem location.
 
 ## Deterministic writing
 
-A version-1 writer emits `META`, `RECP`, `SRCF`, `AUXF` chunks sorted by logical
-name, then optional chunks sorted by ID, version, and payload bytes. Given the
-same recipe text and input bytes, it produces the same archive bytes.
+A version-1 writer emits `DAT`, `INF`, `SRC`, then `AST` chunks sorted by logical
+name, followed by `OUT` when present. Preserved noncritical extensions follow,
+sorted by ID, version and payload bytes. JSON uses UTF-8 without a byte-order
+mark. Given the same recipe text, information, output preset and input bytes,
+the writer produces the same archive bytes.

@@ -7,7 +7,8 @@ Creating an animation produces one `.entropyfx` project containing:
 - one source image;
 - one explicit version-1 recipe;
 - every referenced user-owned auxiliary image;
-- optional integration chunks.
+- user-editable title, author, version, and description;
+- an optional current output preset.
 
 The toolkit validates and packages these files. It does not render effects or
 replace visual review in EntropyAnimator.
@@ -58,7 +59,7 @@ A built-in sprite uses an ID from
 `builtin:sprites/v1/fireflies_atlas`. Built-in sprites are versioned references
 and are not embedded. Match `atlasColumns`, `atlasRows`, and `atlasMode` to the
 catalog entry. Custom sprites are ordinary user-owned project inputs and are
-embedded once as `AUXF`.
+embedded once as `AST`.
 
 ## Review
 

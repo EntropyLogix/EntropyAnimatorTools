@@ -18,26 +18,40 @@ test('packs, validates, inspects, and unpacks one portable project', async () =>
     recipe.output = { height: 3, width: 4 };
     const recipePath = path.join(temporary, 'recipe.json');
     const sourcePath = path.join(temporary, 'source.png');
+    const infoPath = path.join(temporary, 'info.json');
+    const outputPath = path.join(temporary, 'output.json');
     const projectPath = path.join(temporary, 'project.entropyfx');
     const unpacked = path.join(temporary, 'unpacked');
     await writeFile(recipePath, `${JSON.stringify(recipe, null, 2)}\n`);
+    await writeFile(infoPath, JSON.stringify({
+      author: 'EntropyLogix', description: 'CLI fixture', title: 'Minimal', version: '1.0',
+    }));
+    await writeFile(outputPath, JSON.stringify({ bitrate: 6000000, format: 'mp4_h264' }));
     await writeFile(sourcePath, new Uint8Array([137, 80, 78, 71, 13, 10, 26, 10]));
     const packed = await execute(process.execPath, [
       tool,
       'pack',
       '--recipe', recipePath,
       '--source', sourcePath,
+      '--info', infoPath,
+      '--output-settings', outputPath,
       '--out', projectPath,
     ]);
     assert.match(packed.stdout, /^OK:/);
     assert.match((await execute(process.execPath, [tool, 'validate', projectPath])).stdout, /^OK:/);
     const inspected = JSON.parse((await execute(process.execPath,
       [tool, 'inspect', projectPath])).stdout);
-    assert.equal(inspected.kind, 'entropy-animator-effects-project');
+    assert.deepEqual(inspected.container, { product: 'ANIM', version: 1 });
+    assert.equal(inspected.info.title, 'Minimal');
+    assert.deepEqual(inspected.outputSettings, { bitrate: 6000000, format: 'mp4_h264' });
     assert.equal(inspected.recipe.key, 'minimal_pulse');
     await execute(process.execPath, [tool, 'unpack', projectPath, '--out', unpacked]);
     assert.deepEqual(await readFile(path.join(unpacked, 'source.png')), await readFile(sourcePath));
     assert.deepEqual(JSON.parse(await readFile(path.join(unpacked, 'recipe.json'), 'utf8')), recipe);
+    assert.deepEqual(JSON.parse(await readFile(path.join(unpacked, 'info.json'), 'utf8')),
+      JSON.parse(await readFile(infoPath, 'utf8')));
+    assert.deepEqual(JSON.parse(await readFile(path.join(unpacked, 'output.json'), 'utf8')),
+      JSON.parse(await readFile(outputPath, 'utf8')));
   } finally {
     await rm(temporary, { force: true, recursive: true });
   }

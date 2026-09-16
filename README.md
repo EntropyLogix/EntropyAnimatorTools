@@ -6,9 +6,9 @@ EntropyAnimator. It currently ships the EntropyAnimator Effects CLI, named
 Effects Project files without including or reimplementing the private renderer.
 
 An `.entropyfx` file is a deterministic, self-contained animation project. It
-stores the source image, explicit animation recipe, referenced user images, and
-optional integration metadata. Rendering and visual review happen in the
-EntropyAnimator application.
+stores the source image, explicit animation recipe, referenced user images,
+user-editable information, and an optional current output preset. Rendering and
+visual review happen in the EntropyAnimator application.
 
 ## Requirements
 
@@ -50,6 +50,11 @@ with a named input:
 ```
 
 Existing output paths are never replaced unless `--force` is present.
+
+Use `--info info.json` to supply `title`, `author`, `version`, and `description`.
+Use `--output-settings output.json` to preserve the current MP4, PNG sequence,
+or sprite-sheet output preset. Without them, `pack` writes empty information
+fields and omits the optional output preset.
 
 ## Repository layout
 

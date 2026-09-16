@@ -20,6 +20,7 @@ function help(error) {
     '  entropyfx validate <project.entropyfx>',
     '  entropyfx inspect <project.entropyfx>',
     '  entropyfx pack --recipe <recipe.json> --source <image> --out <project.entropyfx>',
+    '    [--info <info.json>] [--output-settings <output.json>]',
     '    [--input <logical-name>=<file>] [--chunk <ID>:<version>=<file>] [--force]',
     '  entropyfx unpack <project.entropyfx> --out <directory> [--force]',
   ].join('\n');
@@ -42,7 +43,7 @@ function parseArguments(argv) {
       options.inputs.push(argv.shift());
     else if (argument === '--chunk')
       options.chunks.push(argv.shift());
-    else if (['--out', '--recipe', '--source'].includes(argument))
+    else if (['--info', '--out', '--output-settings', '--recipe', '--source'].includes(argument))
       options[argument.slice(2)] = argv.shift();
     else if (argument?.startsWith('--'))
       help(`Unknown option ${argument}`);
@@ -70,12 +71,12 @@ function optionalChunks(values) {
   return values.map((value) => {
     const separator = value?.indexOf('=') ?? -1;
     const descriptor = value?.slice(0, separator) ?? '';
-    const match = /^([A-Z0-9 ]{4}):([1-9]\d{0,4})$/.exec(descriptor);
+    const match = /^([A-Z0-9]{3}):([1-9]\d{0,2})$/.exec(descriptor);
     if (separator < 1 || separator === value.length - 1 || !match)
       help('--chunk must use ID:version=/path/to/payload');
     const version = Number(match[2]);
-    if (version > 0xffff)
-      throw new Error(`${descriptor}: chunk version must not exceed 65535`);
+    if (version > 0xff)
+      throw new Error(`${descriptor}: chunk version must not exceed 255`);
     return { filename: value.slice(separator + 1), id: match[1], version };
   });
 }
@@ -116,7 +117,7 @@ function requireExtension(filename) {
 
 async function readProject(filename, contracts) {
   requireExtension(filename);
-  const project = openProjectArchive(await readFile(filename));
+  const project = await openProjectArchive(await readFile(filename));
   const recipe = validateProjectRecipe(project, contracts);
   return { project, recipe };
 }
@@ -127,6 +128,11 @@ async function pack(options, positional, contracts) {
   requireExtension(options.out);
   const recipeText = await readFile(options.recipe, 'utf8');
   const recipe = parseAndValidateRecipe(recipeText, contracts.recipeSchema);
+  const info = options.info
+    ? JSON.parse(await readFile(options.info, 'utf8'))
+    : { author: '', description: '', title: '', version: '' };
+  const outputSettings = options['output-settings']
+    ? JSON.parse(await readFile(options['output-settings'], 'utf8')) : null;
   const sourceName = path.basename(options.source);
   if (recipe.source !== sourceName)
     throw new Error(`recipe.source ${recipe.source} does not match source file ${sourceName}`);
@@ -144,16 +150,18 @@ async function pack(options, positional, contracts) {
     throw new Error(`missing --input for ${missing.join(', ')}`);
   if (extra.length > 0)
     throw new Error(`unused --input for ${extra.join(', ')}`);
-  const archive = createProjectArchive({
+  const archive = await createProjectArchive({
     auxiliaryInputs: await Promise.all(required.map(async (name) => {
       validateProjectPath(name, '--input');
       return { bytes: await readFile(supplied.get(name)), mediaType: mediaType(name), name };
     })),
+    info,
     optionalChunks: await Promise.all(optionalChunks(options.chunks).map(async (chunk) => ({
       id: chunk.id,
       payload: await readFile(chunk.filename),
       version: chunk.version,
     }))),
+    output: outputSettings,
     recipe: recipeText,
     source: {
       bytes: await readFile(options.source),
@@ -180,6 +188,7 @@ function optionalChunkFilename(chunk, index) {
 
 async function unpack(options, positional, contracts) {
   if (positional.length !== 1 || !options.out || options.recipe || options.source
+      || options.info || options['output-settings']
       || options.inputs.length > 0 || options.chunks.length > 0)
     help('unpack requires one project path and --out');
   const { project } = await readProject(positional[0], contracts);
@@ -191,12 +200,16 @@ async function unpack(options, positional, contracts) {
     version: chunk.version,
   }));
   const manifest = `${JSON.stringify({
-    formatVersion: project.manifest.formatVersion,
-    kind: project.manifest.kind,
+    container: { product: 'ANIM', version: 1 },
     optionalChunks: chunkFiles.map(({ id, name, version }) => ({ id, path: name, version })),
   }, null, 2)}\n`;
   const files = [
     { bytes: textEncoder.encode(project.recipe), name: 'recipe.json' },
+    { bytes: textEncoder.encode(`${JSON.stringify(project.info, null, 2)}\n`), name: 'info.json' },
+    ...(project.output ? [{
+      bytes: textEncoder.encode(`${JSON.stringify(project.output, null, 2)}\n`),
+      name: 'output.json',
+    }] : []),
     { bytes: project.source.bytes, name: project.source.name },
     ...project.auxiliaryInputs.map((file) => ({ bytes: file.bytes, name: file.name })),
     ...chunkFiles,
@@ -232,13 +245,14 @@ async function inspect(options, positional, contracts) {
       name: input.name,
     })),
     bytes: (await stat(positional[0])).size,
-    formatVersion: project.manifest.formatVersion,
-    kind: project.manifest.kind,
+    container: { product: 'ANIM', version: 1 },
+    info: project.info,
     optionalChunks: project.optionalChunks.map((chunk) => ({
       bytes: chunk.payload.byteLength,
       id: chunk.id,
       version: chunk.version,
     })),
+    outputSettings: project.output,
     recipe: {
       durationMs: recipe.timeline.frames * recipe.timeline.frameDurationMs,
       effects: recipe.primitives.map((primitive) => primitive.type),
