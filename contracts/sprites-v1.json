@@ -1,0 +1,883 @@
+{
+  "formatVersion": 1,
+  "sprites": [
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "animals",
+      "id": "builtin:sprites/v1/fish_atlas",
+      "key": "fish_atlas",
+      "purpose": "Sixteen side-view fish silhouettes for schools and ambient underwater motion.",
+      "recommendation": "Use many small instances with a shared travel direction and restrained rotation.",
+      "similarTo": [
+        "jellyfish_sequence"
+      ],
+      "title": "Fish silhouettes"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "animals",
+      "id": "builtin:sprites/v1/jellyfish_sequence",
+      "key": "jellyfish_sequence",
+      "purpose": "Thirty-two-frame swimming cycle with a contracting bell and moving tentacles.",
+      "recommendation": "Use low density and slow upward or lateral motion for readable silhouettes.",
+      "similarTo": [
+        "fish_atlas"
+      ],
+      "title": "Jellyfish pulse"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "atmosphere",
+      "id": "builtin:sprites/v1/embers_atlas",
+      "key": "embers_atlas",
+      "purpose": "Sixteen warm clusters for fire motes, welding debris, and hot atmospheric dust.",
+      "recommendation": "Use additive blending, upward gravity, and short trails only for the brightest particles.",
+      "similarTo": [
+        "sparks_atlas",
+        "galactic_dust_atlas"
+      ],
+      "title": "Ember clusters"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "atmosphere",
+      "id": "builtin:sprites/v1/explosion_sequence",
+      "key": "explosion_sequence",
+      "purpose": "Thirty-two-frame radial flash, ray, and dissipation sequence.",
+      "recommendation": "Pair one short-lived burst with a larger shockwave rather than filling a whole region.",
+      "similarTo": [
+        "fire_sequence",
+        "shockwave_sequence"
+      ],
+      "title": "Explosion burst"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "atmosphere",
+      "id": "builtin:sprites/v1/fire_sequence",
+      "key": "fire_sequence",
+      "purpose": "Thirty-two-frame compact flame cycle for burners, vents, and localized fires.",
+      "recommendation": "Use animated playback with slight size and brightness variation across instances.",
+      "similarTo": [
+        "embers_atlas",
+        "explosion_sequence"
+      ],
+      "title": "Flame cycle"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "atmosphere",
+      "id": "builtin:sprites/v1/fog_puffs_atlas",
+      "key": "fog_puffs_atlas",
+      "purpose": "Sixteen soft irregular puffs for layered mist and low-frequency atmospheric movement.",
+      "recommendation": "Layer large, low-opacity sprites with slow motion and normal blending.",
+      "similarTo": [
+        "smoke_sequence",
+        "galactic_dust_atlas"
+      ],
+      "title": "Fog puffs"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "atmosphere",
+      "id": "builtin:sprites/v1/smoke_sequence",
+      "key": "smoke_sequence",
+      "purpose": "Thirty-two-frame expanding and dissipating smoke puff.",
+      "recommendation": "Use animated playback, normal blending, and slow upward drift.",
+      "similarTo": [
+        "fog_puffs_atlas",
+        "fire_sequence"
+      ],
+      "title": "Smoke expansion"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "celebration",
+      "id": "builtin:sprites/v1/confetti_atlas",
+      "key": "confetti_atlas",
+      "purpose": "Sixteen tintable geometric variants for celebrations and stylized debris.",
+      "recommendation": "Use random frames, strong rotation variation, and a vivid tint per layer.",
+      "similarTo": [
+        "metal_fragments_atlas",
+        "petals_atlas"
+      ],
+      "title": "Confetti shapes"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 18
+      },
+      "category": "debris",
+      "id": "builtin:sprites/v1/crystal_shards_atlas",
+      "key": "crystal_shards_atlas",
+      "purpose": "Sixteen translucent-looking shard variants for glass, ice, and crystalline debris.",
+      "recommendation": "Use normal blending with rotation and brightness variation; tint for glass, ice, or alien crystal.",
+      "similarTo": [
+        "metal_fragments_atlas",
+        "asteroids_atlas"
+      ],
+      "title": "Crystal shards"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "debris",
+      "id": "builtin:sprites/v1/metal_fragments_atlas",
+      "key": "metal_fragments_atlas",
+      "purpose": "Sixteen hard-edged plate fragments for impacts, machinery, and hull damage.",
+      "recommendation": "Use random rotation and a directional burst; keep density moderate so silhouettes remain distinct.",
+      "similarTo": [
+        "crystal_shards_atlas",
+        "confetti_atlas"
+      ],
+      "title": "Metal fragments"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "energy",
+      "id": "builtin:sprites/v1/electric_arcs_atlas",
+      "key": "electric_arcs_atlas",
+      "purpose": "Sixteen branched line variants for flickering electricity and energy faults.",
+      "recommendation": "Change random frames quickly or layer several low-density emitters for unstable arcs.",
+      "similarTo": [
+        "energy_orb_sequence",
+        "sparks_atlas"
+      ],
+      "title": "Electric arcs"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "energy",
+      "id": "builtin:sprites/v1/energy_orb_sequence",
+      "key": "energy_orb_sequence",
+      "purpose": "Thirty-two-frame rotating ring and glowing core sequence.",
+      "recommendation": "Use one or a few animated instances with additive blending and restrained movement.",
+      "similarTo": [
+        "electric_arcs_atlas",
+        "magic_circles_atlas"
+      ],
+      "title": "Energy orb"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "energy",
+      "id": "builtin:sprites/v1/shockwave_sequence",
+      "key": "shockwave_sequence",
+      "purpose": "Thirty-two-frame expanding ring that fades over its lifetime.",
+      "recommendation": "Use a single animated particle for impacts, pulses, portals, or weapon discharge.",
+      "similarTo": [
+        "ripples_sequence",
+        "explosion_sequence"
+      ],
+      "title": "Shockwave ring"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "light",
+      "id": "builtin:sprites/v1/galactic_dust_atlas",
+      "key": "galactic_dust_atlas",
+      "purpose": "Sixteen soft star-dust clusters for nebula shimmer and large particle fields.",
+      "recommendation": "Use high density at very small size, additive blending, and gentle color-over-life.",
+      "similarTo": [
+        "fog_puffs_atlas",
+        "embers_atlas"
+      ],
+      "title": "Galactic dust"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "light",
+      "id": "builtin:sprites/v1/halos_atlas",
+      "key": "halos_atlas",
+      "purpose": "Sixteen elliptical ring variants for lights, lenses, shields, and portals.",
+      "recommendation": "Use low density or one instance per light source with additive blending.",
+      "similarTo": [
+        "lens_flares_atlas",
+        "shockwave_sequence"
+      ],
+      "title": "Optical halos"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "light",
+      "id": "builtin:sprites/v1/hyperdrive_stars_atlas",
+      "key": "hyperdrive_stars_atlas",
+      "purpose": "Sixteen bright star-head and short-streak variants for perspective travel fields.",
+      "recommendation": "Use the depth emitter, radial perspective motion, speed variation, and trails.",
+      "similarTo": [
+        "sparks_atlas",
+        "lens_flares_atlas"
+      ],
+      "title": "Hyperdrive stars"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "light",
+      "id": "builtin:sprites/v1/lens_flares_atlas",
+      "key": "lens_flares_atlas",
+      "purpose": "Sixteen starburst variants for lamps, suns, reflections, and optical accents.",
+      "recommendation": "Prefer one restrained additive instance per important light source.",
+      "similarTo": [
+        "halos_atlas",
+        "sparks_atlas"
+      ],
+      "title": "Lens flare stars"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "light",
+      "id": "builtin:sprites/v1/sparks_atlas",
+      "key": "sparks_atlas",
+      "purpose": "Sixteen short luminous streaks for impacts, welding, and electrical discharge.",
+      "recommendation": "Use directional radial emission with short lifetime and additive blending.",
+      "similarTo": [
+        "hyperdrive_stars_atlas",
+        "embers_atlas"
+      ],
+      "title": "Spark streaks"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "nature",
+      "id": "builtin:sprites/v1/feathers_atlas",
+      "key": "feathers_atlas",
+      "purpose": "Sixteen feather orientations for air currents, dreamlike scenes, and organic debris.",
+      "recommendation": "Use slow gravity, lateral turbulence, and broad rotation variation.",
+      "similarTo": [
+        "leaves_atlas",
+        "petals_atlas"
+      ],
+      "title": "Feathers"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "nature",
+      "id": "builtin:sprites/v1/leaves_atlas",
+      "key": "leaves_atlas",
+      "purpose": "Sixteen leaf orientations for wind, foliage drift, and seasonal scenes.",
+      "recommendation": "Use random frames, directional drift, turbulence, and rotation variation.",
+      "similarTo": [
+        "petals_atlas",
+        "feathers_atlas"
+      ],
+      "title": "Leaves"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "nature",
+      "id": "builtin:sprites/v1/petals_atlas",
+      "key": "petals_atlas",
+      "purpose": "Sixteen petal silhouettes for blossom fall, soft debris, and stylized particles.",
+      "recommendation": "Use low gravity, gentle turbulence, and alternating tint layers.",
+      "similarTo": [
+        "leaves_atlas",
+        "confetti_atlas"
+      ],
+      "title": "Petals"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 18
+      },
+      "category": "space",
+      "id": "builtin:sprites/v1/asteroids_atlas",
+      "key": "asteroids_atlas",
+      "purpose": "Sixteen rocky asteroid variants for fields, impacts, and perspective fly-throughs.",
+      "recommendation": "Use the depth emitter with random rotation and size variation for a perspective field.",
+      "similarTo": [
+        "metal_fragments_atlas",
+        "crystal_shards_atlas"
+      ],
+      "title": "Asteroids"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "emitter_angle",
+        "gutterPixels": 8
+      },
+      "category": "symbols",
+      "id": "builtin:sprites/v1/magic_circles_atlas",
+      "key": "magic_circles_atlas",
+      "purpose": "Sixteen circular glyph assemblies for portals, spells, interfaces, and ritual geometry.",
+      "recommendation": "Use a ring emitter with emitter-angle mapping, orbit motion, and color-over-life.",
+      "similarTo": [
+        "runes_atlas",
+        "technical_glyphs_atlas"
+      ],
+      "title": "Magic circles"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "symbols",
+      "id": "builtin:sprites/v1/runes_atlas",
+      "key": "runes_atlas",
+      "purpose": "Sixteen clean tintable runes for orbiting glyphs, magic particles, and alien notation.",
+      "recommendation": "Use random frames for free particles or emitter-angle mapping around a ring.",
+      "similarTo": [
+        "magic_circles_atlas",
+        "technical_glyphs_atlas"
+      ],
+      "title": "Runes"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "symbols",
+      "id": "builtin:sprites/v1/technical_glyphs_atlas",
+      "key": "technical_glyphs_atlas",
+      "purpose": "Sixteen machine-readable-looking symbols for HUD particles and synthetic notation.",
+      "recommendation": "Use small random frames with limited rotation for legible interface texture.",
+      "similarTo": [
+        "runes_atlas",
+        "magic_circles_atlas"
+      ],
+      "title": "Technical glyphs"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "water",
+      "id": "builtin:sprites/v1/bubbles_atlas",
+      "key": "bubbles_atlas",
+      "purpose": "Sixteen bubble sizes and highlight variants for water, gas, and abstract floaters.",
+      "recommendation": "Use upward motion, low opacity, size variation, and normal blending.",
+      "similarTo": [
+        "ripples_sequence",
+        "galactic_dust_atlas"
+      ],
+      "title": "Bubbles"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "water",
+      "id": "builtin:sprites/v1/ripples_sequence",
+      "key": "ripples_sequence",
+      "purpose": "Thirty-two-frame expanding elliptical ripple for surfaces and impact rings.",
+      "recommendation": "Use one animated sprite per impact with normal or subtle additive blending.",
+      "similarTo": [
+        "splash_sequence",
+        "shockwave_sequence"
+      ],
+      "title": "Water ripple"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "water",
+      "id": "builtin:sprites/v1/splash_sequence",
+      "key": "splash_sequence",
+      "purpose": "Thirty-two-frame droplet arc and surface-ring splash cycle.",
+      "recommendation": "Use sparse animated instances at collision points rather than as a continuous field.",
+      "similarTo": [
+        "ripples_sequence",
+        "rain_drops_atlas"
+      ],
+      "title": "Water splash"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "weather",
+      "id": "builtin:sprites/v1/rain_drops_atlas",
+      "key": "rain_drops_atlas",
+      "purpose": "Sixteen streak lengths and angles for layered rain and wind-driven precipitation.",
+      "recommendation": "Use box emission, one travel direction, high density, and minimal rotation variation.",
+      "similarTo": [
+        "sparks_atlas",
+        "splash_sequence"
+      ],
+      "title": "Rain streaks"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "weather",
+      "id": "builtin:sprites/v1/snowflakes_atlas",
+      "key": "snowflakes_atlas",
+      "purpose": "Sixteen radial snowflake variants for snow, frost, and stylized cold particles.",
+      "recommendation": "Use slow downward motion, lateral turbulence, and broad rotation variation.",
+      "similarTo": [
+        "rain_drops_atlas",
+        "galactic_dust_atlas"
+      ],
+      "title": "Snowflakes"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "animals",
+      "id": "builtin:sprites/v1/birds_sequence",
+      "key": "birds_sequence",
+      "purpose": "Thirty-two-frame side-view wingbeat for individual birds and distant flocks.",
+      "recommendation": "Use animated playback, low density, a shared travel direction, and modest size variation.",
+      "similarTo": [
+        "butterflies_sequence",
+        "fish_atlas"
+      ],
+      "title": "Bird flight"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "animals",
+      "id": "builtin:sprites/v1/butterflies_sequence",
+      "key": "butterflies_sequence",
+      "purpose": "Thirty-two-frame symmetric wingbeat for butterflies, moths, and stylized flying insects.",
+      "recommendation": "Use slow travel, gentle turbulence, and independent phase through particle age.",
+      "similarTo": [
+        "birds_sequence",
+        "petals_atlas"
+      ],
+      "title": "Butterfly flight"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "surface",
+      "id": "builtin:sprites/v1/splatter_atlas",
+      "key": "splatter_atlas",
+      "purpose": "Sixteen irregular impact shapes for paint, ink, fluid stains, corrosion, or stylized blood.",
+      "recommendation": "Use a short directional burst or a few long-lived impacts, then tint per authored layer.",
+      "similarTo": [
+        "splash_sequence",
+        "confetti_atlas"
+      ],
+      "title": "Paint splatters"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "objects",
+      "id": "builtin:sprites/v1/paper_sheets_atlas",
+      "key": "paper_sheets_atlas",
+      "purpose": "Sixteen bent sheet variants for loose documents, cards, litter, and lightweight debris.",
+      "recommendation": "Use random frames with broad rotation, oscillation, and a weak downward drift.",
+      "similarTo": [
+        "confetti_atlas",
+        "leaves_atlas"
+      ],
+      "title": "Paper sheets"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "energy",
+      "id": "builtin:sprites/v1/energy_aura_sequence",
+      "key": "energy_aura_sequence",
+      "purpose": "Thirty-two-frame rising corona for charged objects, power-ups, reactors, and supernatural energy.",
+      "recommendation": "Place one large animated instance around a subject and use additive blending with restrained opacity.",
+      "similarTo": [
+        "energy_orb_sequence",
+        "fire_sequence"
+      ],
+      "title": "Energy aura"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "symbols",
+      "id": "builtin:sprites/v1/data_circuit_sequence",
+      "key": "data_circuit_sequence",
+      "purpose": "Thirty-two-frame circuit trace with moving scan and illuminated nodes for digital fields and HUD particles.",
+      "recommendation": "Use animated playback with low density, additive blending, and either grid-aligned or drifting placement.",
+      "similarTo": [
+        "technical_glyphs_atlas",
+        "runes_atlas"
+      ],
+      "title": "Data circuit"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "nature",
+      "id": "builtin:sprites/v1/plant_sway_sequence",
+      "key": "plant_sway_sequence",
+      "purpose": "Thirty-two-frame anchored plant cluster bending in a closed wind cycle.",
+      "recommendation": "Use one or a few stationary instances at the bottom of a region; avoid particle-like travel.",
+      "similarTo": [
+        "leaves_atlas",
+        "paper_sheets_atlas"
+      ],
+      "title": "Swaying plants"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "light",
+      "id": "builtin:sprites/v1/light_beams_atlas",
+      "key": "light_beams_atlas",
+      "purpose": "Sixteen tapered single and grouped beams for flashlights, windows, energy emitters, and stylized shafts.",
+      "recommendation": "Use low density, emitter-angle mapping or fixed rotation, and additive blending.",
+      "similarTo": [
+        "lens_flares_atlas",
+        "hyperdrive_stars_atlas"
+      ],
+      "title": "Light beams"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "atmosphere",
+      "id": "builtin:sprites/v1/wind_streaks_atlas",
+      "key": "wind_streaks_atlas",
+      "purpose": "Sixteen curved line groups for visible gusts, speed lines, air currents, and underwater flow.",
+      "recommendation": "Use aligned rotation and travel with low opacity; vary frames instead of adding long reconstructed trails.",
+      "similarTo": [
+        "rain_drops_atlas",
+        "hyperdrive_stars_atlas"
+      ],
+      "title": "Wind streaks"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "light",
+      "id": "builtin:sprites/v1/fireflies_atlas",
+      "key": "fireflies_atlas",
+      "purpose": "Sixteen small warm light clusters for fireflies, fairy lights, bioluminescence, and ambient motes.",
+      "recommendation": "Use additive blending, slow irregular movement, low brightness, and no trail.",
+      "similarTo": [
+        "galactic_dust_atlas",
+        "sparks_atlas"
+      ],
+      "title": "Firefly clusters"
+    },
+    {
+      "atlas": {
+        "columns": 8,
+        "rows": 4,
+        "frames": 32,
+        "kind": "sequence",
+        "recommendedMode": "animated",
+        "gutterPixels": 8
+      },
+      "category": "atmosphere",
+      "id": "builtin:sprites/v1/candle_flame_sequence",
+      "key": "candle_flame_sequence",
+      "purpose": "Thirty-two-frame narrow flame cycle for candles, pilot lights, lamps, and small burners.",
+      "recommendation": "Use one small stationary instance per flame and avoid random rotation.",
+      "similarTo": [
+        "fire_sequence",
+        "embers_atlas"
+      ],
+      "title": "Candle flame"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "symbols",
+      "id": "builtin:sprites/v1/hearts_atlas",
+      "key": "hearts_atlas",
+      "purpose": "Sixteen filled and outlined heart variants for reactions, status feedback, celebrations, and stylized particles.",
+      "recommendation": "Tint per layer and use upward drift or a short radial burst with restrained density.",
+      "similarTo": [
+        "confetti_atlas",
+        "runes_atlas"
+      ],
+      "title": "Hearts"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "symbols",
+      "id": "builtin:sprites/v1/music_notes_atlas",
+      "key": "music_notes_atlas",
+      "purpose": "Sixteen note and headphone-like variants for audio, rhythm, radio, and celebratory motion.",
+      "recommendation": "Use gentle upward or orbital movement and random frames; tint to match the authored scene.",
+      "similarTo": [
+        "technical_glyphs_atlas",
+        "runes_atlas"
+      ],
+      "title": "Music notes"
+    },
+    {
+      "atlas": {
+        "columns": 4,
+        "rows": 4,
+        "frames": 16,
+        "kind": "variants",
+        "recommendedMode": "random_frame",
+        "gutterPixels": 8
+      },
+      "category": "objects",
+      "id": "builtin:sprites/v1/lanterns_atlas",
+      "key": "lanterns_atlas",
+      "purpose": "Sixteen warm lantern variants for festivals, beacons, memorials, and atmospheric background motion.",
+      "recommendation": "Use sparse upward drift, gentle oscillation, normal blending, and limited rotation.",
+      "similarTo": [
+        "fireflies_atlas",
+        "candle_flame_sequence"
+      ],
+      "title": "Floating lanterns"
+    }
+  ]
+}

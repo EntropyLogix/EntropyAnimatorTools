@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "key": "minimal_pulse",
+  "source": "source.png",
+  "timeline": {
+    "frames": 150,
+    "frameDurationMs": 40
+  },
+  "output": {
+    "width": 1152,
+    "height": 960
+  },
+  "seed": 38318869,
+  "effectMasks": [],
+  "primitives": [
+    {
+      "type": "brightness_pulse",
+      "x": 0.45,
+      "y": 0.55,
+      "radius": 0.35,
+      "strength": 1,
+      "cycles": 1,
+      "phase": 0
+    }
+  ]
+}

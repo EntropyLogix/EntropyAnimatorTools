@@ -1,0 +1,2733 @@
+{
+  "effects": [
+    {
+      "group": "Light & emission",
+      "label": "Brightness pulse",
+      "description": "Pulses the existing color around a point.",
+      "geometry": "point",
+      "template": {
+        "type": "brightness_pulse",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "brightness_pulse"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Flicker",
+      "description": "Irregularly animates an existing light source.",
+      "geometry": "point",
+      "template": {
+        "type": "flicker",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "flicker"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Shimmer",
+      "description": "Moves a band that amplifies the existing color.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "shimmer",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "width": 0.3
+      },
+      "type": "shimmer"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Light sweep",
+      "description": "Moves a band of optional emission through a region.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "light_sweep",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "width": 0.3
+      },
+      "type": "light_sweep"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Ray fan",
+      "description": "Builds a noisy field of rays emitted from a point.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "ray_fan",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "width": 0.22
+      },
+      "type": "ray_fan"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Glitter",
+      "description": "Places periodically twinkling points.",
+      "geometry": "region",
+      "template": {
+        "type": "glitter",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "glitter"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Caustics",
+      "description": "Creates a moving network of cellular light bands.",
+      "geometry": "region",
+      "template": {
+        "type": "caustics",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 8
+      },
+      "type": "caustics"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Sway",
+      "description": "Bends region content with a wave-like motion.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "sway",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "radius": 0.25
+      },
+      "type": "sway"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Ripple",
+      "description": "Propagates a wave from the selected point.",
+      "geometry": "point",
+      "template": {
+        "type": "ripple",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "bands": 4
+      },
+      "type": "ripple"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Surface ripple",
+      "description": "Distorts a region with two directional waves.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "surface_ripple",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 10,
+        "scale": 8
+      },
+      "type": "surface_ripple"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Vector warp",
+      "description": "Moves the image through a procedural direction field.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle",
+        "offsetDegrees": -90
+      },
+      "template": {
+        "type": "vector_warp",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "scale": 8
+      },
+      "type": "vector_warp"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Water flow",
+      "description": "Advects the image through a flow field and crossfades loop phases.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "water_flow",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 10,
+        "scale": 8
+      },
+      "type": "water_flow"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Parallax",
+      "description": "Offsets image layers using automatic or managed depth.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "parallax",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 10,
+        "depthMode": "automatic",
+        "depthSource": "select_depth.png",
+        "depth": "light_near",
+        "depthMidlevel": 0.5,
+        "normalizeCenter": true
+      },
+      "type": "parallax"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Heat haze",
+      "description": "Adds a subtle, undulating distortion.",
+      "geometry": "region",
+      "template": {
+        "type": "heat_haze",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 8
+      },
+      "type": "heat_haze"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Spin",
+      "description": "Rotates the contents of a disc around a point.",
+      "geometry": "point",
+      "template": {
+        "type": "spin",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "feather": 0
+      },
+      "type": "spin"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Twirl",
+      "description": "Twists the image increasingly toward the edge of a disc.",
+      "geometry": "point",
+      "template": {
+        "type": "twirl",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "twirl"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Drift",
+      "description": "Moves the entire image along a closed path.",
+      "geometry": "global",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "drift",
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0
+      },
+      "type": "drift"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Shake",
+      "description": "Adds closed-loop irregular shake.",
+      "geometry": "global",
+      "template": {
+        "type": "shake",
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "shake"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Chromatic aberration",
+      "description": "Offsets RGB channels relative to a point.",
+      "geometry": "point",
+      "template": {
+        "type": "chromatic_aberration",
+        "x": 0.5,
+        "y": 0.5,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "chromatic_aberration"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Film grain",
+      "description": "Applies deterministic luminance noise.",
+      "geometry": "global",
+      "template": {
+        "type": "film_grain",
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 8
+      },
+      "type": "film_grain"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Tape tracking",
+      "description": "Combines tracking, gated artifacts, noise, and RGB separation.",
+      "geometry": "global",
+      "template": {
+        "type": "tape_tracking",
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "tape_tracking"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Energy veins",
+      "description": "Overlays moving blue-white energy veins with a brightening blend.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "energy_veins",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "scale": 8
+      },
+      "type": "energy_veins"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Clouds",
+      "description": "Blends a procedural cloud field with the image.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "clouds",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "scale": 8
+      },
+      "type": "clouds"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Fog",
+      "description": "Adds a broad, soft atmospheric layer.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "fog",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "scale": 8
+      },
+      "type": "fog"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Flame field",
+      "description": "Distorts and illuminates a region like a flame.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "flame_field",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": -90,
+        "scale": 8
+      },
+      "type": "flame_field"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Fluid",
+      "description": "Simulates dye and flow emitted from a selected point.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "fluid",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": -75,
+        "color": "#4488cc"
+      },
+      "type": "fluid"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Smoke",
+      "description": "Emits growing soft smoke particles.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "smoke",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025,
+        "angle": -90
+      },
+      "type": "smoke"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Fire",
+      "description": "Emits warm flame particles.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "fire",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025,
+        "angle": -90
+      },
+      "type": "fire"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Energy shell",
+      "description": "Creates an irregular glowing shell.",
+      "geometry": "point",
+      "template": {
+        "type": "energy_shell",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 8
+      },
+      "type": "energy_shell"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Stars",
+      "description": "Places twinkling points throughout a region.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "stars",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "stars"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Shooting stars",
+      "description": "Moves long luminous trails through a region.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "shooting_stars",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "shooting_stars"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Dust",
+      "description": "Moves fine particles through a region.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "dust",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "dust"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Embers",
+      "description": "Emits small hot particles from a point.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "embers",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025,
+        "angle": -90
+      },
+      "type": "embers"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Sparks",
+      "description": "Emits directional sparks with trails.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "sparks",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025,
+        "angle": -90
+      },
+      "type": "sparks"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Rain",
+      "description": "Moves dense directional streaks.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "rain",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 90,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "rain"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Snow",
+      "description": "Moves soft flakes with lateral sway.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "snow",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 90,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "snow"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Particle burst",
+      "description": "Scatters sparks radially from a point.",
+      "geometry": "point",
+      "template": {
+        "type": "particle_burst",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "particle_burst"
+    },
+    {
+      "group": "Electricity",
+      "label": "Discharge",
+      "description": "Creates radial branching impulses around a point.",
+      "geometry": "point",
+      "template": {
+        "type": "discharge",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "branches": 6
+      },
+      "type": "discharge"
+    },
+    {
+      "group": "Electricity",
+      "label": "Electric arc",
+      "description": "Connects two points with branching lightning.",
+      "geometry": "path",
+      "template": {
+        "type": "electric_arc",
+        "from": {
+          "x": 0.1,
+          "y": 0.2
+        },
+        "to": {
+          "x": 0.9,
+          "y": 0.8
+        },
+        "width": 0.012,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "branches": 2
+      },
+      "type": "electric_arc"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Local shift",
+      "description": "Softly offsets a selected disc of the image.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "local_shift",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0
+      },
+      "type": "local_shift"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Oscillating shift",
+      "description": "Moves a region along a closed path.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "oscillating_shift",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 15
+      },
+      "type": "oscillating_shift"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Swing",
+      "description": "Bends a band extending from a point along a selected axis.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "swing",
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.35,
+        "angle": 90,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "swing"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Directional waves",
+      "description": "Offsets samples perpendicular to the wave direction.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "directional_waves",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 10,
+        "scale": 8
+      },
+      "type": "directional_waves"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Blur",
+      "description": "Blurs a region with a compact sampling kernel.",
+      "geometry": "region",
+      "template": {
+        "type": "blur",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "radius": 0.08
+      },
+      "type": "blur"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Precise blur",
+      "description": "Blurs a region with a denser kernel.",
+      "geometry": "region",
+      "template": {
+        "type": "precise_blur",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "radius": 0.08
+      },
+      "type": "precise_blur"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Radial blur",
+      "description": "Blurs the image along rays from a point.",
+      "geometry": "point",
+      "template": {
+        "type": "radial_blur",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "radial_blur"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Motion blur",
+      "description": "Spatially blurs a single frame in a selected direction.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "motion_blur",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 20,
+        "width": 0.08
+      },
+      "type": "motion_blur"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Color multiply",
+      "description": "Periodically multiplies a region by one color.",
+      "geometry": "region",
+      "template": {
+        "type": "color_multiply",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "color": "#4488cc"
+      },
+      "type": "color_multiply"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Gradient blend",
+      "description": "Blends a region with a directional gradient.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "gradient_blend",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "color": "#4488cc",
+        "colorTo": "#dd8833"
+      },
+      "type": "gradient_blend"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Color key",
+      "description": "Reduces the alpha of pixels similar to a selected color.",
+      "geometry": "region",
+      "template": {
+        "type": "color_key",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "color": "#4488cc",
+        "tolerance": 0.5
+      },
+      "type": "color_key"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Opacity",
+      "description": "Periodically reduces alpha within a region.",
+      "geometry": "region",
+      "template": {
+        "type": "opacity",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "opacity"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Reflection",
+      "description": "Blends a region with its reflected variant.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "reflection",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 90
+      },
+      "type": "reflection"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Tint",
+      "description": "Gently colors a region while preserving luminance.",
+      "geometry": "region",
+      "template": {
+        "type": "tint",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "color": "#4488cc"
+      },
+      "type": "tint"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Fisheye",
+      "description": "Non-linearly scales the image around a point.",
+      "geometry": "point",
+      "template": {
+        "type": "fisheye",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "fisheye"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Perspective",
+      "description": "Projects a region using perspective division.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "perspective",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 15
+      },
+      "type": "perspective"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Refraction",
+      "description": "Distorts the image through a procedural normal field.",
+      "geometry": "region",
+      "template": {
+        "type": "refraction",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 8
+      },
+      "type": "refraction"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Skew",
+      "description": "Offsets rows proportionally to their height.",
+      "geometry": "region",
+      "template": {
+        "type": "skew",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 15
+      },
+      "type": "skew"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Region shift",
+      "description": "Periodically moves a region in a selected direction.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "region_shift",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 15
+      },
+      "type": "region_shift"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Edge detection",
+      "description": "Emphasizes image gradients.",
+      "geometry": "region",
+      "template": {
+        "type": "edge_detection",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0
+      },
+      "type": "edge_detection"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Edge glow",
+      "description": "Derives an original directional glow from image edges.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "edge_glow",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 15,
+        "radius": 0.025
+      },
+      "type": "edge_glow"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Star glare",
+      "description": "Casts multi-directional streaks from bright image areas.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "cross",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "star_glare",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 15,
+        "radius": 0.2
+      },
+      "type": "star_glare"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Local contrast",
+      "description": "Enhances local contrast like a simple unsharp mask.",
+      "geometry": "region",
+      "template": {
+        "type": "local_contrast",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 8
+      },
+      "type": "local_contrast"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Source rays",
+      "description": "Emits rays from a point, or derives directional rays from luminance across the whole master.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "offsetDegrees": 90,
+        "parameter": "direction"
+      },
+      "template": {
+        "type": "source_rays",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "variation": 1
+      },
+      "type": "source_rays"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Lens flare",
+      "description": "Adds a source glow, chromatic lens ghosts, and an anamorphic streak.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "lens_flare",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "ghostIntensity": 0.65,
+        "streakIntensity": 0.35,
+        "shimmer": 0.2,
+        "sunEnabled": true,
+        "lensEnabled": true,
+        "color": "#ffffff"
+      },
+      "type": "lens_flare"
+    },
+    {
+      "group": "Light & emission",
+      "label": "HUD ring",
+      "description": "Draws a rotating segmented HUD ring around a selected point.",
+      "geometry": "point",
+      "template": {
+        "type": "hud_ring",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "thickness": 0.1,
+        "radialSegments": 1,
+        "radialFill": 1,
+        "arcLength": 0.3,
+        "arcSegments": 1,
+        "arcFill": 1,
+        "skew": 0,
+        "color": "#ffffff"
+      },
+      "type": "hud_ring"
+    },
+    {
+      "group": "Light & emission",
+      "label": "HUD cog",
+      "description": "Draws a rotating procedural gear around a selected point.",
+      "geometry": "point",
+      "template": {
+        "type": "hud_cog",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "baseThickness": 0.08,
+        "toothLength": 0.04,
+        "toothCount": 17,
+        "toothFill": 0.44,
+        "toothSlope": 0.24,
+        "toothSides": "external",
+        "color": "#ffffff"
+      },
+      "type": "hud_cog"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Radial ticks",
+      "description": "Rotates sparse deterministic barcode cells around a selected point.",
+      "geometry": "point",
+      "template": {
+        "type": "radial_ticks",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "thickness": 0.04,
+        "segmentCount": 256,
+        "arcLength": 1,
+        "threshold": 0.35,
+        "skew": 0,
+        "bidirectional": true,
+        "patternSeed": 0,
+        "color": "#ffffff"
+      },
+      "type": "radial_ticks"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Orbit markers",
+      "description": "Animates irregular procedural HUD markers around a selected point.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "orbit_markers",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "elementCount": 8,
+        "elementThickness": 0.8,
+        "styleSeed": 50,
+        "motion": "bounce",
+        "zoom": 0,
+        "color": "#ffffff"
+      },
+      "type": "orbit_markers"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Rain on glass",
+      "description": "Refracts and frosts the image through moving drops and wet trails.",
+      "geometry": "region",
+      "template": {
+        "type": "rain_on_glass",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "rainAmount": 0.7,
+        "backgroundBlur": 1,
+        "dropDensity": 6,
+        "fogStrength": 0.18,
+        "vignetteStrength": 0.9,
+        "shadowColor": "#1a1c1f",
+        "highlightColor": "#0a0d0f"
+      },
+      "type": "rain_on_glass"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Constellation",
+      "description": "Connects drifting deterministic points into a changing luminous network.",
+      "geometry": "region",
+      "template": {
+        "type": "constellation",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025,
+        "connectionRadius": 0.18,
+        "lineWidth": 0.0015,
+        "drift": 0.4,
+        "sparkle": 1,
+        "color": "#ffffff"
+      },
+      "type": "constellation"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Bokeh",
+      "description": "Blurs through a spiral aperture while retaining bright lens discs.",
+      "geometry": "region",
+      "template": {
+        "type": "bokeh",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "radius": 0.08,
+        "radiusUnit": "relative",
+        "sampleCount": 22,
+        "catadioptric": 0,
+        "highlightPower": 2,
+        "anamorphicRatio": 1,
+        "depthMode": "uniform",
+        "depthSource": "select_image.png",
+        "focusMode": "manual",
+        "focusDepth": 0.5,
+        "focusX": 0.5,
+        "focusY": 0.5,
+        "focusRange": 0.1,
+        "depthRemap": false,
+        "depthNear": 0,
+        "depthFar": 1,
+        "depthExponent": 1,
+        "highlightCompression": 0
+      },
+      "type": "bokeh"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Signal breakup",
+      "description": "Tears image space through moving faults, interlace, noise, and RGB separation.",
+      "geometry": "region",
+      "template": {
+        "type": "signal_breakup",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "warp": 0.01,
+        "faultStrength": 0.05,
+        "faultMultiplier1": 1,
+        "faultSharpness1": 100,
+        "faultMultiplier2": 16,
+        "faultSharpness2": 200,
+        "interlace": 0.005,
+        "interlaceX": 1,
+        "interlaceY": 0,
+        "screenBounceX": 1,
+        "screenBounceY": 0,
+        "chromaticShift": 0.02,
+        "noiseAmount": 0.25
+      },
+      "type": "signal_breakup"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Star trails",
+      "description": "Orbits luminous stars on concentric lanes with fading curved trails.",
+      "geometry": "point",
+      "template": {
+        "type": "star_trails",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025,
+        "ringCount": 12,
+        "innerRadius": 0.08,
+        "trailLength": 0.08,
+        "trailFade": 0.7,
+        "colorVariation": 0.2,
+        "color": "#d9ecff"
+      },
+      "type": "star_trails"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Bloom",
+      "description": "Extracts bright pixels and spreads them through a broad multiscale glow.",
+      "geometry": "region",
+      "template": {
+        "type": "bloom",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "radius": 4,
+        "emissionStrength": 1,
+        "alpha": 1,
+        "threshold": 0.1,
+        "gamma": 2.4,
+        "anamorphicRatio": 2.39,
+        "detection": "luminance",
+        "tint": "#ffffff"
+      },
+      "type": "bloom"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Masked lighting",
+      "description": "Adds colored light from managed mask and unlit-albedo images.",
+      "geometry": "region",
+      "template": {
+        "type": "masked_lighting",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "lightingSource": "lighting.png",
+        "unlitSource": "unlit.png",
+        "minimumIntensity": 0.25,
+        "maximumIntensity": 1.5,
+        "color": "#80c0ff"
+      },
+      "type": "masked_lighting"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Depth fog",
+      "description": "Uses a managed depth image to place noisy fog behind and between image features.",
+      "geometry": "region",
+      "template": {
+        "type": "depth_fog",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "depthSource": "depth.png",
+        "density": 1,
+        "brightness": 1,
+        "depthMultiplier": 1,
+        "depthExponent": 1,
+        "depthOffset": 0,
+        "noiseLayers": "dual",
+        "noiseScale": 1,
+        "secondaryNoiseScale": 1,
+        "noiseMagnitude": 0.5,
+        "secondaryNoiseMagnitude": 0.5,
+        "preserveHighlights": true,
+        "color": "#ffffff"
+      },
+      "type": "depth_fog"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Volumetric clouds",
+      "description": "Ray-marches a lit procedural cloud volume over the image.",
+      "geometry": "region",
+      "template": {
+        "type": "volumetric_clouds",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "definition": 0.6,
+        "shadowIntensity": 0.25,
+        "ditherStrength": 0.15,
+        "cloudCutoff": 0.01,
+        "sunWarmth": 1,
+        "sunIntensity": 1,
+        "ambientBrightness": 0.98,
+        "ambientCoolness": 1,
+        "sunColor": "#ff9966",
+        "cloudColorLight": "#fff2cc",
+        "cloudColorDark": "#404d59",
+        "verticalOffset": 0,
+        "cameraX": 0.5,
+        "cameraY": 0.5
+      },
+      "type": "volumetric_clouds"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Light pillar",
+      "description": "Ray-marches one rotating, four-octave deformed axial light field.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "light_pillar",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 10,
+        "pillarWidth": 2,
+        "pillarHeight": 0.5,
+        "intensity": 1.3,
+        "glowAmount": 0.002,
+        "noiseIntensity": 0.1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "topColor": "#0000ff",
+        "bottomColor": "#ff00b3"
+      },
+      "type": "light_pillar"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Spotlight",
+      "description": "Darkens the complete image and restores albedo inside a soft procedural or managed shape.",
+      "geometry": "point",
+      "template": {
+        "type": "spotlight",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "maskColor": "#000000",
+        "maskOpacity": 0.8,
+        "lightIntensity": 1,
+        "softness": 0.1,
+        "shapeMode": "circle",
+        "shapeSource": "select_spotlight_shape.png"
+      },
+      "type": "spotlight"
+    },
+    {
+      "group": "Atmosphere",
+      "label": "Image ribbon",
+      "description": "Deforms a managed transparent image before compositing it as an independent moving layer.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "image_ribbon",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "ribbonSource": "ribbon.png",
+        "swayX": 0.04,
+        "swayY": 0.015,
+        "ripple": 0.02,
+        "rippleScale": 6,
+        "angle": 0,
+        "color": "#ffffff",
+        "blendMode": "normal"
+      },
+      "type": "image_ribbon"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Kaleidoscope",
+      "description": "Folds the source into rotating mirrored angular sectors.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "kaleidoscope",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "sides": 6,
+        "scale": 1,
+        "angle": 0,
+        "radialWarp": 0.5,
+        "repeat": true
+      },
+      "type": "kaleidoscope"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Iridescence",
+      "description": "Modulates source colors with a flowing silk-like interference field.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "iridescence",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 0.5,
+        "complexity": 10,
+        "angle": 0,
+        "sourceMode": "albedo",
+        "color": "#ffffff"
+      },
+      "type": "iridescence"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Lens iris",
+      "description": "Opens and closes overlapping procedural aperture blades.",
+      "geometry": "point",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle",
+        "resizesRadius": true
+      },
+      "template": {
+        "type": "lens_iris",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "bladeCount": 8,
+        "shutterColor": "#333333",
+        "shutterOpacity": 1,
+        "strokeColor": "#4d4d4d",
+        "strokeOpacity": 1,
+        "strokeWidth": 0.04,
+        "minimumOpen": 0.15,
+        "maximumOpen": 0.85,
+        "motion": "rotating_blades",
+        "angle": 0
+      },
+      "type": "lens_iris"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Grid scan",
+      "description": "Projects a perspective room grid with a moving luminous scan band.",
+      "geometry": "region",
+      "template": {
+        "type": "grid_scan",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "gridShape": "rectangular",
+        "gridScale": 0.2,
+        "lineThickness": 2,
+        "lineStyle": "solid",
+        "lineColor": "#1aff1a",
+        "scanColor": "#00ff00",
+        "scanOpacity": 0.4,
+        "scanGlow": 1.3,
+        "scanSoftness": 1.3,
+        "scanDirection": "ping_pong",
+        "phaseTaper": 0.9,
+        "scanDuration": 2,
+        "scanDelay": 2,
+        "tilt": 0,
+        "yaw": 0,
+        "skewX": 0,
+        "skewY": 0,
+        "jitter": 0.1,
+        "noise": 0.01,
+        "bloom": 0
+      },
+      "type": "grid_scan"
+    },
+    {
+      "group": "Light & emission",
+      "label": "Radial beams",
+      "description": "Rotates regular gradient-colored sunbeams around a selected point.",
+      "geometry": "point",
+      "template": {
+        "type": "radial_beams",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "beamCount": 16,
+        "smoothness": 1,
+        "centerSize": 1,
+        "thickness": 0.5,
+        "innerColor": "#ffffff",
+        "outerColor": "#ffffff"
+      },
+      "type": "radial_beams"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Topographic contours",
+      "description": "Overlays animated contour lines derived from a procedural height field.",
+      "geometry": "region",
+      "template": {
+        "type": "topographic_contours",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "scale": 0.2,
+        "contourCount": 12,
+        "thickness": 10,
+        "color": "#ffffff"
+      },
+      "type": "topographic_contours"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Dithering",
+      "description": "Pixelates and reduces colors through an explicit ordered or noise threshold raster.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "dithering",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "pixelSize": 8,
+        "colorLevels": 8,
+        "pattern": "bayer_4x4",
+        "monochrome": false,
+        "gridOriginX": 0.5,
+        "gridOriginY": 0.5,
+        "angle": 0
+      },
+      "type": "dithering"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Halftone",
+      "description": "Rebuilds image tone from sampled dots on square or hexagonal color-separation grids.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "halftone",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "gridShape": "square",
+        "colorMode": "cmyk",
+        "drawStyle": "joined",
+        "dotSize": 0.1,
+        "dotSharpness": 0.95,
+        "mergeStrength": 1,
+        "thresholdAdjustment": 0,
+        "keyColor": "#00ffff",
+        "keyThreshold": 1,
+        "dotColor": "#00ffff",
+        "backgroundColor": "#ffffff",
+        "gridOriginX": 0.5,
+        "gridOriginY": 0.5,
+        "angle": 0
+      },
+      "type": "halftone"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Sprite particles",
+      "description": "Emits many deterministic moving instances from one managed sprite or regular atlas.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "sprite_particles",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "spriteSource": "sprite.png",
+        "density": 8,
+        "emitterShape": "box",
+        "emitterInnerRadius": 0,
+        "emitterOuterRadius": 0.5,
+        "size": 0.18,
+        "sizeVariation": 0.5,
+        "sizeAtBirth": 1,
+        "sizeAtDeath": 1,
+        "speed": 0.2,
+        "speedVariation": 0.5,
+        "motionMode": "linear",
+        "orbitCycles": 1,
+        "angle": -90,
+        "spread": 80,
+        "gravity": 0.1,
+        "drag": 0,
+        "oscillation": 0.02,
+        "oscillationCycles": 2,
+        "attraction": 0,
+        "turbulence": 0,
+        "turbulenceScale": 4,
+        "depthPerspective": 1,
+        "trailLength": 0,
+        "trailSamples": 6,
+        "rotation": 0,
+        "randomRotation": true,
+        "rotationCycles": 1,
+        "rotationVariation": 0.5,
+        "opacity": 1,
+        "color": "#ffffff",
+        "colorOverLife": false,
+        "colorTo": "#ffffff",
+        "colorChangeStart": 0,
+        "colorChangeEnd": 1,
+        "brightnessVariation": 0.15,
+        "atlasColumns": 2,
+        "atlasRows": 1,
+        "atlasMode": "random_frame",
+        "blendMode": "normal",
+        "fadeIn": 0.05,
+        "fadeOut": 0.8
+      },
+      "type": "sprite_particles"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Fluid lens",
+      "description": "Turns a rounded region into a magnifying, refracting, frosted lens with a moving liquid surface.",
+      "geometry": "region",
+      "template": {
+        "type": "fluid_lens",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "cornerRadius": 0.16,
+        "cornerSoftness": 1.5,
+        "edgeWidth": 0.1,
+        "edgeCurve": 1.45,
+        "refractionStrength": 30,
+        "lensZoom": 0.018,
+        "chromatic": 1,
+        "blurRadius": 6,
+        "frost": 0.25,
+        "tint": "#d1eaff",
+        "tintStrength": 0.13,
+        "brightness": 1.03,
+        "rimLight": 0.65,
+        "innerShadow": 0.36,
+        "liquidStrength": 0.5,
+        "liquidScale": 9
+      },
+      "type": "fluid_lens"
+    },
+    {
+      "group": "Color & signal",
+      "label": "ASCII art",
+      "description": "Rebuilds image luminance from a managed ordered glyph atlas with explicit foreground and background coloring.",
+      "geometry": "region",
+      "template": {
+        "type": "ascii_art",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "glyphAtlasSource": "glyphs.png",
+        "atlasColumns": 4,
+        "atlasRows": 1,
+        "resolutionScale": 0.125,
+        "smooth": true,
+        "smoothness": 2,
+        "invert": false,
+        "colorMode": "custom",
+        "backgroundMode": "flat",
+        "backgroundSource": "select_background.png",
+        "backgroundColor": "#000000",
+        "foregroundColor": "#ffffff",
+        "foregroundColorDark": "#000000",
+        "foregroundColorBright": "#ffffff",
+        "glyphThreshold": 0.5
+      },
+      "type": "ascii_art"
+    },
+    {
+      "group": "Optics & blur",
+      "label": "Projective transform",
+      "description": "Projects a region as a rotatable 3D plane with optional cylindrical bend.",
+      "geometry": "region",
+      "template": {
+        "type": "projective_transform",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "pivotX": 0.5,
+        "pivotY": 0.5,
+        "rotationX": 18,
+        "rotationY": 28,
+        "rotationZ": -7,
+        "scaleX": 1,
+        "scaleY": 1,
+        "offsetX": 0,
+        "offsetY": 0,
+        "offsetZ": 0,
+        "cameraDistance": 5,
+        "depthScale": 1,
+        "bendCurvature": 0,
+        "bendStrength": 0,
+        "radialBend": 0,
+        "bendAnchor": "center",
+        "edgeMode": "clamp"
+      },
+      "type": "projective_transform"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Image transition",
+      "description": "Moves a deterministic threshold field between the current image and a managed alternate image.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "image_transition",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "alternateSource": "transition.png",
+        "pattern": "bands",
+        "transitionMapSource": "select_transition_map.png",
+        "returnMapSource": "select_return_map.png",
+        "mapChannels": "red",
+        "angle": 18,
+        "scale": 1,
+        "edgeNoise": 0.35,
+        "sharpness": 6,
+        "seamWidth": 0.08,
+        "seamColor": "#404040"
+      },
+      "type": "image_transition"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Color remap",
+      "description": "Selectively replaces one color or maps a two-anchor color range while preserving texture.",
+      "geometry": "region",
+      "template": {
+        "type": "color_remap",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "mapping": "gradient",
+        "fromColor": "#202020",
+        "toColor": "#102040",
+        "fromColorB": "#d0d0d0",
+        "toColorB": "#f0b060",
+        "tolerance": 0.5,
+        "softEdges": true,
+        "feather": 0.1,
+        "preserveBrightness": true,
+        "preserveSaturation": true,
+        "gamma": 1.8
+      },
+      "type": "color_remap"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Posterize",
+      "description": "Reduces saturated source channels to a small explicit set of color levels.",
+      "geometry": "region",
+      "template": {
+        "type": "posterize",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "levels": 5,
+        "saturation": 1.4
+      },
+      "type": "posterize"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Painterly smoothing",
+      "description": "Creates painterly flat regions by choosing the least-variable neighboring quadrant.",
+      "geometry": "region",
+      "template": {
+        "type": "painterly_smoothing",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "radius": 3
+      },
+      "type": "painterly_smoothing"
+    },
+    {
+      "group": "Motion & deformation",
+      "label": "Tiling array",
+      "description": "Repeats a source region or managed tile and can move the raster along a closed path.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "tiling_array",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "sourceMode": "region",
+        "tileRegion": {
+          "x": 0.2,
+          "y": 0.25,
+          "width": 0.25,
+          "height": 0.3
+        },
+        "tileSource": "select_tile.png",
+        "tileScale": 0.85,
+        "offsetX": 0,
+        "offsetY": 0,
+        "angle": 22,
+        "mirror": "x",
+        "blendMode": "normal",
+        "sourceArea": "tiled"
+      },
+      "type": "tiling_array"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Tone mapping",
+      "description": "Compresses or reshapes luminance through one of eleven explicit tone curves.",
+      "geometry": "region",
+      "template": {
+        "type": "tone_mapping",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "operator": "uncharted_2",
+        "exposure": 1.35,
+        "whiteLevel": 2.4,
+        "luminanceSaturation": 1,
+        "inputGamma": 2.2,
+        "outputGamma": 2.2,
+        "shoulderStrength": 0.15,
+        "linearStrength": 0.5,
+        "linearAngle": 0.1,
+        "toeStrength": 0.2,
+        "toeNumerator": 0.02,
+        "toeDenominator": 0.3,
+        "normalization": 1
+      },
+      "type": "tone_mapping"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Color grading",
+      "description": "Combines neutral base corrections in a fixed, documented processing order.",
+      "geometry": "region",
+      "template": {
+        "type": "color_grading",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 0,
+        "phase": 0,
+        "workingSpace": "gamma",
+        "inputGamma": 2.2,
+        "outputGamma": 2.2,
+        "redInfluence": 1,
+        "greenInfluence": 1,
+        "blueInfluence": 1,
+        "brightness": 0.08,
+        "contrast": 0.25,
+        "exposure": 0.2,
+        "blackLevel": 0,
+        "luminance": 0,
+        "saturation": 0.2,
+        "vibrance": 0.15,
+        "hueShift": 8,
+        "chroma": 0,
+        "colorFilter": "#ffe8d8",
+        "temperature": 0.12,
+        "whiteTint": 0,
+        "shadows": 0.1,
+        "highlights": -0.08,
+        "balance": 0,
+        "shadowTint": "#ffffff",
+        "highlightTint": "#ffffff",
+        "lift": 0,
+        "gamma": 0,
+        "gain": 0,
+        "liftColor": "#ffffff",
+        "gammaColor": "#ffffff",
+        "gainColor": "#ffffff",
+        "redBalance": 0,
+        "greenBalance": 0,
+        "blueBalance": 0,
+        "preserveLightness": true,
+        "blackPoint": 0,
+        "whitePoint": 1,
+        "levelOffset": 0,
+        "matrixRR": 1,
+        "matrixRG": 0,
+        "matrixRB": 0,
+        "matrixGR": 0,
+        "matrixGG": 1,
+        "matrixGB": 0,
+        "matrixBR": 0,
+        "matrixBG": 0,
+        "matrixBB": 1,
+        "matrixOffsetR": 0,
+        "matrixOffsetG": 0,
+        "matrixOffsetB": 0
+      },
+      "type": "color_grading"
+    },
+    {
+      "group": "Color & signal",
+      "label": "Layer reveal",
+      "description": "Moves a soft window that reveals a managed auxiliary image.",
+      "geometry": "path",
+      "template": {
+        "type": "layer_reveal",
+        "from": {
+          "x": 0.2,
+          "y": 0.3
+        },
+        "to": {
+          "x": 0.8,
+          "y": 0.7
+        },
+        "radius": 0.25,
+        "feather": 0.08,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "alternateSource": "alternate.png"
+      },
+      "type": "layer_reveal"
+    },
+    {
+      "group": "Color & signal",
+      "label": "X-ray scan",
+      "description": "Moves an original band of inverted or tinted imagery.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "xray_scan",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 15,
+        "width": 0.3
+      },
+      "type": "xray_scan"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Bubbles",
+      "description": "Moves translucent bubbles with highlights.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "bubbles",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": -90,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "bubbles"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Swarm",
+      "description": "Moves oscillating particles through a region.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "swarm",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "swarm"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Path trail",
+      "description": "Guides particles between two points.",
+      "geometry": "path",
+      "template": {
+        "type": "path_trail",
+        "from": {
+          "x": 0.1,
+          "y": 0.2
+        },
+        "to": {
+          "x": 0.9,
+          "y": 0.8
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "path_trail"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Droplets",
+      "description": "Moves cool droplets with bright highlights.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "droplets",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 90,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "droplets"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Leaves",
+      "description": "Moves rotating leaf-like strokes.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "direction",
+        "parameter": "angle"
+      },
+      "template": {
+        "type": "leaves",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 90,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "leaves"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Particle vortex",
+      "description": "Guides particles along a contracting spiral.",
+      "geometry": "point",
+      "template": {
+        "type": "particle_vortex",
+        "x": 0.45,
+        "y": 0.55,
+        "radius": 0.35,
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "density": 12,
+        "size": 0.025,
+        "angle": -90
+      },
+      "type": "particle_vortex"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "Glyphs",
+      "description": "Animates procedural runes built from rings, polygons, swirls, and glow.",
+      "geometry": "region",
+      "template": {
+        "type": "glyphs",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "glyphs"
+    },
+    {
+      "group": "Particles & scenes",
+      "label": "DNA helix",
+      "description": "Builds a rotating helix from points.",
+      "geometry": "region",
+      "angleIndicator": {
+        "kind": "axis",
+        "parameter": "angle",
+        "degreesFactor": -1
+      },
+      "template": {
+        "type": "dna_helix",
+        "region": {
+          "x": 0,
+          "y": 0,
+          "width": 1,
+          "height": 1
+        },
+        "strength": 1,
+        "cycles": 1,
+        "phase": 0,
+        "angle": 0,
+        "density": 12,
+        "size": 0.025
+      },
+      "type": "dna_helix"
+    }
+  ],
+  "formatVersion": 1
+}

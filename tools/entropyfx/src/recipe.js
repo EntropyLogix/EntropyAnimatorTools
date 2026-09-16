@@ -1,0 +1,269 @@
+import { validateProjectPath } from './archive.js';
+
+function fail(path, message) {
+  throw new Error(`${path}: ${message}`);
+}
+
+function valueType(value) {
+  if (Array.isArray(value))
+    return 'array';
+  if (value === null)
+    return 'null';
+  if (Number.isInteger(value))
+    return 'integer';
+  return typeof value;
+}
+
+function matchesType(value, type) {
+  if (type === 'array')
+    return Array.isArray(value);
+  if (type === 'object')
+    return value !== null && typeof value === 'object' && !Array.isArray(value);
+  if (type === 'integer')
+    return Number.isSafeInteger(value);
+  if (type === 'number')
+    return typeof value === 'number' && Number.isFinite(value);
+  return typeof value === type;
+}
+
+function selectedAlternative(value, alternatives) {
+  if (value && typeof value === 'object' && !Array.isArray(value)) {
+    const discriminator = value.type ?? value.shape;
+    if (typeof discriminator === 'string') {
+      const match = alternatives.find((candidate) =>
+        Object.values(candidate.properties ?? {}).some((property) => property.const === discriminator));
+      if (match)
+        return match;
+    }
+  }
+  return undefined;
+}
+
+export function validateAgainstSchema(value, schema, path = 'recipe') {
+  if (schema.oneOf) {
+    const selected = selectedAlternative(value, schema.oneOf);
+    if (selected) {
+      validateAgainstSchema(value, selected, path);
+      return;
+    }
+    const matches = [];
+    for (const candidate of schema.oneOf) {
+      try {
+        validateAgainstSchema(value, candidate, path);
+        matches.push(candidate);
+      } catch {
+      }
+    }
+    if (matches.length !== 1)
+      fail(path, 'does not match exactly one allowed shape');
+    return;
+  }
+  if ('const' in schema && value !== schema.const)
+    fail(path, `must equal ${JSON.stringify(schema.const)}`);
+  if (schema.enum && !schema.enum.includes(value))
+    fail(path, `must be one of ${schema.enum.join(', ')}`);
+  if (schema.type && !matchesType(value, schema.type))
+    fail(path, `must be ${schema.type}; received ${valueType(value)}`);
+  if (schema.type === 'string') {
+    if (schema.minLength !== undefined && value.length < schema.minLength)
+      fail(path, `must contain at least ${schema.minLength} character(s)`);
+    if (schema.pattern && !new RegExp(schema.pattern).test(value))
+      fail(path, `must match ${schema.pattern}`);
+  }
+  if (schema.type === 'number' || schema.type === 'integer') {
+    if (schema.minimum !== undefined && value < schema.minimum)
+      fail(path, `must be at least ${schema.minimum}`);
+    if (schema.maximum !== undefined && value > schema.maximum)
+      fail(path, `must be at most ${schema.maximum}`);
+    if (schema.exclusiveMinimum !== undefined && value <= schema.exclusiveMinimum)
+      fail(path, `must be greater than ${schema.exclusiveMinimum}`);
+    if (schema.exclusiveMaximum !== undefined && value >= schema.exclusiveMaximum)
+      fail(path, `must be less than ${schema.exclusiveMaximum}`);
+  }
+  if (schema.type === 'array') {
+    for (let index = 0; index < value.length; index++)
+      validateAgainstSchema(value[index], schema.items, `${path}[${index}]`);
+  }
+  if (schema.type === 'object') {
+    for (const required of schema.required ?? []) {
+      if (!(required in value))
+        fail(`${path}.${required}`, 'is required');
+    }
+    if (schema.additionalProperties === false) {
+      for (const key of Object.keys(value)) {
+        if (!(key in (schema.properties ?? {})))
+          fail(`${path}.${key}`, 'is not allowed');
+      }
+    }
+    for (const [key, property] of Object.entries(schema.properties ?? {})) {
+      if (key in value)
+        validateAgainstSchema(value[key], property, `${path}.${key}`);
+    }
+  }
+}
+
+function skipWhitespace(state) {
+  while (/\s/.test(state.text[state.index] ?? ''))
+    state.index++;
+}
+
+function scanString(state) {
+  const start = state.index;
+  state.index++;
+  while (state.index < state.text.length) {
+    const character = state.text[state.index++];
+    if (character === '"')
+      return JSON.parse(state.text.slice(start, state.index));
+    if (character !== '\\')
+      continue;
+    if (state.text[state.index] === 'u')
+      state.index += 5;
+    else
+      state.index++;
+  }
+  fail('recipe', 'contains an unterminated string');
+}
+
+function scanPrimitive(state) {
+  const match = /^(?:true|false|null|-?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?)/
+    .exec(state.text.slice(state.index));
+  if (!match)
+    fail('recipe', `contains invalid JSON at byte ${state.index}`);
+  state.index += match[0].length;
+}
+
+function scanValue(state, path) {
+  skipWhitespace(state);
+  const character = state.text[state.index];
+  if (character === '"') {
+    scanString(state);
+    return;
+  }
+  if (character === '[') {
+    state.index++;
+    skipWhitespace(state);
+    let index = 0;
+    if (state.text[state.index] === ']') {
+      state.index++;
+      return;
+    }
+    while (true) {
+      scanValue(state, `${path}[${index++}]`);
+      skipWhitespace(state);
+      if (state.text[state.index] === ']') {
+        state.index++;
+        return;
+      }
+      if (state.text[state.index++] !== ',')
+        fail('recipe', `contains invalid JSON at byte ${state.index - 1}`);
+    }
+  }
+  if (character === '{') {
+    state.index++;
+    skipWhitespace(state);
+    const keys = new Set();
+    if (state.text[state.index] === '}') {
+      state.index++;
+      return;
+    }
+    while (true) {
+      skipWhitespace(state);
+      if (state.text[state.index] !== '"')
+        fail('recipe', `contains invalid JSON at byte ${state.index}`);
+      const key = scanString(state);
+      if (keys.has(key))
+        fail(`${path}.${key}`, 'is duplicated');
+      keys.add(key);
+      skipWhitespace(state);
+      if (state.text[state.index++] !== ':')
+        fail('recipe', `contains invalid JSON at byte ${state.index - 1}`);
+      scanValue(state, `${path}.${key}`);
+      skipWhitespace(state);
+      if (state.text[state.index] === '}') {
+        state.index++;
+        return;
+      }
+      if (state.text[state.index++] !== ',')
+        fail('recipe', `contains invalid JSON at byte ${state.index - 1}`);
+    }
+  }
+  scanPrimitive(state);
+}
+
+function rejectDuplicateKeys(text) {
+  const state = { index: 0, text };
+  scanValue(state, 'recipe');
+  skipWhitespace(state);
+  if (state.index !== text.length)
+    fail('recipe', `contains trailing input at byte ${state.index}`);
+}
+
+function validateRegions(value, path = 'recipe') {
+  if (!value || typeof value !== 'object')
+    return;
+  if (!Array.isArray(value)
+      && ['x', 'y', 'width', 'height'].every((key) => typeof value[key] === 'number')) {
+    if (value.x + value.width > 1)
+      fail(path, 'x plus width must not exceed 1');
+    if (value.y + value.height > 1)
+      fail(path, 'y plus height must not exceed 1');
+  }
+  for (const [key, child] of Object.entries(value))
+    validateRegions(child, Array.isArray(value) ? `${path}[${key}]` : `${path}.${key}`);
+}
+
+export function parseAndValidateRecipe(text, recipeSchema) {
+  if (typeof text !== 'string')
+    throw new Error('recipe text is required');
+  rejectDuplicateKeys(text);
+  let recipe;
+  try {
+    recipe = JSON.parse(text);
+  } catch (error) {
+    throw new Error(`recipe is invalid JSON: ${error instanceof Error ? error.message : error}`);
+  }
+  validateAgainstSchema(recipe, recipeSchema);
+  validateProjectPath(recipe.source, 'recipe source');
+  validateRegions(recipe);
+  return recipe;
+}
+
+export function referencedAuxiliaryInputs(recipe) {
+  const names = new Set();
+  const visit = (value, field = '') => {
+    if (typeof value === 'string' && field.endsWith('Source')) {
+      if (value.length > 0)
+        names.add(value);
+      return;
+    }
+    if (!value || typeof value !== 'object')
+      return;
+    for (const [key, child] of Object.entries(value))
+      visit(child, key);
+  };
+  for (const primitive of recipe.primitives)
+    visit(primitive);
+  return [...names].sort();
+}
+
+export function validateProjectRecipe(project, contracts) {
+  const recipe = parseAndValidateRecipe(project.recipe, contracts.recipeSchema);
+  if (recipe.source !== project.source.name)
+    throw new Error(`recipe.source ${recipe.source} does not match project source ${project.source.name}`);
+  const available = new Set(project.auxiliaryInputs.map((input) => input.name));
+  const builtIns = new Set(contracts.sprites.sprites.map((sprite) => sprite.id));
+  for (const name of referencedAuxiliaryInputs(recipe)) {
+    if (name.startsWith('builtin:')) {
+      if (!builtIns.has(name))
+        throw new Error(`${name}: built-in sprite is not in the public catalog`);
+    } else if (!available.has(name)) {
+      throw new Error(`${name}: referenced project input is missing`);
+    }
+  }
+  const referenced = new Set(referencedAuxiliaryInputs(recipe).filter((name) => !name.startsWith('builtin:')));
+  for (const name of available) {
+    if (!referenced.has(name))
+      throw new Error(`${name}: project input is not referenced by the recipe`);
+  }
+  return recipe;
+}

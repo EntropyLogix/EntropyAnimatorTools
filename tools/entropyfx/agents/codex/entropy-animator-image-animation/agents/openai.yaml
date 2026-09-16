@@ -1,0 +1,4 @@
+interface:
+  display_name: "Animate with EntropyAnimator"
+  short_description: "Turn a still image into an editable animation project"
+  default_prompt: "Use $entropy-animator-image-animation to animate my image as an explicit EntropyAnimator Effects project."
