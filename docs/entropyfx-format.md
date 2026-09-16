@@ -41,7 +41,7 @@ difference, unsupported flags and invalid core-chunk criticality are errors.
 The 32-bit payload length describes the binary capacity of the container, not a
 promise that an application will allocate that amount. The reference tools use
 defensive application limits: 256 MiB per project, 1,024 chunks, 128 MiB per
-chunk, 4 MiB for `DAT`, 64 KiB for `INF`, 16 KiB for `OUT` and a file
+chunk, 4 MiB for `RCP`, 64 KiB for `INF`, 16 KiB for `OUT` and a file
 descriptor, and 1,024 UTF-8 bytes for a logical file name. Implementations may
 use lower limits if they report them as application limits rather than format
 constraints.
@@ -50,13 +50,13 @@ constraints.
 
 | ID | Count | Critical | Payload |
 | --- | ---: | --- | --- |
-| `DAT` | exactly 1 | yes | Complete UTF-8 animation recipe JSON |
+| `RCP` | exactly 1 | yes | Complete UTF-8 animation recipe JSON |
 | `INF` | exactly 1 | no | User-editable project information JSON |
 | `SRC` | exactly 1 | yes | Main source image file payload |
 | `AST` | 0 or more | yes | One user-owned auxiliary image per chunk |
 | `OUT` | 0 or 1 | no | Current output preset JSON |
 
-`DAT` retains the recipe's own `schemaVersion` because the recipe is also a
+`RCP` retains the recipe's own `schemaVersion` because the recipe is also a
 standalone contract. It owns animation behavior, timing and target raster
 dimensions. It does not duplicate descriptive project information or output
 codec settings.
@@ -97,7 +97,7 @@ original filesystem location.
 
 ## Deterministic writing
 
-A version-1 writer emits `DAT`, `INF`, `SRC`, then `AST` chunks sorted by logical
+A version-1 writer emits `RCP`, `INF`, `SRC`, then `AST` chunks sorted by logical
 name, followed by `OUT` when present. Preserved noncritical extensions follow,
 sorted by ID, version and payload bytes. JSON uses UTF-8 without a byte-order
 mark. Given the same recipe text, information, output preset and input bytes,

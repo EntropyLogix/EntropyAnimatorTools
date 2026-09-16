@@ -123,7 +123,7 @@ test('round-trips a deterministic self-contained chunk project', async () => {
   assert.equal(textDecoder.decode(first.subarray(7, 11)), 'ANIM');
   assert.equal(first[11], 1);
   assert.deepEqual(chunks(first).map((chunk) => chunk.id), [
-    'DAT', 'INF', 'SRC', 'AST', 'AST', 'OUT', 'EXT',
+    'RCP', 'INF', 'SRC', 'AST', 'AST', 'OUT', 'EXT',
   ]);
 
   const opened = await openProjectArchive(first);
@@ -196,7 +196,7 @@ test('rejects unsafe names and duplicates before writing', async () => {
   );
   await assert.rejects(
     createProjectArchive({
-      ...project(), optionalChunks: [{ id: 'DAT', payload: new Uint8Array() }],
+      ...project(), optionalChunks: [{ id: 'RCP', payload: new Uint8Array() }],
     }),
     /reserved/,
   );
@@ -260,19 +260,19 @@ test('preserves unknown optional chunks and rejects unknown critical chunks', as
 
 test('rejects unsupported flags and chunk versions after checksum verification', async () => {
   const archive = await createProjectArchive(project());
-  const data = chunks(archive).find((chunk) => chunk.id === 'DAT');
+  const data = chunks(archive).find((chunk) => chunk.id === 'RCP');
   await assert.rejects(openProjectArchive(replaceChunkHeader(archive, data, { flags: 3 })),
     /flags are unsupported/);
   await assert.rejects(openProjectArchive(replaceChunkHeader(archive, data, { version: 2 })),
     /version is unsupported/);
 });
 
-test('requires one DAT, INF, and SRC and at most one OUT', async () => {
+test('requires one RCP, INF, and SRC and at most one OUT', async () => {
   const archive = await createProjectArchive(project());
   const parsed = chunks(archive);
-  for (const id of ['DAT', 'INF', 'SRC']) {
+  for (const id of ['RCP', 'INF', 'SRC']) {
     const chunk = parsed.find((item) => item.id === id);
-    await assert.rejects(openProjectArchive(withoutChunk(archive, chunk)), /one DAT, INF, and SRC/);
+    await assert.rejects(openProjectArchive(withoutChunk(archive, chunk)), /one RCP, INF, and SRC/);
   }
   const output = parsed.find((chunk) => chunk.id === 'OUT');
   await assert.rejects(openProjectArchive(appendChunk(

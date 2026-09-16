@@ -13,7 +13,7 @@ const MAX_LOGICAL_NAME_BYTES = 1024;
 const MAX_OUTPUT_BYTES = 16 * 1024;
 const MAX_PROJECT_BYTES = 256 * 1024 * 1024;
 const MAX_RECIPE_BYTES = 4 * 1024 * 1024;
-const CORE_CHUNK_IDS = new Set(['AST', 'DAT', 'INF', 'OUT', 'SRC']);
+const CORE_CHUNK_IDS = new Set(['AST', 'INF', 'OUT', 'RCP', 'SRC']);
 const INFO_FIELDS = ['title', 'author', 'version', 'description'];
 const textDecoder = new TextDecoder('utf-8', { fatal: true });
 const textEncoder = new TextEncoder();
@@ -249,7 +249,7 @@ export async function createProjectArchive({
     throw new Error('project archive exceeds the 1024-chunk application limit');
   return concatenate([
     projectHeader(),
-    encodeChunk('DAT', recipeBytes),
+    encodeChunk('RCP', recipeBytes),
     encodeChunk('INF', jsonPayload(projectInfo, MAX_INFO_BYTES, 'INF chunk'), { critical: false }),
     encodeFileChunk('SRC', sourceFile),
     ...auxiliaryFiles.map((file) => encodeFileChunk('AST', file)),
@@ -354,19 +354,19 @@ export async function openProjectArchive(value) {
     }
     if (chunk.version !== CHUNK_VERSION)
       throw new Error(`${chunk.id}: project chunk version is unsupported`);
-    const mustBeCritical = ['AST', 'DAT', 'SRC'].includes(chunk.id);
+    const mustBeCritical = ['AST', 'RCP', 'SRC'].includes(chunk.id);
     if (chunk.critical !== mustBeCritical)
       throw new Error(`${chunk.id}: project chunk critical flag is invalid`);
   }
   const byId = (id) => chunks.filter((chunk) => chunk.id === id);
-  if (byId('DAT').length !== 1 || byId('INF').length !== 1 || byId('SRC').length !== 1)
-    throw new Error('project archive must contain one DAT, INF, and SRC chunk');
+  if (byId('RCP').length !== 1 || byId('INF').length !== 1 || byId('SRC').length !== 1)
+    throw new Error('project archive must contain one RCP, INF, and SRC chunk');
   if (byId('OUT').length > 1)
     throw new Error('project archive must not contain more than one OUT chunk');
   let recipe;
   let parsedRecipe;
   try {
-    const recipePayload = byId('DAT')[0].payload;
+    const recipePayload = byId('RCP')[0].payload;
     if (recipePayload.byteLength > MAX_RECIPE_BYTES)
       throw new Error('project recipe exceeds the 4 MiB application limit');
     recipe = textDecoder.decode(recipePayload);
