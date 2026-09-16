@@ -78,10 +78,13 @@ contain effect implementations or built-in sprite image files.
 
 The Effects CLI includes a Codex skill under
 [`tools/entropyfx/agents/codex/entropy-animator-image-animation`](tools/entropyfx/agents/codex/entropy-animator-image-animation/SKILL.md)
-and an equivalent Claude instruction under
+and an equivalent Gemini CLI skill under
+[`tools/entropyfx/agents/gemini/entropy-animator-image-animation`](tools/entropyfx/agents/gemini/entropy-animator-image-animation/SKILL.md).
+The matching Claude instruction is stored under
 [`tools/entropyfx/agents/claude/entropy-animator-image-animation.md`](tools/entropyfx/agents/claude/entropy-animator-image-animation.md).
-Both create explicit recipes and call this local CLI. Image processing performed
-by an external model follows that model provider's own data handling terms.
+All three create explicit recipes and call this local CLI. Image processing
+performed by an external model follows that model provider's own data handling
+terms.
 
 ## Development
 
