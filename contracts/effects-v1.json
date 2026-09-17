@@ -7,9 +7,9 @@
       "geometry": "point",
       "template": {
         "type": "brightness_pulse",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0
@@ -23,9 +23,9 @@
       "geometry": "point",
       "template": {
         "type": "flicker",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0
@@ -53,7 +53,7 @@
         "cycles": 1,
         "phase": 0,
         "angle": 0,
-        "width": 0.3
+        "width": 0.12
       },
       "type": "shimmer"
     },
@@ -78,7 +78,7 @@
         "cycles": 1,
         "phase": 0,
         "angle": 0,
-        "width": 0.3
+        "width": 0.18
       },
       "type": "light_sweep"
     },
@@ -94,9 +94,9 @@
       },
       "template": {
         "type": "ray_fan",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -122,7 +122,7 @@
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "glitter"
     },
@@ -167,7 +167,7 @@
         "cycles": 1,
         "phase": 0,
         "angle": 0,
-        "radius": 0.25
+        "radius": 0.08
       },
       "type": "sway"
     },
@@ -178,9 +178,9 @@
       "geometry": "point",
       "template": {
         "type": "ripple",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -320,9 +320,9 @@
       "geometry": "point",
       "template": {
         "type": "spin",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -337,9 +337,9 @@
       "geometry": "point",
       "template": {
         "type": "twirl",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0
@@ -531,9 +531,9 @@
       },
       "template": {
         "type": "fluid",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -554,14 +554,14 @@
       },
       "template": {
         "type": "smoke",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025,
+        "size": 0.006,
         "angle": -90
       },
       "type": "smoke"
@@ -578,14 +578,14 @@
       },
       "template": {
         "type": "fire",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025,
+        "size": 0.006,
         "angle": -90
       },
       "type": "fire"
@@ -597,9 +597,9 @@
       "geometry": "point",
       "template": {
         "type": "energy_shell",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -629,7 +629,7 @@
         "phase": 0,
         "angle": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "stars"
     },
@@ -655,7 +655,7 @@
         "phase": 0,
         "angle": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "shooting_stars"
     },
@@ -681,7 +681,7 @@
         "phase": 0,
         "angle": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "dust"
     },
@@ -697,14 +697,14 @@
       },
       "template": {
         "type": "embers",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025,
+        "size": 0.006,
         "angle": -90
       },
       "type": "embers"
@@ -721,14 +721,14 @@
       },
       "template": {
         "type": "sparks",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025,
+        "size": 0.006,
         "angle": -90
       },
       "type": "sparks"
@@ -755,7 +755,7 @@
         "phase": 0,
         "angle": 90,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "rain"
     },
@@ -781,7 +781,7 @@
         "phase": 0,
         "angle": 90,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "snow"
     },
@@ -792,14 +792,14 @@
       "geometry": "point",
       "template": {
         "type": "particle_burst",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "particle_burst"
     },
@@ -810,9 +810,9 @@
       "geometry": "point",
       "template": {
         "type": "discharge",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -828,14 +828,14 @@
       "template": {
         "type": "electric_arc",
         "from": {
-          "x": 0.1,
-          "y": 0.2
+          "x": 0.35,
+          "y": 0.5
         },
         "to": {
-          "x": 0.9,
-          "y": 0.8
+          "x": 0.65,
+          "y": 0.5
         },
-        "width": 0.012,
+        "width": 0.004,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -855,9 +855,9 @@
       },
       "template": {
         "type": "local_shift",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -952,7 +952,7 @@
         "strength": 1,
         "cycles": 1,
         "phase": 0,
-        "radius": 0.08
+        "radius": 0.008
       },
       "type": "blur"
     },
@@ -972,7 +972,7 @@
         "strength": 1,
         "cycles": 1,
         "phase": 0,
-        "radius": 0.08
+        "radius": 0.008
       },
       "type": "precise_blur"
     },
@@ -983,9 +983,9 @@
       "geometry": "point",
       "template": {
         "type": "radial_blur",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0
@@ -1013,7 +1013,7 @@
         "cycles": 1,
         "phase": 0,
         "angle": 20,
-        "width": 0.08
+        "width": 0.02
       },
       "type": "motion_blur"
     },
@@ -1154,9 +1154,9 @@
       "geometry": "point",
       "template": {
         "type": "fisheye",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0
@@ -1316,7 +1316,7 @@
         "cycles": 1,
         "phase": 0,
         "angle": 15,
-        "radius": 0.2
+        "radius": 0.08
       },
       "type": "star_glare"
     },
@@ -1352,9 +1352,9 @@
       },
       "template": {
         "type": "source_rays",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -1374,8 +1374,8 @@
       },
       "template": {
         "type": "lens_flare",
-        "x": 0.45,
-        "y": 0.55,
+        "x": 0.5,
+        "y": 0.5,
         "radius": 0.35,
         "strength": 1,
         "cycles": 1,
@@ -1397,9 +1397,9 @@
       "geometry": "point",
       "template": {
         "type": "hud_ring",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.25,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -1421,9 +1421,9 @@
       "geometry": "point",
       "template": {
         "type": "hud_cog",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.2,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -1444,9 +1444,9 @@
       "geometry": "point",
       "template": {
         "type": "radial_ticks",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.25,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -1473,9 +1473,9 @@
       },
       "template": {
         "type": "orbit_markers",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.25,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -1532,7 +1532,7 @@
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025,
+        "size": 0.006,
         "connectionRadius": 0.18,
         "lineWidth": 0.0015,
         "drift": 0.4,
@@ -1557,7 +1557,7 @@
         "strength": 1,
         "cycles": 1,
         "phase": 0,
-        "radius": 0.08,
+        "radius": 0.035,
         "radiusUnit": "relative",
         "sampleCount": 22,
         "catadioptric": 0,
@@ -1617,14 +1617,14 @@
       "geometry": "point",
       "template": {
         "type": "star_trails",
-        "x": 0.45,
-        "y": 0.55,
+        "x": 0.5,
+        "y": 0.5,
         "radius": 0.35,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025,
+        "size": 0.002,
         "ringCount": 12,
         "innerRadius": 0.08,
         "trailLength": 0.08,
@@ -1790,9 +1790,9 @@
       "geometry": "point",
       "template": {
         "type": "spotlight",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.3,
         "strength": 1,
         "cycles": 0,
         "phase": 0,
@@ -1848,8 +1848,8 @@
       },
       "template": {
         "type": "kaleidoscope",
-        "x": 0.45,
-        "y": 0.55,
+        "x": 0.5,
+        "y": 0.5,
         "radius": 0.35,
         "strength": 1,
         "cycles": 1,
@@ -1902,9 +1902,9 @@
       },
       "template": {
         "type": "lens_iris",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.2,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
@@ -1941,8 +1941,8 @@
         "gridScale": 0.2,
         "lineThickness": 2,
         "lineStyle": "solid",
-        "lineColor": "#1aff1a",
-        "scanColor": "#00ff00",
+        "lineColor": "#c8cdd2",
+        "scanColor": "#f2f4f6",
         "scanOpacity": 0.4,
         "scanGlow": 1.3,
         "scanSoftness": 1.3,
@@ -1967,8 +1967,8 @@
       "geometry": "point",
       "template": {
         "type": "radial_beams",
-        "x": 0.45,
-        "y": 0.55,
+        "x": 0.5,
+        "y": 0.5,
         "radius": 0.35,
         "strength": 1,
         "cycles": 1,
@@ -2097,7 +2097,7 @@
         "emitterShape": "box",
         "emitterInnerRadius": 0,
         "emitterOuterRadius": 0.5,
-        "size": 0.18,
+        "size": 0.08,
         "sizeVariation": 0.5,
         "sizeAtBirth": 1,
         "sizeAtDeath": 1,
@@ -2492,14 +2492,14 @@
       "template": {
         "type": "layer_reveal",
         "from": {
-          "x": 0.2,
-          "y": 0.3
+          "x": 0.35,
+          "y": 0.5
         },
         "to": {
-          "x": 0.8,
-          "y": 0.7
+          "x": 0.65,
+          "y": 0.5
         },
-        "radius": 0.25,
+        "radius": 0.1,
         "feather": 0.08,
         "strength": 1,
         "cycles": 1,
@@ -2529,7 +2529,7 @@
         "cycles": 1,
         "phase": 0,
         "angle": 15,
-        "width": 0.3
+        "width": 0.18
       },
       "type": "xray_scan"
     },
@@ -2555,7 +2555,7 @@
         "phase": 0,
         "angle": -90,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "bubbles"
     },
@@ -2581,7 +2581,7 @@
         "phase": 0,
         "angle": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "swarm"
     },
@@ -2593,18 +2593,18 @@
       "template": {
         "type": "path_trail",
         "from": {
-          "x": 0.1,
-          "y": 0.2
+          "x": 0.35,
+          "y": 0.5
         },
         "to": {
-          "x": 0.9,
-          "y": 0.8
+          "x": 0.65,
+          "y": 0.5
         },
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "path_trail"
     },
@@ -2630,7 +2630,7 @@
         "phase": 0,
         "angle": 90,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "droplets"
     },
@@ -2656,7 +2656,7 @@
         "phase": 0,
         "angle": 90,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "leaves"
     },
@@ -2667,14 +2667,14 @@
       "geometry": "point",
       "template": {
         "type": "particle_vortex",
-        "x": 0.45,
-        "y": 0.55,
-        "radius": 0.35,
+        "x": 0.5,
+        "y": 0.5,
+        "radius": 0.08,
         "strength": 1,
         "cycles": 1,
         "phase": 0,
         "density": 12,
-        "size": 0.025,
+        "size": 0.006,
         "angle": -90
       },
       "type": "particle_vortex"
@@ -2697,7 +2697,7 @@
         "phase": 0,
         "angle": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "glyphs"
     },
@@ -2724,7 +2724,7 @@
         "phase": 0,
         "angle": 0,
         "density": 12,
-        "size": 0.025
+        "size": 0.006
       },
       "type": "dna_helix"
     },
