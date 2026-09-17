@@ -25,6 +25,7 @@ function crc32(parts) {
 }
 
 const recipe = `${JSON.stringify({
+  elements: [],
   effectMasks: [],
   key: 'project_fixture',
   output: { height: 40, width: 48 },

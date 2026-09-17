@@ -12,7 +12,8 @@
     "output",
     "seed",
     "effectMasks",
-    "primitives"
+    "primitives",
+    "elements"
   ],
   "properties": {
     "schemaVersion": {
@@ -157,6 +158,97 @@
             "required": [
               "shape",
               "region",
+              "feather"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "shape": {
+                "const": "ellipse"
+              },
+              "x": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "y": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "radiusX": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              },
+              "radiusY": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              },
+              "angle": {
+                "maximum": 360,
+                "minimum": -360,
+                "type": "number"
+              },
+              "feather": {
+                "maximum": 2,
+                "minimum": 0,
+                "type": "number"
+              }
+            },
+            "required": [
+              "shape",
+              "x",
+              "y",
+              "radiusX",
+              "radiusY",
+              "angle",
+              "feather"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "shape": {
+                "const": "lasso"
+              },
+              "points": {
+                "items": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "x": {
+                      "maximum": 1,
+                      "minimum": 0,
+                      "type": "number"
+                    },
+                    "y": {
+                      "maximum": 1,
+                      "minimum": 0,
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "x",
+                    "y"
+                  ],
+                  "type": "object"
+                },
+                "minItems": 3,
+                "type": "array"
+              },
+              "feather": {
+                "maximum": 2,
+                "minimum": 0,
+                "type": "number"
+              }
+            },
+            "required": [
+              "shape",
+              "points",
               "feather"
             ],
             "type": "object"
@@ -12312,6 +12404,268 @@
             "type": "object",
             "title": "Pixel sorting",
             "description": "Sorts contiguous luminance-selected spans along a chosen image axis."
+          }
+        ]
+      },
+      "type": "array"
+    },
+    "elements": {
+      "items": {
+        "oneOf": [
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "frame"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "y": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "width": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  },
+                  "height": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "thickness": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              },
+              "borderColor": {
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "type": "string"
+              },
+              "borderOpacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "fillColor": {
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "type": "string"
+              },
+              "fillOpacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "thickness",
+              "borderColor",
+              "borderOpacity",
+              "fillColor",
+              "fillOpacity"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "image_overlay"
+              },
+              "source": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "y": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "width": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  },
+                  "height": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "fit": {
+                "enum": [
+                  "contain",
+                  "cover",
+                  "stretch"
+                ],
+                "type": "string"
+              },
+              "angle": {
+                "maximum": 360,
+                "minimum": -360,
+                "type": "number"
+              },
+              "opacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "source",
+              "region",
+              "fit",
+              "angle",
+              "opacity"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "text"
+              },
+              "text": {
+                "type": "string"
+              },
+              "source": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "y": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "width": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  },
+                  "height": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "font": {
+                "enum": [
+                  "inconsolata_bold",
+                  "share_tech_mono"
+                ],
+                "type": "string"
+              },
+              "fontSize": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              },
+              "lineHeight": {
+                "maximum": 4,
+                "minimum": 0.5,
+                "type": "number"
+              },
+              "horizontalAlign": {
+                "enum": [
+                  "left",
+                  "center",
+                  "right"
+                ],
+                "type": "string"
+              },
+              "verticalAlign": {
+                "enum": [
+                  "top",
+                  "middle",
+                  "bottom"
+                ],
+                "type": "string"
+              },
+              "wrap": {
+                "const": "word"
+              },
+              "direction": {
+                "const": "ltr"
+              },
+              "color": {
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "type": "string"
+              },
+              "opacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "text",
+              "source",
+              "region",
+              "font",
+              "fontSize",
+              "lineHeight",
+              "horizontalAlign",
+              "verticalAlign",
+              "wrap",
+              "direction",
+              "color",
+              "opacity"
+            ],
+            "type": "object"
           }
         ]
       },

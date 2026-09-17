@@ -89,3 +89,54 @@ test('requires exact project inputs and accepts cataloged built-in sprites', asy
   assert.throws(() => validateProjectRecipe({ ...project, recipe: JSON.stringify(custom) }, contracts),
     /referenced project input is missing/);
 });
+
+test('requires an embedded input for every image overlay element', async () => {
+  const contracts = await loadContracts();
+  const recipe = JSON.parse(await example('minimal'));
+  recipe.elements = [{
+    angle: 0,
+    fit: 'contain',
+    opacity: 1,
+    region: { height: 0.5, width: 0.5, x: 0.25, y: 0.25 },
+    source: 'inputs/logo.png',
+    type: 'image_overlay',
+  }];
+  const project = {
+    auxiliaryInputs: [],
+    recipe: JSON.stringify(recipe),
+    source: { name: 'source.png' },
+  };
+  assert.throws(() => validateProjectRecipe(project, contracts),
+    /referenced project input is missing/);
+  project.auxiliaryInputs.push({ name: 'inputs/logo.png' });
+  assert.equal(validateProjectRecipe(project, contracts).elements[0].type, 'image_overlay');
+});
+
+test('requires the canonical raster embedded for every text element', async () => {
+  const contracts = await loadContracts();
+  const recipe = JSON.parse(await example('minimal'));
+  recipe.elements = [{
+    color: '#ffffff',
+    direction: 'ltr',
+    font: 'inconsolata_bold',
+    fontSize: 0.08,
+    horizontalAlign: 'center',
+    lineHeight: 1.2,
+    opacity: 1,
+    region: { height: 0.2, width: 0.5, x: 0.25, y: 0.4 },
+    source: 'generated/text-0001.png',
+    text: 'TEXT',
+    type: 'text',
+    verticalAlign: 'middle',
+    wrap: 'word',
+  }];
+  const project = {
+    auxiliaryInputs: [],
+    recipe: JSON.stringify(recipe),
+    source: { name: 'source.png' },
+  };
+  assert.throws(() => validateProjectRecipe(project, contracts),
+    /referenced project input is missing/);
+  project.auxiliaryInputs.push({ name: 'generated/text-0001.png' });
+  assert.equal(validateProjectRecipe(project, contracts).elements[0].type, 'text');
+});

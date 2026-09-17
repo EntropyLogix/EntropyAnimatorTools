@@ -243,6 +243,13 @@ export function referencedAuxiliaryInputs(recipe) {
   };
   for (const primitive of recipe.primitives)
     visit(primitive);
+  for (const element of recipe.elements) {
+    visit(element);
+    if (['image_overlay', 'text'].includes(element.type) && typeof element.source === 'string'
+        && element.source.length > 0) {
+      names.add(element.source);
+    }
+  }
   return [...names].sort();
 }
 

@@ -31,6 +31,11 @@ by `timeline.frameDurationMs` is the loop duration in milliseconds.
 Protected areas in `effectMasks` exclude their image area from effects. Version
 1 supports explicit `circle` and `rectangle` shapes.
 
+Static `elements` are composited in list order after effects and protected
+areas. Version 1 supports an inward `frame`, an `image_overlay` whose image is
+embedded in the project, and editable `text` backed by its embedded canonical
+raster. Later elements appear above earlier elements.
+
 ## Give an agent visual direction
 
 An agent integration accepts a natural-language visual brief rather than a
@@ -60,6 +65,12 @@ A built-in sprite uses an ID from
 and are not embedded. Match `atlasColumns`, `atlasRows`, and `atlasMode` to the
 catalog entry. Custom sprites are ordinary user-owned project inputs and are
 embedded once as `AST`.
+
+The `source` of an `image_overlay` or `text` element is also a named project
+input even though the field does not end in `Source`. Pass it through `--input`
+under the exact logical name stored in the element. The CLI does not rasterize
+fonts; a text authoring integration must embed the canonical transparent image
+that corresponds to the explicit text fields.
 
 ## Review
 
