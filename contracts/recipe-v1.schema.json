@@ -221,7 +221,7 @@
             ],
             "type": "object",
             "title": "Brightness pulse",
-            "description": "Pulses the existing color around a point."
+            "description": "Cyclically brightens the existing color around a point."
           },
           {
             "additionalProperties": false,
@@ -944,7 +944,7 @@
             ],
             "type": "object",
             "title": "Vector warp",
-            "description": "Moves the image through a procedural direction field."
+            "description": "Warps the image through a procedural direction field."
           },
           {
             "additionalProperties": false,
@@ -3009,7 +3009,7 @@
             ],
             "type": "object",
             "title": "Oscillating shift",
-            "description": "Moves a region along a closed path."
+            "description": "Moves a region back and forth along a closed path."
           },
           {
             "additionalProperties": false,
@@ -4223,7 +4223,7 @@
             ],
             "type": "object",
             "title": "Region shift",
-            "description": "Periodically moves a region in a selected direction."
+            "description": "Periodically shifts a region in a selected direction."
           },
           {
             "additionalProperties": false,
@@ -4960,7 +4960,7 @@
             ],
             "type": "object",
             "title": "Radial ticks",
-            "description": "Rotates sparse deterministic barcode cells around a selected point."
+            "description": "Rotates sparse deterministic tick marks around a selected point."
           },
           {
             "additionalProperties": false,
@@ -5119,7 +5119,9 @@
                 "type": "number"
               },
               "vignetteStrength": {
-                "type": "number"
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               },
               "shadowColor": {
                 "minLength": 1,
@@ -5328,7 +5330,9 @@
                 "type": "number"
               },
               "anamorphicRatio": {
-                "type": "number"
+                "type": "number",
+                "minimum": 0.1,
+                "maximum": 10
               },
               "depthMode": {
                 "minLength": 1,
@@ -5500,7 +5504,9 @@
                 "type": "number"
               },
               "noiseAmount": {
-                "type": "number"
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1
               }
             },
             "required": [
@@ -5687,7 +5693,9 @@
                 "type": "number"
               },
               "anamorphicRatio": {
-                "type": "number"
+                "type": "number",
+                "minimum": 0.1,
+                "maximum": 10
               },
               "detection": {
                 "minLength": 1,
@@ -6152,10 +6160,12 @@
                 "type": "number"
               },
               "offsetX": {
-                "type": "number"
+                "type": "number",
+                "description": "Horizontal offset; its unit depends on the selected effect."
               },
               "offsetY": {
-                "type": "number"
+                "type": "number",
+                "description": "Vertical offset; its unit depends on the selected effect."
               },
               "topColor": {
                 "minLength": 1,
@@ -6237,7 +6247,8 @@
                 "type": "number"
               },
               "softness": {
-                "type": "number"
+                "type": "number",
+                "description": "Width of the smooth transition between unaffected and fully affected pixels."
               },
               "shapeMode": {
                 "minLength": 1,
@@ -7980,10 +7991,12 @@
                 "type": "number"
               },
               "offsetX": {
-                "type": "number"
+                "type": "number",
+                "description": "Horizontal offset; its unit depends on the selected effect."
               },
               "offsetY": {
-                "type": "number"
+                "type": "number",
+                "description": "Vertical offset; its unit depends on the selected effect."
               },
               "offsetZ": {
                 "type": "number"
@@ -8457,7 +8470,7 @@
             ],
             "type": "object",
             "title": "Painterly smoothing",
-            "description": "Creates painterly flat regions by choosing the least-variable neighboring quadrant."
+            "description": "Uses a Kuwahara filter to create painterly flat regions while preserving edges."
           },
           {
             "additionalProperties": false,
@@ -8561,10 +8574,12 @@
                 "type": "number"
               },
               "offsetX": {
-                "type": "number"
+                "type": "number",
+                "description": "Horizontal offset; its unit depends on the selected effect."
               },
               "offsetY": {
-                "type": "number"
+                "type": "number",
+                "description": "Vertical offset; its unit depends on the selected effect."
               },
               "angle": {
                 "type": "number",
@@ -8842,7 +8857,8 @@
                 "type": "number"
               },
               "contrast": {
-                "type": "number"
+                "type": "number",
+                "description": "Contrast applied around the midpoint of the generated field."
               },
               "exposure": {
                 "type": "number"
@@ -9906,6 +9922,1076 @@
             "type": "object",
             "title": "DNA helix",
             "description": "Builds a rotating helix from points."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "pixel_grid"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "cellSize": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 512,
+                "description": "Width and height of one sampled pixel block in source pixels."
+              },
+              "offsetX": {
+                "type": "number",
+                "minimum": -512,
+                "maximum": 512,
+                "description": "Horizontal offset; its unit depends on the selected effect."
+              },
+              "offsetY": {
+                "type": "number",
+                "minimum": -512,
+                "maximum": 512,
+                "description": "Vertical offset; its unit depends on the selected effect."
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "cellSize",
+              "offsetX",
+              "offsetY"
+            ],
+            "type": "object",
+            "title": "Pixel grid",
+            "description": "Reduces a region to stable blocks sampled from the source."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "analog_display"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "scanlineSpacing": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 256,
+                "description": "Distance between horizontal scanlines in source pixels."
+              },
+              "scanlineThickness": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Fraction of each scanline interval occupied by its dark band."
+              },
+              "noiseAmount": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Amount of deterministic animated raster noise."
+              },
+              "vignetteStrength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Darkening toward the simulated display edge."
+              },
+              "flicker": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Amount of periodic display brightness instability."
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "scanlineSpacing",
+              "scanlineThickness",
+              "noiseAmount",
+              "vignetteStrength",
+              "flicker"
+            ],
+            "type": "object",
+            "title": "Analog display",
+            "description": "Adds scanlines, raster noise, flicker, and display-edge shading."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "hex_field"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "scale": {
+                "type": "number",
+                "minimum": 2,
+                "maximum": 256
+              },
+              "angle": {
+                "type": "number",
+                "minimum": -360,
+                "maximum": 360,
+                "description": "Direction or orientation in degrees. Drag the angle handle on the image when available."
+              },
+              "lineThickness": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "description": "Thickness of each hexagonal cell boundary relative to a cell."
+              },
+              "fillOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Opacity of activated cell interiors."
+              },
+              "pulseWidth": {
+                "type": "number",
+                "minimum": 0.01,
+                "maximum": 1,
+                "description": "Width of the traveling cell-activation band."
+              },
+              "color": {
+                "minLength": 1,
+                "type": "string",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "scale",
+              "angle",
+              "lineThickness",
+              "fillOpacity",
+              "pulseWidth",
+              "color"
+            ],
+            "type": "object",
+            "title": "Hex field",
+            "description": "Draws a field of filled hexagonal cells with a traveling activation pulse."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "color_lut"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "lutSource": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Regular two-dimensional color-cube LUT stored inside the project."
+              },
+              "cubeSize": {
+                "type": "integer",
+                "minimum": 2,
+                "maximum": 256,
+                "description": "Number of samples on each color-cube axis."
+              },
+              "lutColumns": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 256,
+                "description": "Number of blue slices arranged horizontally in the LUT image."
+              },
+              "lutRows": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 256,
+                "description": "Number of blue slices arranged vertically in the LUT image."
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "lutSource",
+              "cubeSize",
+              "lutColumns",
+              "lutRows"
+            ],
+            "type": "object",
+            "title": "Color LUT",
+            "description": "Maps source colors through a regular two-dimensional cube LUT."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "vignette"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "innerRadius": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 2,
+                "description": "Unshaded radius within the selected region."
+              },
+              "softness": {
+                "type": "number",
+                "minimum": 0.001,
+                "maximum": 2,
+                "description": "Width of the smooth transition between unaffected and fully affected pixels."
+              },
+              "roundness": {
+                "type": "number",
+                "minimum": 0.1,
+                "maximum": 4,
+                "description": "Shape exponent; lower values look diamond-like and higher values become rectangular."
+              },
+              "color": {
+                "minLength": 1,
+                "type": "string",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "innerRadius",
+              "softness",
+              "roundness",
+              "color"
+            ],
+            "type": "object",
+            "title": "Vignette",
+            "description": "Shades the boundary of a region with a controllable rounded profile."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "drop_shadow"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "offsetX": {
+                "type": "number",
+                "minimum": -1,
+                "maximum": 1,
+                "description": "Horizontal offset; its unit depends on the selected effect."
+              },
+              "offsetY": {
+                "type": "number",
+                "minimum": -1,
+                "maximum": 1,
+                "description": "Vertical offset; its unit depends on the selected effect."
+              },
+              "radius": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.5,
+                "description": "Radius around the effect center; most spatial effects measure it against the shorter image side."
+              },
+              "opacity": {
+                "type": "number",
+                "description": "Maximum opacity of the generated shadow."
+              },
+              "color": {
+                "minLength": 1,
+                "type": "string",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "offsetX",
+              "offsetY",
+              "radius",
+              "opacity",
+              "color"
+            ],
+            "type": "object",
+            "title": "Drop shadow",
+            "description": "Builds a soft offset shadow from the current alpha channel."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "lens_warp"
+              },
+              "x": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Horizontal position normalized from 0 at the left edge to 1 at the right edge."
+              },
+              "y": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Vertical position normalized from 0 at the top edge to 1 at the bottom edge."
+              },
+              "radius": {
+                "type": "number",
+                "minimum": 0.001,
+                "maximum": 2,
+                "description": "Radius around the effect center; most spatial effects measure it against the shorter image side."
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "radialFirst": {
+                "type": "number",
+                "minimum": -4,
+                "maximum": 4,
+                "description": "First-order radial distortion coefficient."
+              },
+              "radialSecond": {
+                "type": "number",
+                "minimum": -4,
+                "maximum": 4,
+                "description": "Second-order radial distortion coefficient."
+              },
+              "anamorphicRatio": {
+                "type": "number",
+                "minimum": 0.1,
+                "maximum": 10,
+                "description": "Vertical-to-horizontal scale of the radial lens field."
+              },
+              "chromatic": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 32,
+                "description": "Pixel separation between color channels."
+              }
+            },
+            "required": [
+              "type",
+              "x",
+              "y",
+              "radius",
+              "strength",
+              "cycles",
+              "phase",
+              "radialFirst",
+              "radialSecond",
+              "anamorphicRatio",
+              "chromatic"
+            ],
+            "type": "object",
+            "title": "Lens warp",
+            "description": "Applies first- and second-order radial lens distortion around a point."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "noise_field"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "scale": {
+                "type": "number",
+                "minimum": 0.25,
+                "maximum": 256
+              },
+              "contrast": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 8,
+                "description": "Contrast applied around the midpoint of the generated field."
+              },
+              "distortion": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 64,
+                "description": "Maximum source displacement in pixels; zero leaves geometry unchanged."
+              },
+              "color": {
+                "minLength": 1,
+                "type": "string",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "scale",
+              "contrast",
+              "distortion",
+              "color"
+            ],
+            "type": "object",
+            "title": "Noise field",
+            "description": "Creates a periodic tinted noise field with optional source displacement."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "flow_blur"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "flowSource": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Flow map stored inside the project; red and green encode horizontal and vertical direction."
+              },
+              "radius": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 128,
+                "description": "Maximum blur travel in source pixels."
+              },
+              "sampleCount": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 128,
+                "description": "Samples accumulated along the encoded flow vector."
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "flowSource",
+              "radius",
+              "sampleCount"
+            ],
+            "type": "object",
+            "title": "Flow blur",
+            "description": "Blurs each pixel along a direction encoded by a flow-map image."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "waveform"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "angle": {
+                "type": "number",
+                "minimum": -360,
+                "maximum": 360,
+                "description": "Direction or orientation in degrees. Drag the angle handle on the image when available."
+              },
+              "amplitude": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Wave displacement relative to the selected region."
+              },
+              "frequency": {
+                "type": "number",
+                "minimum": 0.25,
+                "maximum": 128,
+                "description": "Number of oscillations across the selected region."
+              },
+              "thickness": {
+                "type": "number",
+                "minimum": 0.0001,
+                "maximum": 0.5,
+                "description": "Width of the waveform core relative to the selected region."
+              },
+              "glow": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Width of the soft halo around the waveform."
+              },
+              "color": {
+                "minLength": 1,
+                "type": "string",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "angle",
+              "amplitude",
+              "frequency",
+              "thickness",
+              "glow",
+              "color"
+            ],
+            "type": "object",
+            "title": "Waveform",
+            "description": "Draws a glowing procedural waveform across a selected region."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "pixel_sorting"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal start of the region, normalized from 0 to 1."
+                  },
+                  "y": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical start of the region, normalized from 0 to 1."
+                  },
+                  "width": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region width normalized to the image; x plus width cannot exceed 1."
+                  },
+                  "height": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Region height normalized to the image; y plus height cannot exceed 1."
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "strength": {
+                "type": "number",
+                "description": "Amount of this effect mixed into its input. The exact maximum is effect-specific."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Whole effect repetitions inside one complete animation loop. Changing loop duration can preserve tempo by recalculating this value."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Starting offset within the effect cycle, expressed from 0 to 1."
+              },
+              "axis": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "horizontal",
+                  "vertical"
+                ],
+                "description": "Axis along which selected pixel spans are sorted."
+              },
+              "lowerThreshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Lowest normalized luminance included in a sortable span."
+              },
+              "upperThreshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Highest normalized luminance included in a sortable span."
+              },
+              "maximumSpan": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 4096,
+                "description": "Maximum number of contiguous pixels sorted as one span."
+              },
+              "order": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "ascending",
+                  "descending"
+                ],
+                "description": "Luminance order used inside every selected span."
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "strength",
+              "cycles",
+              "phase",
+              "axis",
+              "lowerThreshold",
+              "upperThreshold",
+              "maximumSpan",
+              "order"
+            ],
+            "type": "object",
+            "title": "Pixel sorting",
+            "description": "Sorts contiguous luminance-selected spans along a chosen image axis."
           }
         ]
       },
