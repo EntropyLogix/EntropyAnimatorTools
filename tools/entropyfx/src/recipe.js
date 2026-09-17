@@ -1,5 +1,22 @@
 import { validateProjectPath } from './archive.js';
 
+const auxiliarySourceFields = new Set([
+  'alternateSource',
+  'backgroundSource',
+  'depthSource',
+  'flowSource',
+  'glyphAtlasSource',
+  'lightingSource',
+  'lutSource',
+  'returnMapSource',
+  'ribbonSource',
+  'shapeSource',
+  'spriteSource',
+  'tileSource',
+  'transitionMapSource',
+  'unlitSource',
+]);
+
 function fail(path, message) {
   throw new Error(`${path}: ${message}`);
 }
@@ -231,7 +248,7 @@ export function parseAndValidateRecipe(text, recipeSchema) {
 export function referencedAuxiliaryInputs(recipe) {
   const names = new Set();
   const visit = (value, field = '') => {
-    if (typeof value === 'string' && field.endsWith('Source')) {
+    if (typeof value === 'string' && auxiliarySourceFields.has(field)) {
       if (value.length > 0)
         names.add(value);
       return;

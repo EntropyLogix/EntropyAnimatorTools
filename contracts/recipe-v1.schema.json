@@ -300,10 +300,20 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
+              "maskMode": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "source",
+                  "radial"
+                ],
+                "description": "Uses source-color similarity around the selected point or a geometric radial mask."
+              },
               "feather": {
-                "maximum": 2,
+                "type": "number",
                 "minimum": 0,
-                "type": "number"
+                "maximum": 0.2,
+                "description": "Soft transition extending inward from the pulse radius in radial mask mode. 0 makes a hard disc."
               }
             },
             "required": [
@@ -313,7 +323,9 @@
               "radius",
               "strength",
               "cycles",
-              "phase"
+              "phase",
+              "maskMode",
+              "feather"
             ],
             "type": "object",
             "title": "Brightness pulse",
@@ -358,6 +370,21 @@
                 "minimum": 0,
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
+              },
+              "maskMode": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "source",
+                  "radial"
+                ],
+                "description": "Uses source-color similarity around the selected point or a geometric radial mask."
+              },
+              "feather": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.2,
+                "description": "Soft transition extending inward from the flicker radius in radial mask mode. 0 makes a hard disc."
               }
             },
             "required": [
@@ -367,7 +394,9 @@
               "radius",
               "strength",
               "cycles",
-              "phase"
+              "phase",
+              "maskMode",
+              "feather"
             ],
             "type": "object",
             "title": "Flicker",
@@ -527,9 +556,20 @@
                 "maximum": 1,
                 "description": "Normalized width of the band or affected feature."
               },
+              "colorSource": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "region_center",
+                  "custom"
+                ],
+                "description": "Samples the center of the selected region or uses the stored custom color."
+              },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -539,7 +579,9 @@
               "cycles",
               "phase",
               "angle",
-              "width"
+              "width",
+              "colorSource",
+              "color"
             ],
             "type": "object",
             "title": "Light sweep",
@@ -597,9 +639,20 @@
                 "maximum": 1,
                 "description": "Normalized width of the band or affected feature."
               },
+              "colorSource": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "point",
+                  "custom"
+                ],
+                "description": "Samples the selected point or uses the stored custom color."
+              },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -611,7 +664,9 @@
               "cycles",
               "phase",
               "angle",
-              "width"
+              "width",
+              "colorSource",
+              "color"
             ],
             "type": "object",
             "title": "Ray fan",
@@ -687,9 +742,20 @@
                 "maximum": 0.25,
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
+              "colorSource": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "region_center",
+                  "custom"
+                ],
+                "description": "Samples the center of the selected region or uses the stored custom color."
+              },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -699,7 +765,9 @@
               "cycles",
               "phase",
               "density",
-              "size"
+              "size",
+              "colorSource",
+              "color"
             ],
             "type": "object",
             "title": "Glitter",
@@ -768,6 +836,21 @@
                 "exclusiveMinimum": 0,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
+              },
+              "colorSource": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "albedo",
+                  "custom"
+                ],
+                "description": "Brightens source albedo or colors the generated caustic bands with the stored custom color."
+              },
+              "color": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -776,7 +859,9 @@
               "strength",
               "cycles",
               "phase",
-              "scale"
+              "scale",
+              "colorSource",
+              "color"
             ],
             "type": "object",
             "title": "Caustics",
@@ -1356,6 +1441,12 @@
                 "exclusiveMinimum": 0,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
+              },
+              "angle": {
+                "type": "number",
+                "minimum": -360,
+                "maximum": 360,
+                "description": "Direction or orientation in image coordinates; 0 points right and 90 points down."
               }
             },
             "required": [
@@ -1364,7 +1455,8 @@
               "strength",
               "cycles",
               "phase",
-              "scale"
+              "scale",
+              "angle"
             ],
             "type": "object",
             "title": "Heat haze",
@@ -1470,6 +1562,12 @@
                 "minimum": 0,
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
+              },
+              "feather": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 0.2,
+                "description": "Width of the soft transition at the effect boundary, measured against the shorter image side."
               }
             },
             "required": [
@@ -1479,7 +1577,8 @@
               "radius",
               "strength",
               "cycles",
-              "phase"
+              "phase",
+              "feather"
             ],
             "type": "object",
             "title": "Twirl",
@@ -1749,8 +1848,10 @@
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -1760,7 +1861,8 @@
               "cycles",
               "phase",
               "angle",
-              "scale"
+              "scale",
+              "color"
             ],
             "type": "object",
             "title": "Energy veins",
@@ -1837,8 +1939,10 @@
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -1848,7 +1952,8 @@
               "cycles",
               "phase",
               "angle",
-              "scale"
+              "scale",
+              "color"
             ],
             "type": "object",
             "title": "Clouds",
@@ -1925,8 +2030,10 @@
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -1936,7 +2043,8 @@
               "cycles",
               "phase",
               "angle",
-              "scale"
+              "scale",
+              "color"
             ],
             "type": "object",
             "title": "Fog",
@@ -2013,8 +2121,10 @@
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -2024,7 +2134,8 @@
               "cycles",
               "phase",
               "angle",
-              "scale"
+              "scale",
+              "color"
             ],
             "type": "object",
             "title": "Flame field",
@@ -2077,8 +2188,19 @@
                 "description": "Direction or orientation in image coordinates; 0 points right and 90 points down."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "colorSource": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "point",
+                  "custom"
+                ],
+                "description": "Samples the selected emission point or uses the stored custom dye color."
               }
             },
             "required": [
@@ -2089,7 +2211,9 @@
               "strength",
               "cycles",
               "phase",
-              "angle"
+              "angle",
+              "color",
+              "colorSource"
             ],
             "type": "object",
             "title": "Fluid",
@@ -2154,8 +2278,16 @@
                 "description": "Direction or orientation in image coordinates; 0 points right and 90 points down."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "spread": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 360,
+                "description": "Full seeded emission cone centered on angle."
               }
             },
             "required": [
@@ -2168,7 +2300,9 @@
               "phase",
               "density",
               "size",
-              "angle"
+              "angle",
+              "color",
+              "spread"
             ],
             "type": "object",
             "title": "Smoke",
@@ -2233,8 +2367,22 @@
                 "description": "Direction or orientation in image coordinates; 0 points right and 90 points down."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "spread": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 360,
+                "description": "Full seeded emission cone centered on angle."
+              },
+              "colorTo": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Second endpoint color used by a gradient or life transition.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -2247,7 +2395,10 @@
               "phase",
               "density",
               "size",
-              "angle"
+              "angle",
+              "color",
+              "spread",
+              "colorTo"
             ],
             "type": "object",
             "title": "Fire",
@@ -2300,8 +2451,10 @@
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -2312,7 +2465,8 @@
               "strength",
               "cycles",
               "phase",
-              "scale"
+              "scale",
+              "color"
             ],
             "type": "object",
             "title": "Energy shell",
@@ -2395,8 +2549,10 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -2407,7 +2563,8 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color"
             ],
             "type": "object",
             "title": "Stars",
@@ -2490,8 +2647,16 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "trailLength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 8,
+                "description": "Base streak length as a fraction of the image’s shorter side; each particle retains deterministic variation."
               }
             },
             "required": [
@@ -2502,7 +2667,9 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color",
+              "trailLength"
             ],
             "type": "object",
             "title": "Shooting stars",
@@ -2585,8 +2752,10 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -2597,7 +2766,8 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color"
             ],
             "type": "object",
             "title": "Dust",
@@ -2662,8 +2832,16 @@
                 "description": "Direction or orientation in image coordinates; 0 points right and 90 points down."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "spread": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 360,
+                "description": "Full seeded emission cone centered on angle."
               }
             },
             "required": [
@@ -2676,7 +2854,9 @@
               "phase",
               "density",
               "size",
-              "angle"
+              "angle",
+              "color",
+              "spread"
             ],
             "type": "object",
             "title": "Embers",
@@ -2741,8 +2921,22 @@
                 "description": "Direction or orientation in image coordinates; 0 points right and 90 points down."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "spread": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 360,
+                "description": "Full seeded emission cone centered on angle."
+              },
+              "trailLength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 8,
+                "description": "Base spark-trail length as a fraction of the image’s shorter side; each particle retains deterministic variation."
               }
             },
             "required": [
@@ -2755,7 +2949,10 @@
               "phase",
               "density",
               "size",
-              "angle"
+              "angle",
+              "color",
+              "spread",
+              "trailLength"
             ],
             "type": "object",
             "title": "Sparks",
@@ -2838,8 +3035,16 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "trailLength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 8,
+                "description": "Base rain-streak length as a fraction of the image’s shorter side; each drop retains deterministic variation."
               }
             },
             "required": [
@@ -2850,7 +3055,9 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color",
+              "trailLength"
             ],
             "type": "object",
             "title": "Rain",
@@ -2933,8 +3140,10 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -2945,7 +3154,8 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color"
             ],
             "type": "object",
             "title": "Snow",
@@ -3004,8 +3214,16 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "trailLength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 8,
+                "description": "Base burst-trail length as a fraction of the image’s shorter side; each particle retains deterministic variation."
               }
             },
             "required": [
@@ -3017,7 +3235,9 @@
               "cycles",
               "phase",
               "density",
-              "size"
+              "size",
+              "color",
+              "trailLength"
             ],
             "type": "object",
             "title": "Particle burst",
@@ -3070,8 +3290,10 @@
                 "description": "Number of deterministic secondary electrical branches."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -3082,7 +3304,8 @@
               "strength",
               "cycles",
               "phase",
-              "branches"
+              "branches",
+              "color"
             ],
             "type": "object",
             "title": "Discharge",
@@ -3167,8 +3390,10 @@
                 "description": "Number of deterministic secondary branches along the main arc."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -3179,7 +3404,8 @@
               "strength",
               "cycles",
               "phase",
-              "branches"
+              "branches",
+              "color"
             ],
             "type": "object",
             "title": "Electric arc",
@@ -3821,7 +4047,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -3904,13 +4130,13 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               },
               "colorTo": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Second endpoint color of the directional gradient.",
+                "description": "Second endpoint color used by a gradient or life transition.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -3989,7 +4215,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               },
               "tolerance": {
@@ -4220,7 +4446,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -4657,8 +4883,10 @@
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -4666,7 +4894,8 @@
               "region",
               "strength",
               "cycles",
-              "phase"
+              "phase",
+              "color"
             ],
             "type": "object",
             "title": "Edge detection",
@@ -4743,8 +4972,10 @@
                 "description": "Distance over which detected edges cast their glow."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -4754,7 +4985,8 @@
               "cycles",
               "phase",
               "angle",
-              "radius"
+              "radius",
+              "color"
             ],
             "type": "object",
             "title": "Edge glow",
@@ -4831,8 +5063,22 @@
                 "description": "Maximum length of streaks cast from bright source pixels."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "threshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Source luminance threshold used to extract ray emitters."
+              },
+              "thresholdSoftness": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Width of the luminance transition above threshold."
               }
             },
             "required": [
@@ -4842,7 +5088,10 @@
               "cycles",
               "phase",
               "angle",
-              "radius"
+              "radius",
+              "color",
+              "threshold",
+              "thresholdSoftness"
             ],
             "type": "object",
             "title": "Star glare",
@@ -4929,7 +5178,7 @@
             "additionalProperties": false,
             "properties": {
               "type": {
-                "const": "source_rays"
+                "const": "radial_source_rays"
               },
               "x": {
                 "type": "number",
@@ -4971,39 +5220,20 @@
                 "maximum": 1,
                 "description": "Mix between constant ray brightness and brightness animated by the effect cycle."
               },
+              "colorSource": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "point",
+                  "custom"
+                ],
+                "description": "Samples the selected point or uses the stored custom color."
+              },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
-              },
-              "direction": {
-                "maximum": 360,
-                "minimum": -360,
-                "type": "number"
-              },
-              "length": {
-                "exclusiveMinimum": 0,
-                "maximum": 1,
-                "type": "number"
-              },
-              "noise": {
-                "maximum": 1,
-                "minimum": 0,
-                "type": "number"
-              },
-              "scale": {
-                "exclusiveMinimum": 0,
-                "maximum": 10,
-                "type": "number"
-              },
-              "smoothness": {
-                "exclusiveMinimum": 0,
-                "maximum": 0.5,
-                "type": "number"
-              },
-              "threshold": {
-                "maximum": 1,
-                "minimum": 0,
-                "type": "number"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -5014,11 +5244,105 @@
               "strength",
               "cycles",
               "phase",
-              "variation"
+              "variation",
+              "colorSource",
+              "color"
             ],
             "type": "object",
-            "title": "Source rays",
-            "description": "Emits rays from a point, or derives directional rays from luminance across the whole master."
+            "title": "Radial source rays",
+            "description": "Emits luminance-guided rays toward a selected source point."
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "directional_source_rays"
+              },
+              "strength": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 4,
+                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+              },
+              "cycles": {
+                "type": "integer",
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+              },
+              "phase": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
+              },
+              "direction": {
+                "type": "number",
+                "minimum": -360,
+                "maximum": 360,
+                "description": "Direction of the ray field in degrees."
+              },
+              "length": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 1,
+                "description": "Directional ray length relative to the image extent."
+              },
+              "threshold": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Source luminance threshold used to extract ray emitters."
+              },
+              "noise": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Amount of periodic texture breaking up directional rays."
+              },
+              "scale": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 10,
+                "description": "Spatial frequency of directional ray noise."
+              },
+              "smoothness": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 0.5,
+                "description": "Softness of transitions in the directional ray noise."
+              },
+              "colorSource": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "source_pixels",
+                  "custom"
+                ],
+                "description": "Preserves extracted source-pixel colors or multiplies them by the stored custom color."
+              },
+              "color": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              }
+            },
+            "required": [
+              "type",
+              "strength",
+              "cycles",
+              "phase",
+              "direction",
+              "length",
+              "threshold",
+              "noise",
+              "scale",
+              "smoothness",
+              "colorSource",
+              "color"
+            ],
+            "type": "object",
+            "title": "Directional source rays",
+            "description": "Extracts bright source pixels into broad rays along one direction."
           },
           {
             "additionalProperties": false,
@@ -5093,7 +5417,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -5202,7 +5526,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -5310,7 +5634,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -5416,7 +5740,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -5523,7 +5847,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -5646,6 +5970,12 @@
                 "type": "string",
                 "description": "Color added along moving drop trails.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "fogColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Color mixed into out-of-focus wet-glass areas.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -5660,7 +5990,8 @@
               "fogStrength",
               "vignetteStrength",
               "shadowColor",
-              "highlightColor"
+              "highlightColor",
+              "fogColor"
             ],
             "type": "object",
             "title": "Rain on glass",
@@ -5760,10 +6091,16 @@
                 "maximum": 4,
                 "description": "Brightness multiplier for point cores and their periodic glow."
               },
-              "color": {
+              "pointColor": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Color of constellation points.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "lineColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Base color of generated grid lines.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -5779,212 +6116,440 @@
               "lineWidth",
               "drift",
               "sparkle",
-              "color"
+              "pointColor",
+              "lineColor"
             ],
             "type": "object",
             "title": "Constellation",
             "description": "Connects drifting deterministic points into a changing luminous network."
           },
           {
-            "additionalProperties": false,
-            "properties": {
-              "type": {
-                "const": "bokeh"
-              },
-              "region": {
+            "description": "Blurs through a spiral aperture while retaining bright lens discs.",
+            "oneOf": [
+              {
                 "additionalProperties": false,
                 "properties": {
-                  "x": {
+                  "type": {
+                    "const": "bokeh"
+                  },
+                  "region": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "description": "Horizontal position in the image; 0 is the left edge and 1 is the right edge."
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "description": "Vertical position in the image; 0 is the top edge and 1 is the bottom edge."
+                      },
+                      "width": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 1,
+                        "description": "Normalized width of the band or affected feature."
+                      },
+                      "height": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 1,
+                        "description": "Normalized height of the selected rectangle."
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y",
+                      "width",
+                      "height"
+                    ],
+                    "type": "object"
+                  },
+                  "strength": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
-                    "description": "Horizontal position in the image; 0 is the left edge and 1 is the right edge."
+                    "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
                   },
-                  "y": {
+                  "cycles": {
+                    "type": "integer",
+                    "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                  },
+                  "phase": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
-                    "description": "Vertical position in the image; 0 is the top edge and 1 is the bottom edge."
+                    "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
                   },
-                  "width": {
+                  "radius": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 128,
+                    "description": "Maximum aperture radius in the units selected by radiusUnit; 0 leaves the image sharp."
+                  },
+                  "radiusUnit": {
+                    "minLength": 1,
+                    "type": "string",
+                    "enum": [
+                      "relative",
+                      "pixels"
+                    ],
+                    "description": "Uses a fraction of the shorter image side or the effective outer sample radius in source pixels."
+                  },
+                  "sampleCount": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 128,
+                    "description": "Number of spiral aperture samples evaluated for every output pixel."
+                  },
+                  "catadioptric": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Size of the empty center in the sampling aperture; 0 is a filled lens and 1 is a thin ring."
+                  },
+                  "highlightPower": {
                     "type": "number",
                     "exclusiveMinimum": 0,
-                    "maximum": 1,
-                    "description": "Normalized width of the band or affected feature."
+                    "maximum": 10,
+                    "description": "Gamma exponent applied before averaging; higher values preserve bright bokeh discs more strongly."
                   },
-                  "height": {
+                  "anamorphicRatio": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4,
+                    "description": "Horizontal-to-vertical ratio of the bokeh aperture."
+                  },
+                  "depthMode": {
+                    "minLength": 1,
+                    "type": "string",
+                    "enum": [
+                      "uniform",
+                      "source"
+                    ],
+                    "description": "Uses one blur radius everywhere or derives it from a project depth image."
+                  },
+                  "depthSource": {
+                    "minLength": 1,
+                    "type": "string",
+                    "description": "Grayscale depth image stored inside the project; dark and light values describe distance."
+                  },
+                  "focusMode": {
+                    "minLength": 1,
+                    "type": "string",
+                    "enum": [
+                      "manual",
+                      "sample_point"
+                    ],
+                    "description": "Uses the written focus depth or samples it from a selected point in the depth map."
+                  },
+                  "focusDepth": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Depth value kept sharp when a depth image is active."
+                  },
+                  "focusX": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal coordinate sampled by autofocus in sample_point mode."
+                  },
+                  "focusY": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical coordinate sampled by autofocus in sample_point mode."
+                  },
+                  "focusRange": {
                     "type": "number",
                     "exclusiveMinimum": 0,
+                    "maximum": 3,
+                    "description": "Depth distance from the focus plane that reaches the full native aperture radius."
+                  },
+                  "depthRemap": {
+                    "type": "boolean"
+                  },
+                  "depthNear": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 2,
+                    "description": "First endpoint of the optional depth remap."
+                  },
+                  "depthFar": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 2,
+                    "description": "Second endpoint of the optional depth remap; values below depthNear invert the map."
+                  },
+                  "depthExponent": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 2,
+                    "description": "Power curve applied while remapping the depth image."
+                  },
+                  "highlightCompression": {
+                    "type": "number",
+                    "minimum": 0,
                     "maximum": 1,
-                    "description": "Normalized height of the selected rectangle."
+                    "description": "Reference highlight recovery around the gamma-space aperture average."
+                  },
+                  "apertureShape": {
+                    "const": "circle"
                   }
                 },
                 "required": [
-                  "x",
-                  "y",
-                  "width",
-                  "height"
+                  "type",
+                  "region",
+                  "strength",
+                  "cycles",
+                  "phase",
+                  "radius",
+                  "radiusUnit",
+                  "sampleCount",
+                  "catadioptric",
+                  "highlightPower",
+                  "anamorphicRatio",
+                  "depthMode",
+                  "depthSource",
+                  "focusMode",
+                  "focusDepth",
+                  "focusX",
+                  "focusY",
+                  "focusRange",
+                  "depthRemap",
+                  "depthNear",
+                  "depthFar",
+                  "depthExponent",
+                  "highlightCompression",
+                  "apertureShape"
                 ],
-                "type": "object"
+                "type": "object",
+                "title": "Bokeh",
+                "description": "Blurs through a spiral aperture while retaining bright lens discs."
               },
-              "strength": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
-              },
-              "cycles": {
-                "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
-              },
-              "phase": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
-              },
-              "radius": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 128,
-                "description": "Maximum aperture radius in the units selected by radiusUnit; 0 leaves the image sharp."
-              },
-              "radiusUnit": {
-                "minLength": 1,
-                "type": "string",
-                "enum": [
-                  "relative",
-                  "pixels"
+              {
+                "additionalProperties": false,
+                "properties": {
+                  "type": {
+                    "const": "bokeh"
+                  },
+                  "region": {
+                    "additionalProperties": false,
+                    "properties": {
+                      "x": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "description": "Horizontal position in the image; 0 is the left edge and 1 is the right edge."
+                      },
+                      "y": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 1,
+                        "description": "Vertical position in the image; 0 is the top edge and 1 is the bottom edge."
+                      },
+                      "width": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 1,
+                        "description": "Normalized width of the band or affected feature."
+                      },
+                      "height": {
+                        "type": "number",
+                        "exclusiveMinimum": 0,
+                        "maximum": 1,
+                        "description": "Normalized height of the selected rectangle."
+                      }
+                    },
+                    "required": [
+                      "x",
+                      "y",
+                      "width",
+                      "height"
+                    ],
+                    "type": "object"
+                  },
+                  "strength": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                  },
+                  "cycles": {
+                    "type": "integer",
+                    "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                  },
+                  "phase": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
+                  },
+                  "radius": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 128,
+                    "description": "Maximum aperture radius in the units selected by radiusUnit; 0 leaves the image sharp."
+                  },
+                  "radiusUnit": {
+                    "minLength": 1,
+                    "type": "string",
+                    "enum": [
+                      "relative",
+                      "pixels"
+                    ],
+                    "description": "Uses a fraction of the shorter image side or the effective outer sample radius in source pixels."
+                  },
+                  "sampleCount": {
+                    "type": "integer",
+                    "minimum": 1,
+                    "maximum": 128,
+                    "description": "Number of spiral aperture samples evaluated for every output pixel."
+                  },
+                  "catadioptric": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Size of the empty center in the sampling aperture; 0 is a filled lens and 1 is a thin ring."
+                  },
+                  "highlightPower": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 10,
+                    "description": "Gamma exponent applied before averaging; higher values preserve bright bokeh discs more strongly."
+                  },
+                  "anamorphicRatio": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 4,
+                    "description": "Horizontal-to-vertical ratio of the bokeh aperture."
+                  },
+                  "depthMode": {
+                    "minLength": 1,
+                    "type": "string",
+                    "enum": [
+                      "uniform",
+                      "source"
+                    ],
+                    "description": "Uses one blur radius everywhere or derives it from a project depth image."
+                  },
+                  "depthSource": {
+                    "minLength": 1,
+                    "type": "string",
+                    "description": "Grayscale depth image stored inside the project; dark and light values describe distance."
+                  },
+                  "focusMode": {
+                    "minLength": 1,
+                    "type": "string",
+                    "enum": [
+                      "manual",
+                      "sample_point"
+                    ],
+                    "description": "Uses the written focus depth or samples it from a selected point in the depth map."
+                  },
+                  "focusDepth": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Depth value kept sharp when a depth image is active."
+                  },
+                  "focusX": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Horizontal coordinate sampled by autofocus in sample_point mode."
+                  },
+                  "focusY": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Vertical coordinate sampled by autofocus in sample_point mode."
+                  },
+                  "focusRange": {
+                    "type": "number",
+                    "exclusiveMinimum": 0,
+                    "maximum": 3,
+                    "description": "Depth distance from the focus plane that reaches the full native aperture radius."
+                  },
+                  "depthRemap": {
+                    "type": "boolean"
+                  },
+                  "depthNear": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 2,
+                    "description": "First endpoint of the optional depth remap."
+                  },
+                  "depthFar": {
+                    "type": "number",
+                    "minimum": -1,
+                    "maximum": 2,
+                    "description": "Second endpoint of the optional depth remap; values below depthNear invert the map."
+                  },
+                  "depthExponent": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 2,
+                    "description": "Power curve applied while remapping the depth image."
+                  },
+                  "highlightCompression": {
+                    "type": "number",
+                    "minimum": 0,
+                    "maximum": 1,
+                    "description": "Reference highlight recovery around the gamma-space aperture average."
+                  },
+                  "apertureShape": {
+                    "const": "polygon"
+                  },
+                  "bladeAngle": {
+                    "maximum": 360,
+                    "minimum": -360,
+                    "type": "number"
+                  },
+                  "bladeCount": {
+                    "maximum": 16,
+                    "minimum": 3,
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "type",
+                  "region",
+                  "strength",
+                  "cycles",
+                  "phase",
+                  "radius",
+                  "radiusUnit",
+                  "sampleCount",
+                  "catadioptric",
+                  "highlightPower",
+                  "anamorphicRatio",
+                  "depthMode",
+                  "depthSource",
+                  "focusMode",
+                  "focusDepth",
+                  "focusX",
+                  "focusY",
+                  "focusRange",
+                  "depthRemap",
+                  "depthNear",
+                  "depthFar",
+                  "depthExponent",
+                  "highlightCompression",
+                  "apertureShape",
+                  "bladeCount",
+                  "bladeAngle"
                 ],
-                "description": "Uses a fraction of the shorter image side or the effective outer sample radius in source pixels."
-              },
-              "sampleCount": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 128,
-                "description": "Number of spiral aperture samples evaluated for every output pixel."
-              },
-              "catadioptric": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Size of the empty center in the sampling aperture; 0 is a filled lens and 1 is a thin ring."
-              },
-              "highlightPower": {
-                "type": "number",
-                "exclusiveMinimum": 0,
-                "maximum": 10,
-                "description": "Gamma exponent applied before averaging; higher values preserve bright bokeh discs more strongly."
-              },
-              "anamorphicRatio": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 4,
-                "description": "Horizontal-to-vertical ratio of the bokeh aperture."
-              },
-              "depthMode": {
-                "minLength": 1,
-                "type": "string",
-                "enum": [
-                  "uniform",
-                  "source"
-                ],
-                "description": "Uses one blur radius everywhere or derives it from a project depth image."
-              },
-              "depthSource": {
-                "minLength": 1,
-                "type": "string",
-                "description": "Grayscale depth image stored inside the project; dark and light values describe distance."
-              },
-              "focusMode": {
-                "minLength": 1,
-                "type": "string",
-                "enum": [
-                  "manual",
-                  "sample_point"
-                ],
-                "description": "Uses the written focus depth or samples it from a selected point in the depth map."
-              },
-              "focusDepth": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Depth value kept sharp when a depth image is active."
-              },
-              "focusX": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Horizontal coordinate sampled by autofocus in sample_point mode."
-              },
-              "focusY": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Vertical coordinate sampled by autofocus in sample_point mode."
-              },
-              "focusRange": {
-                "type": "number",
-                "exclusiveMinimum": 0,
-                "maximum": 3,
-                "description": "Depth distance from the focus plane that reaches the full native aperture radius."
-              },
-              "depthRemap": {
-                "type": "boolean"
-              },
-              "depthNear": {
-                "type": "number",
-                "minimum": -1,
-                "maximum": 2,
-                "description": "First endpoint of the optional depth remap."
-              },
-              "depthFar": {
-                "type": "number",
-                "minimum": -1,
-                "maximum": 2,
-                "description": "Second endpoint of the optional depth remap; values below depthNear invert the map."
-              },
-              "depthExponent": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 2,
-                "description": "Power curve applied while remapping the depth image."
-              },
-              "highlightCompression": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Reference highlight recovery around the gamma-space aperture average."
+                "type": "object",
+                "title": "Bokeh",
+                "description": "Blurs through a spiral aperture while retaining bright lens discs."
               }
-            },
-            "required": [
-              "type",
-              "region",
-              "strength",
-              "cycles",
-              "phase",
-              "radius",
-              "radiusUnit",
-              "sampleCount",
-              "catadioptric",
-              "highlightPower",
-              "anamorphicRatio",
-              "depthMode",
-              "depthSource",
-              "focusMode",
-              "focusDepth",
-              "focusX",
-              "focusY",
-              "focusRange",
-              "depthRemap",
-              "depthNear",
-              "depthFar",
-              "depthExponent",
-              "highlightCompression"
             ],
-            "type": "object",
-            "title": "Bokeh",
-            "description": "Blurs through a spiral aperture while retaining bright lens discs."
+            "title": "Bokeh"
           },
           {
             "additionalProperties": false,
@@ -6232,7 +6797,19 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "warmVariationColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Warm endpoint used by deterministic star-trail color variation.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "coolVariationColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Cool endpoint used by deterministic star-trail color variation.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -6251,7 +6828,9 @@
               "trailLength",
               "trailFade",
               "colorVariation",
-              "color"
+              "color",
+              "warmVariationColor",
+              "coolVariationColor"
             ],
             "type": "object",
             "title": "Star trails",
@@ -6469,7 +7048,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -6622,7 +7201,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -6791,6 +7370,18 @@
                 "minimum": 0,
                 "maximum": 1,
                 "description": "Vertical orbit position of the cloud camera."
+              },
+              "sunAzimuth": {
+                "type": "number",
+                "minimum": -360,
+                "maximum": 360,
+                "description": "Horizontal direction of the volumetric-cloud light source."
+              },
+              "sunElevation": {
+                "type": "number",
+                "minimum": -90,
+                "maximum": 90,
+                "description": "Vertical elevation of the volumetric-cloud light source."
               }
             },
             "required": [
@@ -6812,7 +7403,9 @@
               "cloudColorDark",
               "verticalOffset",
               "cameraX",
-              "cameraY"
+              "cameraY",
+              "sunAzimuth",
+              "sunElevation"
             ],
             "type": "object",
             "title": "Volumetric clouds",
@@ -7035,6 +7628,12 @@
                 "minLength": 1,
                 "type": "string",
                 "description": "Intrinsic spotlight shape stored inside the project; red times alpha controls illumination."
+              },
+              "lightColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Color multiplying albedo inside the illuminated part of the spotlight.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -7050,7 +7649,8 @@
               "lightIntensity",
               "softness",
               "shapeMode",
-              "shapeSource"
+              "shapeSource",
+              "lightColor"
             ],
             "type": "object",
             "title": "Spotlight",
@@ -7152,7 +7752,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               },
               "blendMode": {
@@ -7359,7 +7959,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -7687,7 +8287,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 0.1,
-                "description": "Amount of periodic texture breaking up directional rays; omitted means 0.4."
+                "description": "Amount of periodic texture breaking up directional rays."
               },
               "bloom": {
                 "type": "number",
@@ -7777,7 +8377,7 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 10,
-                "description": "Softness of transitions in the directional ray noise; omitted means 0.2."
+                "description": "Softness of transitions in the directional ray noise."
               },
               "centerSize": {
                 "type": "number",
@@ -7902,7 +8502,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -8466,7 +9066,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               },
               "colorOverLife": {
@@ -10541,8 +11141,10 @@
                 "description": "Normalized width of the band or affected feature."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -10552,7 +11154,8 @@
               "cycles",
               "phase",
               "angle",
-              "width"
+              "width",
+              "color"
             ],
             "type": "object",
             "title": "X-ray scan",
@@ -10635,8 +11238,16 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "highlightColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Color added along moving drop trails.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -10647,7 +11258,9 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color",
+              "highlightColor"
             ],
             "type": "object",
             "title": "Bubbles",
@@ -10730,8 +11343,10 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -10742,7 +11357,8 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color"
             ],
             "type": "object",
             "title": "Swarm",
@@ -10827,8 +11443,10 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -10839,7 +11457,8 @@
               "cycles",
               "phase",
               "density",
-              "size"
+              "size",
+              "color"
             ],
             "type": "object",
             "title": "Path trail",
@@ -10922,8 +11541,16 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "highlightColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Color added along moving drop trails.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -10934,7 +11561,9 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color",
+              "highlightColor"
             ],
             "type": "object",
             "title": "Droplets",
@@ -11017,8 +11646,10 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -11029,7 +11660,8 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color"
             ],
             "type": "object",
             "title": "Leaves",
@@ -11094,8 +11726,16 @@
                 "description": "Direction or orientation in image coordinates; 0 points right and 90 points down."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "turns": {
+                "type": "number",
+                "minimum": -32,
+                "maximum": 32,
+                "description": "Number of turns across the generated structure; negative values reverse direction and 0 removes the twist."
               }
             },
             "required": [
@@ -11108,7 +11748,9 @@
               "phase",
               "density",
               "size",
-              "angle"
+              "angle",
+              "color",
+              "turns"
             ],
             "type": "object",
             "title": "Particle vortex",
@@ -11191,8 +11833,25 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "paletteMode": {
+                "minLength": 1,
+                "type": "string",
+                "enum": [
+                  "preset",
+                  "custom"
+                ],
+                "description": "Uses the built-in multi-color glyph palette or the two stored custom colors."
+              },
+              "colorTo": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Second endpoint color used by a gradient or life transition.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
             "required": [
@@ -11203,7 +11862,10 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color",
+              "paletteMode",
+              "colorTo"
             ],
             "type": "object",
             "title": "Glyphs",
@@ -11286,8 +11948,22 @@
                 "description": "Particle size as a fraction of the image’s shorter side."
               },
               "color": {
-                "pattern": "^#[0-9A-Fa-f]{6}$",
-                "type": "string"
+                "minLength": 1,
+                "type": "string",
+                "description": "Explicit effect color stored in the project.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "turns": {
+                "type": "number",
+                "minimum": -32,
+                "maximum": 32,
+                "description": "Number of turns across the generated structure; negative values reverse direction and 0 removes the twist."
+              },
+              "amplitude": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Width of the double helix relative to the selected region."
               }
             },
             "required": [
@@ -11298,7 +11974,10 @@
               "phase",
               "angle",
               "density",
-              "size"
+              "size",
+              "color",
+              "turns",
+              "amplitude"
             ],
             "type": "object",
             "title": "DNA helix",
@@ -11588,10 +12267,16 @@
                 "maximum": 1,
                 "description": "Width of the traveling cell-activation band."
               },
-              "color": {
+              "lineColor": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Base color of generated grid lines.",
+                "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "fillColor": {
+                "minLength": 1,
+                "type": "string",
+                "description": "Color of generated filled areas.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -11606,7 +12291,8 @@
               "lineThickness",
               "fillOpacity",
               "pulseWidth",
-              "color"
+              "lineColor",
+              "fillColor"
             ],
             "type": "object",
             "title": "Hex field",
@@ -11788,7 +12474,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -11892,7 +12578,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -12073,7 +12759,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -12273,7 +12959,7 @@
               "color": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Effect color. Optional colors fall back to the source color or the effect’s documented initial value.",
+                "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               }
             },
@@ -12455,6 +13141,9 @@
                 "maximum": 2,
                 "type": "number"
               },
+              "borderStyle": {
+                "const": "solid"
+              },
               "borderColor": {
                 "pattern": "^#[0-9A-Fa-f]{6}$",
                 "type": "string"
@@ -12478,6 +13167,173 @@
               "type",
               "region",
               "thickness",
+              "borderStyle",
+              "borderColor",
+              "borderOpacity",
+              "fillColor",
+              "fillOpacity"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "frame"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "y": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "width": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  },
+                  "height": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "thickness": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              },
+              "borderStyle": {
+                "const": "dashed"
+              },
+              "borderColor": {
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "type": "string"
+              },
+              "borderOpacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "fillColor": {
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "type": "string"
+              },
+              "fillOpacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "dashLength": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              },
+              "dashGap": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "thickness",
+              "borderStyle",
+              "borderColor",
+              "borderOpacity",
+              "fillColor",
+              "fillOpacity",
+              "dashLength",
+              "dashGap"
+            ],
+            "type": "object"
+          },
+          {
+            "additionalProperties": false,
+            "properties": {
+              "type": {
+                "const": "frame"
+              },
+              "region": {
+                "additionalProperties": false,
+                "properties": {
+                  "x": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "y": {
+                    "maximum": 1,
+                    "minimum": 0,
+                    "type": "number"
+                  },
+                  "width": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  },
+                  "height": {
+                    "exclusiveMinimum": 0,
+                    "maximum": 1,
+                    "type": "number"
+                  }
+                },
+                "required": [
+                  "x",
+                  "y",
+                  "width",
+                  "height"
+                ],
+                "type": "object"
+              },
+              "thickness": {
+                "exclusiveMinimum": 0,
+                "maximum": 2,
+                "type": "number"
+              },
+              "borderStyle": {
+                "const": "dotted"
+              },
+              "borderColor": {
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "type": "string"
+              },
+              "borderOpacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              },
+              "fillColor": {
+                "pattern": "^#[0-9A-Fa-f]{6}$",
+                "type": "string"
+              },
+              "fillOpacity": {
+                "maximum": 1,
+                "minimum": 0,
+                "type": "number"
+              }
+            },
+            "required": [
+              "type",
+              "region",
+              "thickness",
+              "borderStyle",
               "borderColor",
               "borderOpacity",
               "fillColor",

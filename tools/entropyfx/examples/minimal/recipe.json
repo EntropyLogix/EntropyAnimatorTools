@@ -20,7 +20,9 @@
       "radius": 0.35,
       "strength": 1,
       "cycles": 1,
-      "phase": 0
+      "phase": 0,
+      "maskMode": "source",
+      "feather": 0.02
     }
   ],
   "elements": []

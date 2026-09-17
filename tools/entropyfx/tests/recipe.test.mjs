@@ -3,7 +3,11 @@ import { readFile } from 'node:fs/promises';
 import { test } from 'node:test';
 
 import { loadContracts } from '../src/contracts.js';
-import { parseAndValidateRecipe, validateProjectRecipe } from '../src/recipe.js';
+import {
+  parseAndValidateRecipe,
+  referencedAuxiliaryInputs,
+  validateProjectRecipe,
+} from '../src/recipe.js';
 
 const example = (name) => readFile(new URL(`../examples/${name}/recipe.json`, import.meta.url), 'utf8');
 
@@ -43,6 +47,7 @@ test('accepts optional color and source-ray controls from the renderer contract'
   recipe.primitives = [{
     angle: 151,
     color: '#c9bdd9',
+    colorSource: 'custom',
     cycles: 1,
     phase: 0.1,
     radius: 1.1,
@@ -54,22 +59,21 @@ test('accepts optional color and source-ray controls from the renderer contract'
   }];
   assert.equal(parseAndValidateRecipe(JSON.stringify(recipe), contracts.recipeSchema)
     .primitives[0].color, '#c9bdd9');
+  assert.deepEqual(referencedAuxiliaryInputs(recipe), []);
 
   recipe.primitives = [{
+    color: '#ffffff',
+    colorSource: 'source_pixels',
     cycles: 1,
     direction: -45,
     length: 0.8,
     noise: 0.2,
     phase: 0,
-    radius: 0.6,
     scale: 4,
     smoothness: 0.1,
     strength: 1,
     threshold: 0.4,
-    type: 'source_rays',
-    variation: 0.2,
-    x: 0.5,
-    y: 0.5,
+    type: 'directional_source_rays',
   }];
   assert.equal(parseAndValidateRecipe(JSON.stringify(recipe), contracts.recipeSchema)
     .primitives[0].direction, -45);
