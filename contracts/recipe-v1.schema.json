@@ -1078,7 +1078,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               }
@@ -1162,7 +1162,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               }
@@ -1438,7 +1438,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
@@ -1843,7 +1843,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
@@ -1934,7 +1934,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
@@ -2025,7 +2025,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
@@ -2116,7 +2116,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               },
@@ -3711,7 +3711,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               }
@@ -4688,7 +4688,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               }
@@ -5192,7 +5192,7 @@
               },
               "scale": {
                 "type": "number",
-                "exclusiveMinimum": 0,
+                "minimum": 0.1,
                 "maximum": 64,
                 "description": "Spatial frequency of the procedural pattern; larger values create finer features."
               }
