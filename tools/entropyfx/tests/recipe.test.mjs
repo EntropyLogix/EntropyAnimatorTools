@@ -122,7 +122,7 @@ test('requires the canonical raster embedded for every text element', async () =
   recipe.elements = [{
     color: '#ffffff',
     direction: 'ltr',
-    font: 'inconsolata_bold',
+    font: 'builtin:fonts/v1/inconsolata_bold',
     fontSize: 0.08,
     horizontalAlign: 'center',
     lineHeight: 1.2,
@@ -143,4 +143,35 @@ test('requires the canonical raster embedded for every text element', async () =
     /referenced project input is missing/);
   project.auxiliaryInputs.push({ name: 'generated/text-0001.png' });
   assert.equal(validateProjectRecipe(project, contracts).elements[0].type, 'text');
+});
+
+test('requires both the canonical raster and an explicitly selected custom font', async () => {
+  const contracts = await loadContracts();
+  const recipe = JSON.parse(await example('minimal'));
+  const font = 'inputs/fonts/'
+    + '0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef-signal.ttf';
+  recipe.elements = [{
+    color: '#ffffff',
+    direction: 'ltr',
+    font,
+    fontSize: 0.08,
+    horizontalAlign: 'center',
+    lineHeight: 1.2,
+    opacity: 1,
+    region: { height: 0.2, width: 0.5, x: 0.25, y: 0.4 },
+    source: 'generated/text-0001.png',
+    text: 'TEXT',
+    type: 'text',
+    verticalAlign: 'middle',
+    wrap: 'word',
+  }];
+  const project = {
+    auxiliaryInputs: [{ name: 'generated/text-0001.png' }],
+    recipe: JSON.stringify(recipe),
+    source: { name: 'source.png' },
+  };
+  assert.throws(() => validateProjectRecipe(project, contracts),
+    new RegExp(`${font.replaceAll('.', '\\.')}.*missing`, 'u'));
+  project.auxiliaryInputs.push({ name: font });
+  assert.equal(validateProjectRecipe(project, contracts).elements[0].font, font);
 });

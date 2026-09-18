@@ -6,7 +6,7 @@ Creating an animation produces one `.entropyfx` project containing:
 
 - one source image;
 - one explicit version-1 recipe;
-- every referenced user-owned auxiliary image;
+- every referenced user-owned auxiliary image or font;
 - user-editable title, author, version, and description;
 - an optional current output preset.
 
@@ -70,7 +70,11 @@ The `source` of an `image_overlay` or `text` element is also a named project
 input even though the field does not end in `Source`. Pass it through `--input`
 under the exact logical name stored in the element. The CLI does not rasterize
 fonts; a text authoring integration must embed the canonical transparent image
-that corresponds to the explicit text fields.
+that corresponds to the explicit text fields. A built-in font uses one of the
+IDs in the recipe schema. A custom font uses its content-addressed
+`inputs/fonts/<sha256>-<name>.ttf`, `.otf` or `.woff2` path and must be supplied
+as a second `--input`, so the project preserves both editable text and its
+canonical raster.
 
 ## Review
 

@@ -89,7 +89,13 @@ function mediaType(filename) {
     return 'image/jpeg';
   if (extension === '.webp')
     return 'image/webp';
-  throw new Error(`${filename}: supported project images are PNG, JPEG, and WebP`);
+  if (extension === '.ttf')
+    return 'font/ttf';
+  if (extension === '.otf')
+    return 'font/otf';
+  if (extension === '.woff2')
+    return 'font/woff2';
+  throw new Error(`${filename}: unsupported project input type`);
 }
 
 async function exists(filename) {

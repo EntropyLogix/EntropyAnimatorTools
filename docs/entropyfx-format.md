@@ -53,7 +53,7 @@ constraints.
 | `RCP` | exactly 1 | yes | Complete UTF-8 animation recipe JSON |
 | `INF` | exactly 1 | no | User-editable project information JSON |
 | `SRC` | exactly 1 | yes | Main source image file payload |
-| `AST` | 0 or more | yes | One user-owned auxiliary image per chunk |
+| `AST` | 0 or more | yes | One user-owned auxiliary asset per chunk |
 | `OUT` | 0 or 1 | no | Current output preset JSON |
 
 `RCP` retains the recipe's own `schemaVersion` because the recipe is also a
@@ -90,10 +90,11 @@ exactly `name` and `mediaType` fields. A name is a normalized relative path;
 absolute paths, backslashes, empty segments, `.` and `..` are invalid. All file
 names in one project are unique.
 
-Built-in sprite assets are not embedded. Recipes refer to them through a
-versioned identifier such as `builtin:sprites/v1/fireflies_atlas`. Every image
-provided by a user is embedded as `AST`, so the project does not depend on its
-original filesystem location.
+Built-in sprite and font assets are not embedded. Recipes refer to them through
+versioned identifiers such as `builtin:sprites/v1/fireflies_atlas` or
+`builtin:fonts/v1/inter`. Every referenced image or font provided by a user is
+embedded as `AST`, so the project does not depend on its original filesystem
+location.
 
 ## Deterministic writing
 

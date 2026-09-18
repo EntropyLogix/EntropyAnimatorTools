@@ -13458,11 +13458,24 @@
                 "type": "object"
               },
               "font": {
-                "enum": [
-                  "inconsolata_bold",
-                  "share_tech_mono"
-                ],
-                "type": "string"
+                "anyOf": [
+                  {
+                    "enum": [
+                      "builtin:fonts/v1/inconsolata_bold",
+                      "builtin:fonts/v1/share_tech_mono",
+                      "builtin:fonts/v1/inter_regular",
+                      "builtin:fonts/v1/lora_regular",
+                      "builtin:fonts/v1/bebas_neue_regular",
+                      "builtin:fonts/v1/press_start_2p_regular",
+                      "builtin:fonts/v1/permanent_marker_regular",
+                      "builtin:fonts/v1/orbitron_regular"
+                    ]
+                  },
+                  {
+                    "pattern": "^inputs/fonts/[0-9a-f]{64}-[a-z0-9][a-z0-9-]{0,47}\\.(?:otf|ttf|woff2)$",
+                    "type": "string"
+                  }
+                ]
               },
               "fontSize": {
                 "exclusiveMinimum": 0,
