@@ -1,0 +1,4 @@
+interface:
+  display_name: "Animate with EntropyLogix FX"
+  short_description: "Turn a still image into an editable animation project"
+  default_prompt: "Use $entropyfx-image-animation to animate my image as an explicit EntropyLogix FX project."

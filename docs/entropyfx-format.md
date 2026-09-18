@@ -1,7 +1,7 @@
-# EntropyAnimator Effects Project (`.entropyfx`) format
+# EntropyLogix FX Project (`.entropyfx`) format
 
 Status: public specification draft. Version 1 may be replaced in place before
-the first public EntropyAnimator release.
+the first public EntropyLogix FX release.
 
 ## Byte order and file header
 

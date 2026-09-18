@@ -1,14 +1,14 @@
-# EntropyAnimatorTools
+# EntropyFXTools
 
-EntropyAnimatorTools is the open collection of local companion tools for
-EntropyAnimator. It currently ships the EntropyAnimator Effects CLI, named
-`entropyfx`, which creates, checks, inspects, and unpacks EntropyAnimator
-Effects Project files without including or reimplementing the private renderer.
+EntropyFXTools is the open collection of local companion tools for
+EntropyLogix FX. It currently ships the EntropyLogix FX CLI, named
+`entropyfx`, which creates, checks, inspects, and unpacks EntropyLogix FX
+Project files without including or reimplementing the private renderer.
 
 An `.entropyfx` file is a deterministic, self-contained animation project. It
 stores the source image, explicit animation recipe, referenced user images,
 user-editable information, and an optional current output preset. Rendering and
-visual review happen in the EntropyAnimator application.
+visual review happen in the EntropyLogix FX application.
 
 ## Requirements
 
@@ -58,7 +58,7 @@ fields and omits the optional output preset.
 
 ## Repository layout
 
-- `tools/entropyfx/` contains the Effects CLI, examples, tests, and agent integrations;
+- `tools/entropyfx/` contains the EntropyLogix FX CLI, examples, tests, and agent integrations;
 - `contracts/` contains public contracts shared by all tools;
 - `docs/` contains the public format and image-animation documentation.
 
@@ -76,12 +76,12 @@ contain effect implementations or built-in sprite image files.
 
 ## Agent integrations
 
-The Effects CLI includes a Codex skill under
-[`tools/entropyfx/agents/codex/entropy-animator-image-animation`](tools/entropyfx/agents/codex/entropy-animator-image-animation/SKILL.md)
+The EntropyLogix FX CLI includes a Codex skill under
+[`tools/entropyfx/agents/codex/entropyfx-image-animation`](tools/entropyfx/agents/codex/entropyfx-image-animation/SKILL.md)
 and an equivalent Gemini CLI skill under
-[`tools/entropyfx/agents/gemini/entropy-animator-image-animation`](tools/entropyfx/agents/gemini/entropy-animator-image-animation/SKILL.md).
+[`tools/entropyfx/agents/gemini/entropyfx-image-animation`](tools/entropyfx/agents/gemini/entropyfx-image-animation/SKILL.md).
 The matching Claude instruction is stored under
-[`tools/entropyfx/agents/claude/entropy-animator-image-animation.md`](tools/entropyfx/agents/claude/entropy-animator-image-animation.md).
+[`tools/entropyfx/agents/claude/entropyfx-image-animation.md`](tools/entropyfx/agents/claude/entropyfx-image-animation.md).
 All three create explicit recipes and call this local CLI. Image processing
 performed by an external model follows that model provider's own data handling
 terms.
@@ -96,5 +96,5 @@ terms.
 On Windows, use `npm run setup` and `npm run check`.
 
 The source code and documentation in this repository are licensed under MIT.
-The EntropyAnimator application, renderer, product name, and branding are not
+The EntropyLogix FX application, renderer, product name, and branding are not
 licensed by this repository.

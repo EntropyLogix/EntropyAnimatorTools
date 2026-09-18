@@ -15,7 +15,7 @@ function inputFile(value) {
   return { bytes: bytes(value.base64), mediaType: value.mediaType, name: value.name };
 }
 
-test('matches the versioned EntropyAnimator Effects project corpus', async () => {
+test('matches the versioned EntropyLogix FX project corpus', async () => {
   const corpus = JSON.parse(await readFile(corpusPath, 'utf8'));
   assert.equal(corpus.formatVersion, 1);
   for (const fixture of corpus.cases) {

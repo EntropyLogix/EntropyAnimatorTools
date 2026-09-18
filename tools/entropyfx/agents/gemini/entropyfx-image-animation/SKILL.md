@@ -1,12 +1,12 @@
 ---
-name: entropy-animator-image-animation
-description: Animate a still image by creating an explicit, portable .entropyfx project for visual review and refinement in EntropyAnimator.
+name: entropyfx-image-animation
+description: Animate a still image by creating an explicit, portable .entropyfx project for visual review and refinement in EntropyLogix FX.
 ---
 
-# Animate an image with EntropyAnimator
+# Animate an image with EntropyLogix FX
 
 Create a portable project that the user can inspect and refine in
-EntropyAnimator. Do not attempt to reproduce or simulate the private renderer.
+EntropyLogix FX. Do not attempt to reproduce or simulate the private renderer.
 
 Treat any natural-language visual direction as an authoring brief, not as a
 renderer setting. Directions such as `subtle cassette sci-fi`, `energetic

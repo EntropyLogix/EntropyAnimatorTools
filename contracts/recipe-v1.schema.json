@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://entropylogix.com/entropy-animator/schemas/recipe-v1.schema.json",
-  "title": "EntropyAnimator Effects recipe version 1",
+  "$id": "https://entropylogix.com/entropyfx/schemas/recipe-v1.schema.json",
+  "title": "EntropyLogix FX recipe version 1",
   "type": "object",
   "additionalProperties": false,
   "required": [

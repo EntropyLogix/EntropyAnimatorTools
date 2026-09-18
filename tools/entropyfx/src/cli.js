@@ -14,7 +14,7 @@ const textEncoder = new TextEncoder();
 
 function help(error) {
   const message = [
-    'EntropyAnimator Effects CLI',
+    'EntropyLogix FX CLI',
     '',
     'Usage:',
     '  entropyfx validate <project.entropyfx>',

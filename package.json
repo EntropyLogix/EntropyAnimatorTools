@@ -1,7 +1,7 @@
 {
-  "name": "@entropylogix/entropy-animator-tools",
+  "name": "@entropylogix/entropyfx-tools",
   "version": "0.0.0",
-  "description": "Open tools and contracts for EntropyAnimator Effects projects",
+  "description": "Open tools and contracts for EntropyLogix FX projects",
   "license": "MIT",
   "type": "module",
   "engines": {

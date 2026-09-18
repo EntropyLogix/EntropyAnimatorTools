@@ -1,6 +1,6 @@
-# Animate an image with EntropyAnimator
+# Animate an image with EntropyLogix FX
 
-Use this repository to create explicit EntropyAnimator Effects recipes and
+Use this repository to create explicit EntropyLogix FX recipes and
 package them with local source images as `.entropyfx` projects.
 
 Treat the user's optional visual direction as an authoring brief rather than a
@@ -27,5 +27,5 @@ npm run entropyfx -- inspect result.entropyfx
 The npm commands work on macOS, Windows, and Linux.
 
 Do not implement, imitate, or assume renderer behavior that is absent from the
-public catalogs. The result requires visual review in EntropyAnimator. Keep
+public catalogs. The result requires visual review in EntropyLogix FX. Keep
 files local unless a specific external destination is explicitly authorized.

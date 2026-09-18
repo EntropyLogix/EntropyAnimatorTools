@@ -1,4 +1,4 @@
-# Create an EntropyAnimator Effects animation
+# Create an EntropyLogix FX animation
 
 ## Outcome
 
@@ -11,7 +11,7 @@ Creating an animation produces one `.entropyfx` project containing:
 - an optional current output preset.
 
 The toolkit validates and packages these files. It does not render effects or
-replace visual review in EntropyAnimator.
+replace visual review in EntropyLogix FX.
 
 ## Build a recipe
 
@@ -85,7 +85,7 @@ npm run entropyfx -- validate result.entropyfx
 npm run entropyfx -- inspect result.entropyfx
 ```
 
-Open the project in EntropyAnimator, inspect the live animation at its intended
+Open the project in EntropyLogix FX, inspect the live animation at its intended
 display size, and adjust the explicit recipe. A structurally valid project is
 not proof that its motion, visual weight, composition, or loop is visually good.
 
