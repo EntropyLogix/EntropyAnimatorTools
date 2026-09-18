@@ -1622,7 +1622,7 @@
             ],
             "type": "object",
             "title": "Drift",
-            "description": "Moves the entire image along a closed path."
+            "description": "Moves the entire image back and forth along a selected direction."
           },
           {
             "additionalProperties": false,
@@ -12652,7 +12652,7 @@
             ],
             "type": "object",
             "title": "Drop shadow",
-            "description": "Builds a soft offset shadow from the current alpha channel."
+            "description": "Builds a soft offset shadow from transparent pixels in the current image."
           },
           {
             "additionalProperties": false,

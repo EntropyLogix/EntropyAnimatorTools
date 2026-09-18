@@ -379,7 +379,7 @@
     {
       "group": "Motion & deformation",
       "label": "Drift",
-      "description": "Moves the entire image along a closed path.",
+      "description": "Moves the entire image back and forth along a selected direction.",
       "geometry": "global",
       "angleIndicator": {
         "kind": "axis",
@@ -1356,7 +1356,7 @@
       "mainControl": "strength"
     },
     {
-      "group": "Light & emission",
+      "group": "Color & signal",
       "label": "Edge detection",
       "description": "Emphasizes image gradients.",
       "geometry": "region",
@@ -1530,7 +1530,7 @@
       "mainControl": "intensity"
     },
     {
-      "group": "Light & emission",
+      "group": "Graphics & overlays",
       "label": "HUD ring",
       "description": "Draws a rotating segmented HUD ring around a selected point.",
       "geometry": "point",
@@ -1555,7 +1555,7 @@
       "mainControl": "opacity"
     },
     {
-      "group": "Light & emission",
+      "group": "Graphics & overlays",
       "label": "HUD cog",
       "description": "Draws a rotating procedural gear around a selected point.",
       "geometry": "point",
@@ -1579,7 +1579,7 @@
       "mainControl": "opacity"
     },
     {
-      "group": "Light & emission",
+      "group": "Graphics & overlays",
       "label": "Radial ticks",
       "description": "Rotates sparse deterministic tick marks around a selected point.",
       "geometry": "point",
@@ -1604,7 +1604,7 @@
       "mainControl": "opacity"
     },
     {
-      "group": "Light & emission",
+      "group": "Graphics & overlays",
       "label": "Orbit markers",
       "description": "Animates irregular procedural HUD markers around a selected point.",
       "geometry": "point",
@@ -1802,7 +1802,7 @@
           "height": 1
         },
         "mix": 1,
-        "cycles": 1,
+        "cycles": 0,
         "phase": 0,
         "radius": 4,
         "emissionStrength": 1,
@@ -2056,7 +2056,7 @@
       "mainControl": "mix"
     },
     {
-      "group": "Motion & deformation",
+      "group": "Optics & blur",
       "label": "Lens iris",
       "description": "Opens and closes overlapping procedural aperture blades.",
       "geometry": "point",
@@ -2088,7 +2088,7 @@
       "mainControl": "opacity"
     },
     {
-      "group": "Light & emission",
+      "group": "Graphics & overlays",
       "label": "Grid scan",
       "description": "Projects a perspective room grid with a moving luminous scan band.",
       "geometry": "region",
@@ -2152,7 +2152,7 @@
       "mainControl": "opacity"
     },
     {
-      "group": "Color & signal",
+      "group": "Graphics & overlays",
       "label": "Topographic contours",
       "description": "Overlays animated contour lines derived from a procedural height field.",
       "geometry": "region",
@@ -2528,7 +2528,7 @@
       "mainControl": "mix"
     },
     {
-      "group": "Motion & deformation",
+      "group": "Graphics & overlays",
       "label": "Tiling array",
       "description": "Repeats a source region or managed tile and can move the raster along a closed path.",
       "geometry": "region",
@@ -2940,7 +2940,7 @@
       "mainControl": "intensity"
     },
     {
-      "group": "Color & signal",
+      "group": "Graphics & overlays",
       "label": "Pixel grid",
       "description": "Reduces a region to stable blocks sampled from the source.",
       "geometry": "region",
@@ -2963,7 +2963,7 @@
       "mainControl": "mix"
     },
     {
-      "group": "Color & signal",
+      "group": "Graphics & overlays",
       "label": "Analog display",
       "description": "Adds scanlines, raster noise, flicker, and display-edge shading.",
       "geometry": "region",
@@ -2988,7 +2988,7 @@
       "mainControl": "mix"
     },
     {
-      "group": "Color & signal",
+      "group": "Graphics & overlays",
       "label": "Hex field",
       "description": "Draws a field of filled hexagonal cells with a traveling activation pulse.",
       "geometry": "region",
@@ -3068,9 +3068,9 @@
       "mainControl": "opacity"
     },
     {
-      "group": "Light & emission",
+      "group": "Graphics & overlays",
       "label": "Drop shadow",
-      "description": "Builds a soft offset shadow from the current alpha channel.",
+      "description": "Builds a soft offset shadow from transparent pixels in the current image.",
       "geometry": "region",
       "template": {
         "type": "drop_shadow",
@@ -3161,7 +3161,7 @@
       "mainControl": "strength"
     },
     {
-      "group": "Light & emission",
+      "group": "Graphics & overlays",
       "label": "Waveform",
       "description": "Draws a glowing procedural waveform across a selected region.",
       "geometry": "region",
