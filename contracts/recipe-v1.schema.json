@@ -3267,6 +3267,12 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
+              "width": {
+                "type": "number",
+                "exclusiveMinimum": 0,
+                "maximum": 0.1,
+                "description": "Thickness of each discharge core; its glow scales proportionally."
+              },
               "strength": {
                 "type": "number",
                 "minimum": 0,
@@ -3282,6 +3288,12 @@
                 "minimum": 0,
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
+              },
+              "flashDuration": {
+                "type": "number",
+                "minimum": 0.05,
+                "maximum": 1,
+                "description": "Visible part of each electrical cycle. Smaller values create shorter flashes."
               },
               "branches": {
                 "type": "integer",
@@ -3301,9 +3313,11 @@
               "x",
               "y",
               "radius",
+              "width",
               "strength",
               "cycles",
               "phase",
+              "flashDuration",
               "branches",
               "color"
             ],
@@ -3365,7 +3379,7 @@
                 "type": "number",
                 "exclusiveMinimum": 0,
                 "maximum": 0.1,
-                "description": "Thickness of the main electrical rope."
+                "description": "Thickness of the main electrical rope; its glow and branches scale proportionally."
               },
               "strength": {
                 "type": "number",
@@ -3382,6 +3396,12 @@
                 "minimum": 0,
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
+              },
+              "flashDuration": {
+                "type": "number",
+                "minimum": 0.05,
+                "maximum": 1,
+                "description": "Visible part of each electrical cycle. Smaller values create shorter flashes."
               },
               "branches": {
                 "type": "integer",
@@ -3404,6 +3424,7 @@
               "strength",
               "cycles",
               "phase",
+              "flashDuration",
               "branches",
               "color"
             ],
