@@ -412,8 +412,8 @@
     {
       "group": "Optics & blur",
       "label": "Chromatic aberration",
-      "description": "Offsets RGB channels relative to a point.",
-      "geometry": "point",
+      "description": "Separates RGB channels across the full image around an adjustable optical center.",
+      "geometry": "global",
       "template": {
         "type": "chromatic_aberration",
         "x": 0.5,

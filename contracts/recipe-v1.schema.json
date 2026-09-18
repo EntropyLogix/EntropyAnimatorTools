@@ -1702,7 +1702,7 @@
             ],
             "type": "object",
             "title": "Chromatic aberration",
-            "description": "Offsets RGB channels relative to a point."
+            "description": "Separates RGB channels across the full image around an adjustable optical center."
           },
           {
             "additionalProperties": false,
