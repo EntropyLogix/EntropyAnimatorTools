@@ -87,7 +87,7 @@ npm run entropyfx -- inspect result.entropyfx
 
 Open the project in EntropyAnimator, inspect the live animation at its intended
 display size, and adjust the explicit recipe. A structurally valid project is
-not proof that its motion, strength, composition, or loop is visually good.
+not proof that its motion, visual weight, composition, or loop is visually good.
 
 ## Data boundary
 

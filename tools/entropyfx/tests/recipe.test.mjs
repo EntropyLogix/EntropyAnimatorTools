@@ -51,7 +51,7 @@ test('accepts optional color and source-ray controls from the renderer contract'
     cycles: 1,
     phase: 0.1,
     radius: 1.1,
-    strength: 0.9,
+    intensity: 0.9,
     type: 'ray_fan',
     width: 0.2,
     x: 0.46,
@@ -71,7 +71,7 @@ test('accepts optional color and source-ray controls from the renderer contract'
     phase: 0,
     scale: 4,
     smoothness: 0.1,
-    strength: 1,
+    intensity: 1,
     threshold: 0.4,
     type: 'directional_source_rays',
   }];

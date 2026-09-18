@@ -29,7 +29,7 @@ const recipe = `${JSON.stringify({
   effectMasks: [],
   key: 'project_fixture',
   output: { height: 40, width: 48 },
-  primitives: [{ cycles: 1, phase: 0, strength: 1, type: 'brightness_pulse', x: 0.5, y: 0.5, radius: 0.2 }],
+  primitives: [{ cycles: 1, intensity: 1, phase: 0, type: 'brightness_pulse', x: 0.5, y: 0.5, radius: 0.2 }],
   schemaVersion: 1,
   seed: 1,
   source: 'source.png',

@@ -21,7 +21,6 @@
         "width": 1,
         "height": 1
       },
-      "strength": 1,
       "cycles": 1,
       "phase": 0,
       "spriteSource": "builtin:sprites/v1/fireflies_atlas",

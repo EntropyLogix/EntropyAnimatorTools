@@ -284,7 +284,7 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
@@ -292,7 +292,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -321,7 +321,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "maskMode",
@@ -355,15 +355,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -392,7 +392,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "maskMode",
@@ -444,15 +444,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -476,7 +476,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -528,15 +528,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -575,7 +575,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -611,15 +611,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -660,7 +660,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -714,15 +714,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -761,7 +761,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -815,15 +815,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -856,7 +856,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "scale",
@@ -913,11 +913,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -979,11 +979,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1058,11 +1058,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1142,11 +1142,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1226,11 +1226,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1310,11 +1310,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1424,11 +1424,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1486,7 +1486,7 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -1494,7 +1494,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1514,7 +1514,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "feather"
@@ -1551,11 +1551,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1594,11 +1594,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1634,11 +1634,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1679,11 +1679,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1710,15 +1710,15 @@
               "type": {
                 "const": "film_grain"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1735,7 +1735,7 @@
             },
             "required": [
               "type",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "scale"
@@ -1754,11 +1754,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1819,15 +1819,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1857,7 +1857,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -1910,15 +1910,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -1948,7 +1948,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -2001,15 +2001,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2039,7 +2039,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -2096,11 +2096,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2125,6 +2125,12 @@
                 "type": "string",
                 "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "colorOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Opacity of the generated color layer without changing the underlying deformation."
               }
             },
             "required": [
@@ -2135,7 +2141,8 @@
               "phase",
               "angle",
               "scale",
-              "color"
+              "color",
+              "colorOpacity"
             ],
             "type": "object",
             "title": "Flame field",
@@ -2169,11 +2176,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2192,6 +2199,12 @@
                 "type": "string",
                 "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "dyeOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Opacity of the generated dye without changing the fluid motion."
               },
               "colorSource": {
                 "minLength": 1,
@@ -2213,6 +2226,7 @@
               "phase",
               "angle",
               "color",
+              "dyeOpacity",
               "colorSource"
             ],
             "type": "object",
@@ -2243,15 +2257,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2295,7 +2309,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -2332,15 +2346,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2390,7 +2404,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -2428,15 +2442,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2462,7 +2476,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "scale",
@@ -2514,15 +2528,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2558,7 +2572,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -2612,15 +2626,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2662,7 +2676,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -2717,15 +2731,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2761,7 +2775,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -2797,15 +2811,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2849,7 +2863,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -2886,15 +2900,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -2944,7 +2958,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -3000,15 +3014,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3050,7 +3064,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -3105,15 +3119,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3149,7 +3163,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -3185,15 +3199,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3231,7 +3245,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -3273,15 +3287,15 @@
                 "maximum": 0.1,
                 "description": "Thickness of each discharge core; its glow scales proportionally."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3314,7 +3328,7 @@
               "y",
               "radius",
               "width",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "flashDuration",
@@ -3381,15 +3395,15 @@
                 "maximum": 0.1,
                 "description": "Thickness of the main electrical rope; its glow and branches scale proportionally."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3421,7 +3435,7 @@
               "from",
               "to",
               "width",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "flashDuration",
@@ -3460,11 +3474,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3539,11 +3553,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3604,11 +3618,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3677,11 +3691,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3761,11 +3775,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3838,11 +3852,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3897,11 +3911,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -3969,11 +3983,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4049,7 +4063,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -4057,7 +4071,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4075,7 +4089,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "color"
@@ -4126,7 +4140,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -4134,7 +4148,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4164,7 +4178,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "angle",
@@ -4217,7 +4231,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -4225,7 +4239,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4249,7 +4263,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "color",
@@ -4301,7 +4315,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -4309,7 +4323,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4321,7 +4335,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase"
             ],
@@ -4371,15 +4385,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Energy of the reflected contribution. 0 removes the reflection and 1 uses its nominal brightness."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4397,7 +4411,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle"
@@ -4448,7 +4462,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -4456,7 +4470,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4474,7 +4488,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "color"
@@ -4511,11 +4525,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Magnitude of the radial lens distortion. 0 preserves the input and 1 uses the maximum supported distortion."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4583,11 +4597,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4660,11 +4674,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4737,11 +4751,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4814,11 +4828,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4887,15 +4901,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -4913,7 +4927,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "color"
@@ -4964,15 +4978,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5002,7 +5016,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -5055,15 +5069,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5105,7 +5119,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -5160,15 +5174,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5186,7 +5200,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "scale"
@@ -5219,15 +5233,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5262,7 +5276,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "variation",
@@ -5279,15 +5293,15 @@
               "type": {
                 "const": "directional_source_rays"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5349,7 +5363,7 @@
             },
             "required": [
               "type",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "direction",
@@ -5389,15 +5403,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5447,7 +5461,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -5486,15 +5500,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Visibility of the generated HUD ring. 0 hides it and 1 uses its full authored opacity."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5556,7 +5570,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "thickness",
@@ -5596,15 +5610,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Visibility of the generated HUD cog. 0 hides it and 1 uses its full authored opacity."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5664,7 +5678,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "baseThickness",
@@ -5703,15 +5717,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Visibility of the generated radial ticks. 0 hides them and 1 uses their full authored opacity."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5770,7 +5784,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "thickness",
@@ -5810,15 +5824,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Visibility of the generated orbit markers. 0 hides them and 1 uses their full authored opacity."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -5877,7 +5891,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "angle",
@@ -5934,7 +5948,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -5942,7 +5956,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -6002,7 +6016,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "rainAmount",
@@ -6060,15 +6074,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -6123,12 +6137,18 @@
                 "type": "string",
                 "description": "Base color of generated grid lines.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "lineIntensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 4,
+                "description": "Brightness of generated connecting lines without changing the points they connect."
               }
             },
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -6138,7 +6158,8 @@
               "drift",
               "sparkle",
               "pointColor",
-              "lineColor"
+              "lineColor",
+              "lineIntensity"
             ],
             "type": "object",
             "title": "Constellation",
@@ -6189,7 +6210,7 @@
                     ],
                     "type": "object"
                   },
-                  "strength": {
+                  "mix": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
@@ -6197,7 +6218,7 @@
                   },
                   "cycles": {
                     "type": "integer",
-                    "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                    "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
                   },
                   "phase": {
                     "type": "number",
@@ -6325,7 +6346,7 @@
                 "required": [
                   "type",
                   "region",
-                  "strength",
+                  "mix",
                   "cycles",
                   "phase",
                   "radius",
@@ -6394,7 +6415,7 @@
                     ],
                     "type": "object"
                   },
-                  "strength": {
+                  "mix": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
@@ -6402,7 +6423,7 @@
                   },
                   "cycles": {
                     "type": "integer",
-                    "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                    "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
                   },
                   "phase": {
                     "type": "number",
@@ -6540,7 +6561,7 @@
                 "required": [
                   "type",
                   "region",
-                  "strength",
+                  "mix",
                   "cycles",
                   "phase",
                   "radius",
@@ -6618,11 +6639,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Magnitude of signal displacement and breakup artifacts. 0 preserves the input and 1 uses the maximum supported deformation."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -6757,15 +6778,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -6839,7 +6860,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -6899,15 +6920,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "maximum": 1,
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -6926,12 +6947,6 @@
                 "minimum": 0,
                 "maximum": 5,
                 "description": "Processing gain applied to the extracted light map before compositing."
-              },
-              "alpha": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Reference post-processing opacity, independent of emitter gain and authoring strength."
               },
               "threshold": {
                 "type": "number",
@@ -6970,12 +6985,11 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "radius",
               "emissionStrength",
-              "alpha",
               "threshold",
               "gamma",
               "anamorphicRatio",
@@ -7028,15 +7042,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7076,7 +7090,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "lightingSource",
@@ -7131,15 +7145,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7229,7 +7243,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "depthSource",
@@ -7292,15 +7306,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7408,7 +7422,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "definition",
@@ -7474,7 +7488,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -7482,7 +7496,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7554,7 +7568,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "angle",
@@ -7596,7 +7610,7 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -7604,7 +7618,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7662,7 +7676,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "maskColor",
@@ -7719,15 +7733,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Blend between the input and the effect result. 0 preserves the input and 1 fully applies the result."
+                "description": "Visibility of the deformed ribbon image. 0 hides it and 1 uses its full authored opacity."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7790,7 +7804,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "ribbonSource",
@@ -7830,15 +7844,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7879,7 +7893,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "sides",
@@ -7934,15 +7948,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -7987,7 +8001,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "scale",
@@ -8024,15 +8038,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Opacity multiplier applied while compositing the generated element."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -8109,7 +8123,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "bladeCount",
@@ -8169,15 +8183,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Opacity multiplier applied while compositing the generated element."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -8221,6 +8235,12 @@
                 "type": "string",
                 "description": "Base color of generated grid lines.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "lineOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Opacity of generated lines without changing other parts of the effect."
               },
               "scanColor": {
                 "minLength": 1,
@@ -8320,7 +8340,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "gridShape",
@@ -8328,6 +8348,7 @@
               "lineThickness",
               "lineStyle",
               "lineColor",
+              "lineOpacity",
               "scanColor",
               "scanOpacity",
               "scanGlow",
@@ -8372,15 +8393,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Opacity multiplier applied while compositing the generated element."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -8430,7 +8451,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "beamCount",
@@ -8486,15 +8507,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Opacity multiplier applied while compositing the generated element."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -8530,7 +8551,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "scale",
@@ -8584,15 +8605,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -8647,7 +8668,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "pixelSize",
@@ -8704,15 +8725,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -8820,7 +8841,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "gridShape",
@@ -8884,15 +8905,9 @@
                 ],
                 "type": "object"
               },
-              "strength": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
-              },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -9164,7 +9179,6 @@
             "required": [
               "type",
               "region",
-              "strength",
               "cycles",
               "phase",
               "spriteSource",
@@ -9256,15 +9270,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -9372,7 +9386,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "cornerRadius",
@@ -9438,15 +9452,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -9550,7 +9564,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "glyphAtlasSource",
@@ -9615,15 +9629,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -9744,7 +9758,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "pivotX",
@@ -9811,15 +9825,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -9900,12 +9914,18 @@
                 "type": "string",
                 "description": "Color used inside the optional transition seam.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "seamOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Opacity of the transition seam without changing the image transition itself."
               }
             },
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "alternateSource",
@@ -9918,7 +9938,8 @@
               "edgeNoise",
               "sharpness",
               "seamWidth",
-              "seamColor"
+              "seamColor",
+              "seamOpacity"
             ],
             "type": "object",
             "title": "Image transition",
@@ -9966,15 +9987,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -10046,7 +10067,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "mapping",
@@ -10107,15 +10128,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -10139,7 +10160,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "levels",
@@ -10191,15 +10212,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -10217,7 +10238,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "radius"
@@ -10268,15 +10289,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -10395,7 +10416,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "sourceMode",
@@ -10455,15 +10476,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -10565,7 +10586,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "operator",
@@ -10628,15 +10649,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -10936,7 +10957,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "workingSpace",
@@ -11054,15 +11075,15 @@
                 "maximum": 2,
                 "description": "Width of the reveal’s soft edge. 0 makes a hard boundary."
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 20,
-                "description": "Reveal multiplier. 0 disables the reveal and values through 20 strengthen it."
+                "maximum": 1,
+                "description": "Blend between the input and the revealed image. 0 preserves the input and 1 fully applies the reveal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11082,7 +11103,7 @@
               "to",
               "radius",
               "feather",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "alternateSource"
@@ -11133,15 +11154,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11171,7 +11192,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -11224,15 +11245,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11269,19 +11290,26 @@
                 "type": "string",
                 "description": "Color added along moving drop trails.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "highlightIntensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 4,
+                "description": "Brightness of the reflected particle highlight without changing the particle body."
               }
             },
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
               "density",
               "size",
               "color",
-              "highlightColor"
+              "highlightColor",
+              "highlightIntensity"
             ],
             "type": "object",
             "title": "Bubbles",
@@ -11329,15 +11357,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11373,7 +11401,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -11435,15 +11463,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11474,7 +11502,7 @@
               "type",
               "from",
               "to",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -11527,15 +11555,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11572,19 +11600,26 @@
                 "type": "string",
                 "description": "Color added along moving drop trails.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "highlightIntensity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 4,
+                "description": "Brightness of the reflected particle highlight without changing the particle body."
               }
             },
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
               "density",
               "size",
               "color",
-              "highlightColor"
+              "highlightColor",
+              "highlightIntensity"
             ],
             "type": "object",
             "title": "Droplets",
@@ -11632,15 +11667,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11676,7 +11711,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -11712,15 +11747,15 @@
                 "maximum": 2,
                 "description": "Effect radius as a fraction of the image’s shorter side."
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11764,7 +11799,7 @@
               "x",
               "y",
               "radius",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "density",
@@ -11819,15 +11854,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11878,7 +11913,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -11934,15 +11969,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "intensity": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Energy contributed by emitted light, noise or particles. 0 disables the contribution and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -11990,7 +12025,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "intensity",
               "cycles",
               "phase",
               "angle",
@@ -12046,15 +12081,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "maximum": 1,
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12084,7 +12119,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "cellSize",
@@ -12137,15 +12172,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "maximum": 1,
+                "description": "Blend between the input and the fully processed result. 0 preserves the input and 1 fully applies the result."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12187,7 +12222,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "scanlineSpacing",
@@ -12242,15 +12277,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "maximum": 1,
+                "description": "Opacity multiplier applied while compositing the generated element."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12294,6 +12329,12 @@
                 "description": "Base color of generated grid lines.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               },
+              "lineOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Opacity of generated lines without changing other parts of the effect."
+              },
               "fillColor": {
                 "minLength": 1,
                 "type": "string",
@@ -12304,7 +12345,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "scale",
@@ -12313,6 +12354,7 @@
               "fillOpacity",
               "pulseWidth",
               "lineColor",
+              "lineOpacity",
               "fillColor"
             ],
             "type": "object",
@@ -12361,7 +12403,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -12369,7 +12411,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12404,7 +12446,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "lutSource",
@@ -12458,15 +12500,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "maximum": 1,
+                "description": "Opacity multiplier applied while compositing the generated element."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12502,7 +12544,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "innerRadius",
@@ -12556,15 +12598,9 @@
                 ],
                 "type": "object"
               },
-              "strength": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
-              },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12606,7 +12642,6 @@
             "required": [
               "type",
               "region",
-              "strength",
               "cycles",
               "phase",
               "offsetX",
@@ -12647,11 +12682,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12747,11 +12782,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12782,6 +12817,12 @@
                 "type": "string",
                 "description": "Explicit effect color stored in the project.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
+              },
+              "colorOpacity": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "Opacity of the generated color layer without changing the underlying deformation."
               }
             },
             "required": [
@@ -12793,7 +12834,8 @@
               "scale",
               "contrast",
               "distortion",
-              "color"
+              "color",
+              "colorOpacity"
             ],
             "type": "object",
             "title": "Noise field",
@@ -12845,11 +12887,11 @@
                 "type": "number",
                 "minimum": 0,
                 "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "description": "Magnitude of a geometric displacement or deformation. 0 disables the transformation and 1 is nominal."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12931,15 +12973,15 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "opacity": {
                 "type": "number",
                 "minimum": 0,
-                "maximum": 4,
-                "description": "Effect amplitude. 0 disables the effect, 1 is nominal, and values through 4 amplify it for local authoring."
+                "maximum": 1,
+                "description": "Opacity multiplier applied while compositing the generated element."
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -12987,7 +13029,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "opacity",
               "cycles",
               "phase",
               "angle",
@@ -13043,7 +13085,7 @@
                 ],
                 "type": "object"
               },
-              "strength": {
+              "mix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -13051,7 +13093,7 @@
               },
               "cycles": {
                 "type": "integer",
-                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at full strength."
+                "description": "Complete repetitions during the whole animation loop. Negative values reverse motion; 0 applies the effect statically at its current main-control value."
               },
               "phase": {
                 "type": "number",
@@ -13099,7 +13141,7 @@
             "required": [
               "type",
               "region",
-              "strength",
+              "mix",
               "cycles",
               "phase",
               "axis",
