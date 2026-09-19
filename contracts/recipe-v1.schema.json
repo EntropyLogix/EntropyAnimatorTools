@@ -8918,7 +8918,7 @@
               "spriteSource": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Verified shared PNG containing one particle sprite or a regular sprite atlas. Selecting it also applies the library atlas contract."
+                "description": "Verified shared PNG containing one particle sprite or a regular sprite sheet. Selecting it also applies the saved sheet layout."
               },
               "density": {
                 "type": "integer",
@@ -9132,27 +9132,27 @@
                 "maximum": 1,
                 "description": "Seeded darkening variation applied independently to particle instances."
               },
-              "atlasColumns": {
+              "sheetColumns": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 64,
-                "description": "Equal-width frame columns in spriteSource."
+                "description": "Equal-width frame columns in the selected sprite sheet."
               },
-              "atlasRows": {
+              "sheetRows": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 64,
-                "description": "Equal-height frame rows in spriteSource."
+                "description": "Equal-height frame rows in the selected sprite sheet."
               },
-              "atlasMode": {
+              "frameSelection": {
                 "minLength": 1,
                 "type": "string",
                 "enum": [
-                  "random_frame",
-                  "animated",
+                  "random_per_particle",
+                  "particle_age",
                   "emitter_angle"
                 ],
-                "description": "Pins a seeded frame, advances frames over life, or maps regular atlas frames around the emitter."
+                "description": "Chooses one seeded variant per particle, advances frames with particle age, or maps frames around the emitter."
               },
               "blendMode": {
                 "minLength": 1,
@@ -9217,16 +9217,16 @@
               "colorChangeStart",
               "colorChangeEnd",
               "brightnessVariation",
-              "atlasColumns",
-              "atlasRows",
-              "atlasMode",
+              "sheetColumns",
+              "sheetRows",
+              "frameSelection",
               "blendMode",
               "fadeIn",
               "fadeOut"
             ],
             "type": "object",
             "title": "Sprite particles",
-            "description": "Emits many deterministic moving instances from one managed sprite or regular atlas."
+            "description": "Emits many deterministic moving instances from one managed sprite or sprite sheet."
           },
           {
             "additionalProperties": false,

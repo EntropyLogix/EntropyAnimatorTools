@@ -2247,7 +2247,7 @@
     {
       "group": "Particles & scenes",
       "label": "Sprite particles",
-      "description": "Emits many deterministic moving instances from one managed sprite or regular atlas.",
+      "description": "Emits many deterministic moving instances from one managed sprite or sprite sheet.",
       "geometry": "region",
       "angleIndicator": {
         "kind": "direction",
@@ -2299,9 +2299,9 @@
         "colorChangeStart": 0,
         "colorChangeEnd": 1,
         "brightnessVariation": 0.15,
-        "atlasColumns": 2,
-        "atlasRows": 1,
-        "atlasMode": "random_frame",
+        "sheetColumns": 2,
+        "sheetRows": 1,
+        "frameSelection": "random_per_particle",
         "blendMode": "normal",
         "fadeIn": 0.05,
         "fadeOut": 0.8

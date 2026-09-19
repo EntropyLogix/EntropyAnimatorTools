@@ -62,9 +62,9 @@ npm run entropyfx -- pack \
 A built-in sprite uses an ID from
 [`sprites-v1.json`](../contracts/sprites-v1.json), for example
 `builtin:sprites/v1/fireflies_atlas`. Built-in sprites are versioned references
-and are not embedded. Match `atlasColumns`, `atlasRows`, and `atlasMode` to the
-catalog entry. Custom sprites are ordinary user-owned project inputs and are
-embedded once as `AST`.
+and are not embedded. Match `sheetColumns`, `sheetRows`, and `frameSelection`
+to the catalog entry. Custom sprites are ordinary user-owned project inputs
+and are embedded once as `AST`.
 
 The `source` of an `image_overlay` or `text` element is also a named project
 input even though the field does not end in `Source`. Pass it through `--input`

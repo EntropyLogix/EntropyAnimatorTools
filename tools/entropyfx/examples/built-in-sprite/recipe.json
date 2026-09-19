@@ -59,9 +59,9 @@
       "colorChangeStart": 0,
       "colorChangeEnd": 1,
       "brightnessVariation": 0.15,
-      "atlasColumns": 4,
-      "atlasRows": 4,
-      "atlasMode": "random_frame",
+      "sheetColumns": 4,
+      "sheetRows": 4,
+      "frameSelection": "random_per_particle",
       "blendMode": "normal",
       "fadeIn": 0.05,
       "fadeOut": 0.8

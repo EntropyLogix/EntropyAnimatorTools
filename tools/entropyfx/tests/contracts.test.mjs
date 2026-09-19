@@ -13,6 +13,23 @@ test('ships one versioned schema and unique effect and sprite catalogs', async (
   assert.equal(new Set(contracts.sprites.sprites.map((sprite) => sprite.id)).size, 44);
   assert.equal(contracts.recipeSchema.properties.primitives.items.oneOf.length, 121);
   assert.equal(contracts.recipeSchema.properties.elements.items.oneOf.length, 5);
+  const spriteParticles = contracts.effects.effects.find(
+    (effect) => effect.type === 'sprite_particles');
+  assert.equal(spriteParticles.template.frameSelection, 'random_per_particle');
+  assert.equal(spriteParticles.template.sheetColumns, 2);
+  assert.equal(spriteParticles.template.sheetRows, 1);
+  assert.equal('atlasColumns' in spriteParticles.template, false);
+  assert.deepEqual(
+    contracts.sprites.sprites[0].sheet,
+    {
+      columns: 4,
+      frames: 16,
+      gutterPixels: 8,
+      kind: 'variants',
+      recommendedFrameSelection: 'random_per_particle',
+      rows: 4,
+    },
+  );
   const mainControls = { intensity: 0, mix: 0, opacity: 0, strength: 0 };
   for (const [index, effect] of contracts.effects.effects.entries()) {
     assert.ok(effect.mainControl in mainControls, `${effect.type} has an unknown main control`);
