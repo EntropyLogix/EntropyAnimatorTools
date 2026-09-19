@@ -79,6 +79,22 @@ test('accepts optional color and source-ray controls from the renderer contract'
     .primitives[0].direction, -45);
 });
 
+test('accepts built-in ASCII styles without auxiliary project inputs', async () => {
+  const contracts = await loadContracts();
+  const recipe = JSON.parse(await example('minimal'));
+  const ascii = structuredClone(
+    contracts.effects.effects.find((effect) => effect.type === 'ascii_art').template,
+  );
+  recipe.primitives = [ascii];
+  assert.deepEqual(referencedAuxiliaryInputs(recipe), []);
+  assert.equal(parseAndValidateRecipe(JSON.stringify(recipe), contracts.recipeSchema)
+    .primitives[0].characterStyle, 'classic_ascii');
+
+  ascii.glyphAtlasSource = 'inputs/glyphs.png';
+  assert.throws(() => parseAndValidateRecipe(JSON.stringify(recipe), contracts.recipeSchema),
+    /glyphAtlasSource.*not allowed/);
+});
+
 test('requires exact project inputs and accepts cataloged built-in sprites', async () => {
   const contracts = await loadContracts();
   const spriteRecipe = await example('built-in-sprite');

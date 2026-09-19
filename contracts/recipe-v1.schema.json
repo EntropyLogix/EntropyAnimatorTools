@@ -9468,37 +9468,21 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "glyphAtlasSource": {
+              "characterStyle": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Regular sprite sheet stored inside the project and ordered from the darkest glyph to the brightest."
+                "enum": [
+                  "classic_ascii",
+                  "blocks",
+                  "minimal"
+                ],
+                "description": "Built-in ordered character set used to reconstruct image brightness."
               },
-              "atlasColumns": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 30,
-                "description": "Number of equal glyph or sprite cells across the source atlas."
-              },
-              "atlasRows": {
-                "type": "integer",
-                "minimum": 1,
-                "maximum": 30,
-                "description": "Number of equal glyph or sprite cells down the source atlas."
-              },
-              "resolutionScale": {
+              "characterDensity": {
                 "type": "number",
                 "minimum": 0.01,
                 "maximum": 0.5,
-                "description": "Glyph-cell density relative to source resolution; larger values produce more, smaller characters."
-              },
-              "smooth": {
-                "type": "boolean"
-              },
-              "smoothness": {
-                "type": "number",
-                "minimum": 0.5,
-                "maximum": 10,
-                "description": "Distance divisor for the optional nine-sample source-color gather at each cell center."
+                "description": "Character-cell density relative to source resolution; larger values produce more, smaller characters."
               },
               "invert": {
                 "type": "boolean"
@@ -9507,28 +9491,21 @@
                 "minLength": 1,
                 "type": "string",
                 "enum": [
-                  "atlas",
+                  "solid",
                   "brightness_gradient",
                   "cell_color",
-                  "source_color",
-                  "custom"
+                  "source_color"
                 ],
-                "description": "Uses atlas color, a brightness gradient, cell color, per-pixel source color, or one custom foreground color."
+                "description": "Uses one solid foreground, a brightness gradient, average cell color, or per-pixel source color."
               },
               "backgroundMode": {
                 "minLength": 1,
                 "type": "string",
                 "enum": [
-                  "flat",
-                  "source",
-                  "image"
+                  "solid",
+                  "source"
                 ],
-                "description": "Fills empty glyph pixels with a flat color, the current source, or a project background image."
-              },
-              "backgroundSource": {
-                "minLength": 1,
-                "type": "string",
-                "description": "Full-frame background image stored inside the project and used only when backgroundMode is image."
+                "description": "Fills empty character pixels with one solid color or preserves the image entering the effect."
               },
               "backgroundColor": {
                 "minLength": 1,
@@ -9539,7 +9516,7 @@
               "foregroundColor": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Single foreground color used by the flat ASCII color mode.",
+                "description": "Single foreground color used by the solid ASCII color mode.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
               },
               "foregroundColorDark": {
@@ -9553,12 +9530,6 @@
                 "type": "string",
                 "description": "Bright endpoint of the ASCII luminance gradient.",
                 "pattern": "^#[0-9A-Fa-f]{6}$"
-              },
-              "glyphThreshold": {
-                "type": "number",
-                "minimum": 0,
-                "maximum": 1,
-                "description": "Average atlas RGB value at which a glyph pixel counts as foreground outside atlas color mode."
               }
             },
             "required": [
@@ -9567,25 +9538,19 @@
               "mix",
               "cycles",
               "phase",
-              "glyphAtlasSource",
-              "atlasColumns",
-              "atlasRows",
-              "resolutionScale",
-              "smooth",
-              "smoothness",
+              "characterStyle",
+              "characterDensity",
               "invert",
               "colorMode",
               "backgroundMode",
-              "backgroundSource",
               "backgroundColor",
               "foregroundColor",
               "foregroundColorDark",
-              "foregroundColorBright",
-              "glyphThreshold"
+              "foregroundColorBright"
             ],
             "type": "object",
             "title": "ASCII art",
-            "description": "Rebuilds image luminance from a managed ordered glyph atlas with explicit foreground and background coloring."
+            "description": "Rebuilds image luminance with a built-in ordered character style and explicit foreground and background coloring."
           },
           {
             "additionalProperties": false,

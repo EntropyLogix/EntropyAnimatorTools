@@ -2348,7 +2348,7 @@
     {
       "group": "Color & signal",
       "label": "ASCII art",
-      "description": "Rebuilds image luminance from a managed ordered glyph atlas with explicit foreground and background coloring.",
+      "description": "Rebuilds image luminance with a built-in ordered character style and explicit foreground and background coloring.",
       "geometry": "region",
       "template": {
         "type": "ascii_art",
@@ -2361,21 +2361,15 @@
         "mix": 1,
         "cycles": 0,
         "phase": 0,
-        "glyphAtlasSource": "glyphs.png",
-        "atlasColumns": 4,
-        "atlasRows": 1,
-        "resolutionScale": 0.125,
-        "smooth": true,
-        "smoothness": 2,
+        "characterStyle": "classic_ascii",
+        "characterDensity": 0.125,
         "invert": false,
-        "colorMode": "custom",
-        "backgroundMode": "flat",
-        "backgroundSource": "select_background.png",
+        "colorMode": "solid",
+        "backgroundMode": "solid",
         "backgroundColor": "#000000",
         "foregroundColor": "#ffffff",
         "foregroundColorDark": "#000000",
-        "foregroundColorBright": "#ffffff",
-        "glyphThreshold": 0.5
+        "foregroundColorBright": "#ffffff"
       },
       "type": "ascii_art",
       "mainControl": "mix"
