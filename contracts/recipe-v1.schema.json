@@ -6651,71 +6651,71 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "warp": {
+              "warpAmount": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 0.1,
                 "description": "Maximum two-dimensional procedural displacement between the narrow horizontal faults."
               },
-              "faultStrength": {
+              "faultDisplacement": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 0.5,
                 "description": "Maximum horizontal displacement of the two moving families of narrow faults."
               },
-              "faultMultiplier1": {
+              "primaryFaultFrequency": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 100,
-                "description": "Spatial multiplier of the first moving fault family."
+                "description": "Vertical frequency of the primary moving fault pattern."
               },
-              "faultSharpness1": {
+              "primaryFaultSharpness": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 500,
-                "description": "Exponent narrowing the first moving fault family."
+                "description": "Sharpness of the primary moving fault pattern; larger values create narrower tears."
               },
-              "faultMultiplier2": {
+              "secondaryFaultFrequency": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 100,
-                "description": "Spatial multiplier of the second moving fault family."
+                "description": "Vertical frequency of the secondary moving fault pattern."
               },
-              "faultSharpness2": {
+              "secondaryFaultSharpness": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 500,
-                "description": "Exponent narrowing the second moving fault family."
+                "description": "Sharpness of the secondary moving fault pattern; larger values create narrower tears."
               },
-              "interlace": {
+              "interlaceAmount": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 0.05,
                 "description": "Alternating scanline displacement applied before the larger faults."
               },
-              "interlaceX": {
+              "horizontalInterlace": {
                 "type": "number",
                 "minimum": -10,
                 "maximum": 10,
-                "description": "Horizontal multiplier of the alternating interlace displacement."
+                "description": "Horizontal direction and scale of the alternating interlace displacement."
               },
-              "interlaceY": {
+              "verticalInterlace": {
                 "type": "number",
                 "minimum": -10,
                 "maximum": 10,
-                "description": "Vertical multiplier of the alternating interlace displacement."
+                "description": "Vertical direction and scale of the alternating interlace displacement."
               },
-              "screenBounceX": {
+              "warpBiasX": {
                 "type": "number",
                 "minimum": -10,
                 "maximum": 10,
-                "description": "Horizontal bias subtracted from the two-channel warp noise."
+                "description": "Horizontal bias applied to the procedural warp displacement."
               },
-              "screenBounceY": {
+              "warpBiasY": {
                 "type": "number",
                 "minimum": -10,
                 "maximum": 10,
-                "description": "Vertical bias subtracted from the two-channel warp noise."
+                "description": "Vertical bias applied to the procedural warp displacement."
               },
               "chromaticShift": {
                 "type": "number",
@@ -6736,17 +6736,17 @@
               "strength",
               "cycles",
               "phase",
-              "warp",
-              "faultStrength",
-              "faultMultiplier1",
-              "faultSharpness1",
-              "faultMultiplier2",
-              "faultSharpness2",
-              "interlace",
-              "interlaceX",
-              "interlaceY",
-              "screenBounceX",
-              "screenBounceY",
+              "warpAmount",
+              "faultDisplacement",
+              "primaryFaultFrequency",
+              "primaryFaultSharpness",
+              "secondaryFaultFrequency",
+              "secondaryFaultSharpness",
+              "interlaceAmount",
+              "horizontalInterlace",
+              "verticalInterlace",
+              "warpBiasX",
+              "warpBiasY",
               "chromaticShift",
               "noiseAmount"
             ],
@@ -10651,19 +10651,19 @@
                 "maximum": 16,
                 "description": "Display gamma applied after grading and normal compositing."
               },
-              "redInfluence": {
+              "redOutputMix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
                 "description": "Final mix contribution for the red output channel."
               },
-              "greenInfluence": {
+              "greenOutputMix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
                 "description": "Final mix contribution for the green output channel."
               },
-              "blueInfluence": {
+              "blueOutputMix": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
@@ -10846,73 +10846,73 @@
                 "maximum": 1,
                 "description": "Offset added after global level remapping."
               },
-              "matrixRR": {
+              "redFromRed": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Red-input coefficient of the red output channel."
               },
-              "matrixRG": {
+              "redFromGreen": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Green-input coefficient of the red output channel."
               },
-              "matrixRB": {
+              "redFromBlue": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Blue-input coefficient of the red output channel."
               },
-              "matrixGR": {
+              "greenFromRed": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Red-input coefficient of the green output channel."
               },
-              "matrixGG": {
+              "greenFromGreen": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Green-input coefficient of the green output channel."
               },
-              "matrixGB": {
+              "greenFromBlue": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Blue-input coefficient of the green output channel."
               },
-              "matrixBR": {
+              "blueFromRed": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Red-input coefficient of the blue output channel."
               },
-              "matrixBG": {
+              "blueFromGreen": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Green-input coefficient of the blue output channel."
               },
-              "matrixBB": {
+              "blueFromBlue": {
                 "type": "number",
                 "minimum": -4,
                 "maximum": 4,
                 "description": "Blue-input coefficient of the blue output channel."
               },
-              "matrixOffsetR": {
+              "redOffset": {
                 "type": "number",
                 "minimum": -2,
                 "maximum": 2,
                 "description": "Offset of the red matrix output channel."
               },
-              "matrixOffsetG": {
+              "greenOffset": {
                 "type": "number",
                 "minimum": -2,
                 "maximum": 2,
                 "description": "Offset of the green matrix output channel."
               },
-              "matrixOffsetB": {
+              "blueOffset": {
                 "type": "number",
                 "minimum": -2,
                 "maximum": 2,
@@ -10928,9 +10928,9 @@
               "workingSpace",
               "inputGamma",
               "outputGamma",
-              "redInfluence",
-              "greenInfluence",
-              "blueInfluence",
+              "redOutputMix",
+              "greenOutputMix",
+              "blueOutputMix",
               "brightness",
               "contrast",
               "exposure",
@@ -10961,18 +10961,18 @@
               "blackPoint",
               "whitePoint",
               "levelOffset",
-              "matrixRR",
-              "matrixRG",
-              "matrixRB",
-              "matrixGR",
-              "matrixGG",
-              "matrixGB",
-              "matrixBR",
-              "matrixBG",
-              "matrixBB",
-              "matrixOffsetR",
-              "matrixOffsetG",
-              "matrixOffsetB"
+              "redFromRed",
+              "redFromGreen",
+              "redFromBlue",
+              "greenFromRed",
+              "greenFromGreen",
+              "greenFromBlue",
+              "blueFromRed",
+              "blueFromGreen",
+              "blueFromBlue",
+              "redOffset",
+              "greenOffset",
+              "blueOffset"
             ],
             "type": "object",
             "title": "Color grading",
