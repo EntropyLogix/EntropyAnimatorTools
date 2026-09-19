@@ -291,7 +291,7 @@
     {
       "group": "Motion & deformation",
       "label": "Parallax",
-      "description": "Offsets image layers using automatic or managed depth.",
+      "description": "Offsets image layers using automatic depth or a project depth map.",
       "geometry": "region",
       "angleIndicator": {
         "kind": "direction",
@@ -310,9 +310,9 @@
         "phase": 0,
         "angle": 10,
         "depthMode": "automatic",
-        "depthSource": "select_depth.png",
-        "depth": "light_near",
-        "depthMidlevel": 0.5,
+        "depthMap": "select_depth.png",
+        "depthDirection": "light_near",
+        "stationaryDepth": 0.5,
         "normalizeCenter": true
       },
       "type": "parallax",
@@ -1708,11 +1708,11 @@
         "radius": 0.035,
         "radiusUnit": "relative",
         "sampleCount": 22,
-        "catadioptric": 0,
+        "centerOpening": 0,
         "highlightPower": 2,
         "anamorphicRatio": 1,
         "depthMode": "uniform",
-        "depthSource": "select_image.png",
+        "depthMap": "select_image.png",
         "focusMode": "manual",
         "focusDepth": 0.5,
         "focusX": 0.5,
@@ -1818,7 +1818,7 @@
     {
       "group": "Light & emission",
       "label": "Masked lighting",
-      "description": "Adds colored light from managed mask and unlit-albedo images.",
+      "description": "Adds colored light using a light mask and an unlit image.",
       "geometry": "region",
       "template": {
         "type": "masked_lighting",
@@ -1831,8 +1831,8 @@
         "intensity": 1,
         "cycles": 1,
         "phase": 0,
-        "lightingSource": "lighting.png",
-        "unlitSource": "unlit.png",
+        "lightMask": "lighting.png",
+        "unlitImage": "unlit.png",
         "minimumIntensity": 0.25,
         "maximumIntensity": 1.5,
         "color": "#80c0ff"
@@ -1843,7 +1843,7 @@
     {
       "group": "Atmosphere",
       "label": "Depth fog",
-      "description": "Uses a managed depth image to place noisy fog behind and between image features.",
+      "description": "Uses a project depth map to place noisy fog behind and between image features.",
       "geometry": "region",
       "template": {
         "type": "depth_fog",
@@ -1856,7 +1856,7 @@
         "mix": 1,
         "cycles": 1,
         "phase": 0,
-        "depthSource": "depth.png",
+        "depthMap": "depth.png",
         "density": 1,
         "brightness": 1,
         "depthMultiplier": 1,
@@ -1961,7 +1961,7 @@
         "lightIntensity": 1,
         "softness": 0.1,
         "shapeMode": "circle",
-        "shapeSource": "select_spotlight_shape.png",
+        "shapeImage": "select_spotlight_shape.png",
         "lightColor": "#ffffff"
       },
       "type": "spotlight",
@@ -1987,7 +1987,7 @@
         "opacity": 1,
         "cycles": 1,
         "phase": 0,
-        "ribbonSource": "ribbon.png",
+        "ribbonImage": "ribbon.png",
         "swayX": 0.04,
         "swayY": 0.015,
         "ripple": 0.02,
@@ -2247,7 +2247,7 @@
     {
       "group": "Particles & scenes",
       "label": "Sprite particles",
-      "description": "Emits many deterministic moving instances from one managed sprite or sprite sheet.",
+      "description": "Emits deterministic moving instances from one sprite image or sprite sheet.",
       "geometry": "region",
       "angleIndicator": {
         "kind": "direction",
@@ -2263,7 +2263,7 @@
         },
         "cycles": 1,
         "phase": 0,
-        "spriteSource": "sprite.png",
+        "spriteImage": "sprite.png",
         "density": 8,
         "emitterShape": "box",
         "emitterInnerRadius": 0,
@@ -2414,7 +2414,7 @@
     {
       "group": "Color & signal",
       "label": "Image transition",
-      "description": "Moves a deterministic threshold field between the current image and a managed alternate image.",
+      "description": "Moves a deterministic threshold field between the current and target images.",
       "geometry": "region",
       "angleIndicator": {
         "kind": "axis",
@@ -2431,10 +2431,10 @@
         "mix": 1,
         "cycles": 1,
         "phase": 0,
-        "alternateSource": "transition.png",
+        "targetImage": "transition.png",
         "pattern": "bands",
-        "transitionMapSource": "select_transition_map.png",
-        "returnMapSource": "select_return_map.png",
+        "transitionMap": "select_transition_map.png",
+        "returnMap": "select_return_map.png",
         "mapChannels": "red",
         "angle": 18,
         "scale": 1,
@@ -2524,7 +2524,7 @@
     {
       "group": "Graphics & overlays",
       "label": "Tiling array",
-      "description": "Repeats a source region or managed tile and can move the raster along a closed path.",
+      "description": "Repeats a current-image crop or project tile image along a closed path.",
       "geometry": "region",
       "angleIndicator": {
         "kind": "direction",
@@ -2548,7 +2548,7 @@
           "width": 0.25,
           "height": 0.3
         },
-        "tileSource": "select_tile.png",
+        "tileImage": "select_tile.png",
         "tileScale": 0.85,
         "offsetX": 0,
         "offsetY": 0,
@@ -2681,7 +2681,7 @@
         "mix": 1,
         "cycles": 1,
         "phase": 0,
-        "alternateSource": "alternate.png"
+        "revealedImage": "alternate.png"
       },
       "type": "layer_reveal",
       "mainControl": "mix"
@@ -3029,10 +3029,10 @@
         "mix": 1,
         "cycles": 0,
         "phase": 0,
-        "lutSource": "inputs/color-lut.png",
-        "cubeSize": 16,
-        "lutColumns": 4,
-        "lutRows": 4
+        "lutImage": "inputs/color-lut.png",
+        "colorsPerAxis": 16,
+        "sliceColumns": 4,
+        "sliceRows": 4
       },
       "type": "color_lut",
       "mainControl": "mix"
@@ -3147,7 +3147,7 @@
         "strength": 1,
         "cycles": 0,
         "phase": 0,
-        "flowSource": "inputs/flow-map.png",
+        "motionMap": "inputs/flow-map.png",
         "radius": 18,
         "sampleCount": 12
       },

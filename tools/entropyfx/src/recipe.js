@@ -1,18 +1,19 @@
 import { validateProjectPath } from './archive.js';
 
 const auxiliarySourceFields = new Set([
-  'alternateSource',
-  'depthSource',
-  'flowSource',
-  'lightingSource',
-  'lutSource',
-  'returnMapSource',
-  'ribbonSource',
-  'shapeSource',
-  'spriteSource',
-  'tileSource',
-  'transitionMapSource',
-  'unlitSource',
+  'depthMap',
+  'lightMask',
+  'lutImage',
+  'motionMap',
+  'revealedImage',
+  'returnMap',
+  'ribbonImage',
+  'shapeImage',
+  'spriteImage',
+  'targetImage',
+  'tileImage',
+  'transitionMap',
+  'unlitImage',
 ]);
 
 function fail(path, message) {

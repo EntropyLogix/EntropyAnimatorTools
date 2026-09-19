@@ -105,7 +105,7 @@ test('requires exact project inputs and accepts cataloged built-in sprites', asy
   };
   assert.equal(validateProjectRecipe(project, contracts).key, 'firefly_field');
   const custom = JSON.parse(spriteRecipe);
-  custom.primitives[0].spriteSource = 'inputs/custom.png';
+  custom.primitives[0].spriteImage = 'inputs/custom.png';
   assert.throws(() => validateProjectRecipe({ ...project, recipe: JSON.stringify(custom) }, contracts),
     /referenced project input is missing/);
 });

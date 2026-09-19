@@ -61,7 +61,7 @@ test('fails before writing an incomplete project or replacing a target', async (
   const temporary = await mkdtemp(path.join(tmpdir(), 'entropyfx-'));
   try {
     const recipe = JSON.parse(await readFile(path.join(root, 'examples/minimal/recipe.json'), 'utf8'));
-    recipe.primitives[0].spriteSource = 'inputs/missing.png';
+    recipe.primitives[0].spriteImage = 'inputs/missing.png';
     const recipePath = path.join(temporary, 'recipe.json');
     const sourcePath = path.join(temporary, 'source.png');
     const projectPath = path.join(temporary, 'project.entropyfx');
@@ -75,7 +75,7 @@ test('fails before writing an incomplete project or replacing a target', async (
       '--out', projectPath,
     ]));
     await assert.rejects(readFile(projectPath), /ENOENT/);
-    delete recipe.primitives[0].spriteSource;
+    delete recipe.primitives[0].spriteImage;
     await writeFile(recipePath, `${JSON.stringify(recipe)}\n`);
     await execute(process.execPath, [
       tool,

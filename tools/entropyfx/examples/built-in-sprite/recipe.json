@@ -23,7 +23,7 @@
       },
       "cycles": 1,
       "phase": 0,
-      "spriteSource": "builtin:sprites/v1/fireflies_atlas",
+      "spriteImage": "builtin:sprites/v1/fireflies_atlas",
       "density": 8,
       "emitterShape": "box",
       "emitterInnerRadius": 0,

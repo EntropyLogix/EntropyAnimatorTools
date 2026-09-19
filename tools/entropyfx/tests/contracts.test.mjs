@@ -46,3 +46,27 @@ test('ships one versioned schema and unique effect and sprite catalogs', async (
   }
   assert.deepEqual(mainControls, { intensity: 44, mix: 32, opacity: 14, strength: 31 });
 });
+
+test('uses role-based image fields throughout the public effect contract', async () => {
+  const contracts = await loadContracts();
+  const effects = new Map(contracts.effects.effects.map((effect) => [effect.type, effect]));
+  const expected = new Map([
+    ['bokeh', ['depthMap', 'centerOpening']],
+    ['color_lut', ['lutImage', 'colorsPerAxis', 'sliceColumns', 'sliceRows']],
+    ['depth_fog', ['depthMap']],
+    ['flow_blur', ['motionMap']],
+    ['image_ribbon', ['ribbonImage']],
+    ['image_transition', ['targetImage', 'transitionMap', 'returnMap']],
+    ['layer_reveal', ['revealedImage']],
+    ['masked_lighting', ['lightMask', 'unlitImage']],
+    ['parallax', ['depthMap', 'depthDirection', 'stationaryDepth']],
+    ['spotlight', ['shapeImage']],
+    ['sprite_particles', ['spriteImage']],
+    ['tiling_array', ['tileImage']],
+  ]);
+  for (const [type, fields] of expected) {
+    const template = effects.get(type).template;
+    for (const field of fields)
+      assert.ok(field in template, `${type}.${field} is missing`);
+  }
+});

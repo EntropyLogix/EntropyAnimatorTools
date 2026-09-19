@@ -1333,16 +1333,16 @@
                 "type": "string",
                 "enum": [
                   "automatic",
-                  "source"
+                  "depth_map"
                 ],
                 "description": "Uses a depth field derived from the source or a grayscale project image."
               },
-              "depthSource": {
+              "depthMap": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Full-frame depth image stored inside the project; the red channel stores depth."
               },
-              "depth": {
+              "depthDirection": {
                 "minLength": 1,
                 "type": "string",
                 "enum": [
@@ -1351,11 +1351,11 @@
                 ],
                 "description": "Chooses whether light or dark pixels are interpreted as being closer to the viewer."
               },
-              "depthMidlevel": {
+              "stationaryDepth": {
                 "type": "number",
                 "minimum": 0,
                 "maximum": 1,
-                "description": "Depth value treated as the stationary plane in source mode."
+                "description": "Depth value treated as the stationary plane when a depth map is active."
               },
               "normalizeCenter": {
                 "type": "boolean"
@@ -1369,14 +1369,14 @@
               "phase",
               "angle",
               "depthMode",
-              "depthSource",
-              "depth",
-              "depthMidlevel",
+              "depthMap",
+              "depthDirection",
+              "stationaryDepth",
               "normalizeCenter"
             ],
             "type": "object",
             "title": "Parallax",
-            "description": "Offsets image layers using automatic or managed depth."
+            "description": "Offsets image layers using automatic depth or a project depth map."
           },
           {
             "additionalProperties": false,
@@ -6247,7 +6247,7 @@
                     "maximum": 128,
                     "description": "Number of spiral aperture samples evaluated for every output pixel."
                   },
-                  "catadioptric": {
+                  "centerOpening": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
@@ -6270,11 +6270,11 @@
                     "type": "string",
                     "enum": [
                       "uniform",
-                      "source"
+                      "depth_map"
                     ],
                     "description": "Uses one blur radius everywhere or derives it from a project depth image."
                   },
-                  "depthSource": {
+                  "depthMap": {
                     "minLength": 1,
                     "type": "string",
                     "description": "Grayscale depth image stored inside the project; dark and light values describe distance."
@@ -6352,11 +6352,11 @@
                   "radius",
                   "radiusUnit",
                   "sampleCount",
-                  "catadioptric",
+                  "centerOpening",
                   "highlightPower",
                   "anamorphicRatio",
                   "depthMode",
-                  "depthSource",
+                  "depthMap",
                   "focusMode",
                   "focusDepth",
                   "focusX",
@@ -6452,7 +6452,7 @@
                     "maximum": 128,
                     "description": "Number of spiral aperture samples evaluated for every output pixel."
                   },
-                  "catadioptric": {
+                  "centerOpening": {
                     "type": "number",
                     "minimum": 0,
                     "maximum": 1,
@@ -6475,11 +6475,11 @@
                     "type": "string",
                     "enum": [
                       "uniform",
-                      "source"
+                      "depth_map"
                     ],
                     "description": "Uses one blur radius everywhere or derives it from a project depth image."
                   },
-                  "depthSource": {
+                  "depthMap": {
                     "minLength": 1,
                     "type": "string",
                     "description": "Grayscale depth image stored inside the project; dark and light values describe distance."
@@ -6567,11 +6567,11 @@
                   "radius",
                   "radiusUnit",
                   "sampleCount",
-                  "catadioptric",
+                  "centerOpening",
                   "highlightPower",
                   "anamorphicRatio",
                   "depthMode",
-                  "depthSource",
+                  "depthMap",
                   "focusMode",
                   "focusDepth",
                   "focusX",
@@ -7058,12 +7058,12 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "lightingSource": {
+              "lightMask": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Grayscale project image whose red channel selects pixels receiving light."
               },
-              "unlitSource": {
+              "unlitImage": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Unlit albedo project image multiplied by the light color and lighting mask."
@@ -7093,15 +7093,15 @@
               "intensity",
               "cycles",
               "phase",
-              "lightingSource",
-              "unlitSource",
+              "lightMask",
+              "unlitImage",
               "minimumIntensity",
               "maximumIntensity",
               "color"
             ],
             "type": "object",
             "title": "Masked lighting",
-            "description": "Adds colored light from managed mask and unlit-albedo images."
+            "description": "Adds colored light using a light mask and an unlit image."
           },
           {
             "additionalProperties": false,
@@ -7161,7 +7161,7 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "depthSource": {
+              "depthMap": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Grayscale depth image stored inside the project; dark and light values describe distance."
@@ -7246,7 +7246,7 @@
               "mix",
               "cycles",
               "phase",
-              "depthSource",
+              "depthMap",
               "density",
               "brightness",
               "depthMultiplier",
@@ -7262,7 +7262,7 @@
             ],
             "type": "object",
             "title": "Depth fog",
-            "description": "Uses a managed depth image to place noisy fog behind and between image features."
+            "description": "Uses a project depth map to place noisy fog behind and between image features."
           },
           {
             "additionalProperties": false,
@@ -7655,11 +7655,11 @@
                 "type": "string",
                 "enum": [
                   "circle",
-                  "source"
+                  "image"
                 ],
                 "description": "Uses a uniform circle or multiplies it by a project image’s red channel and alpha."
               },
-              "shapeSource": {
+              "shapeImage": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Intrinsic spotlight shape stored inside the project; red times alpha controls illumination."
@@ -7684,7 +7684,7 @@
               "lightIntensity",
               "softness",
               "shapeMode",
-              "shapeSource",
+              "shapeImage",
               "lightColor"
             ],
             "type": "object",
@@ -7749,7 +7749,7 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "ribbonSource": {
+              "ribbonImage": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Transparent full-frame project image composited only after its own deformation."
@@ -7807,7 +7807,7 @@
               "opacity",
               "cycles",
               "phase",
-              "ribbonSource",
+              "ribbonImage",
               "swayX",
               "swayY",
               "ripple",
@@ -8915,7 +8915,7 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "spriteSource": {
+              "spriteImage": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Verified shared PNG containing one particle sprite or a regular sprite sheet. Selecting it also applies the saved sheet layout."
@@ -9181,7 +9181,7 @@
               "region",
               "cycles",
               "phase",
-              "spriteSource",
+              "spriteImage",
               "density",
               "emitterShape",
               "emitterInnerRadius",
@@ -9226,7 +9226,7 @@
             ],
             "type": "object",
             "title": "Sprite particles",
-            "description": "Emits many deterministic moving instances from one managed sprite or sprite sheet."
+            "description": "Emits deterministic moving instances from one sprite image or sprite sheet."
           },
           {
             "additionalProperties": false,
@@ -9806,7 +9806,7 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "alternateSource": {
+              "targetImage": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Full-frame project image revealed by the transition."
@@ -9822,14 +9822,14 @@
                   "map",
                   "dual_map"
                 ],
-                "description": "Threshold field that determines the spatial order in which the alternate image appears."
+                "description": "Threshold field that determines the spatial order in which the target image appears."
               },
-              "transitionMapSource": {
+              "transitionMap": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Full-frame project threshold map used by map and dual-map patterns."
               },
-              "returnMapSource": {
+              "returnMap": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Full-frame project threshold map used on the return half of a dual-map loop."
@@ -9893,10 +9893,10 @@
               "mix",
               "cycles",
               "phase",
-              "alternateSource",
+              "targetImage",
               "pattern",
-              "transitionMapSource",
-              "returnMapSource",
+              "transitionMap",
+              "returnMap",
               "mapChannels",
               "angle",
               "scale",
@@ -9908,7 +9908,7 @@
             ],
             "type": "object",
             "title": "Image transition",
-            "description": "Moves a deterministic threshold field between the current image and a managed alternate image."
+            "description": "Moves a deterministic threshold field between the current and target images."
           },
           {
             "additionalProperties": false,
@@ -10315,7 +10315,7 @@
                 ],
                 "type": "object"
               },
-              "tileSource": {
+              "tileImage": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Intrinsic-resolution project tile used in image mode."
@@ -10386,7 +10386,7 @@
               "phase",
               "sourceMode",
               "tileRegion",
-              "tileSource",
+              "tileImage",
               "tileScale",
               "offsetX",
               "offsetY",
@@ -10397,7 +10397,7 @@
             ],
             "type": "object",
             "title": "Tiling array",
-            "description": "Repeats a source region or managed tile and can move the raster along a closed path."
+            "description": "Repeats a current-image crop or project tile image along a closed path."
           },
           {
             "additionalProperties": false,
@@ -11056,10 +11056,10 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "alternateSource": {
+              "revealedImage": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Auxiliary image revealed by this effect and stored inside the project."
+                "description": "Project image revealed inside the moving window."
               }
             },
             "required": [
@@ -11071,7 +11071,7 @@
               "mix",
               "cycles",
               "phase",
-              "alternateSource"
+              "revealedImage"
             ],
             "type": "object",
             "title": "Layer reveal",
@@ -12384,24 +12384,24 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "lutSource": {
+              "lutImage": {
                 "minLength": 1,
                 "type": "string",
                 "description": "Regular two-dimensional color-cube LUT stored inside the project."
               },
-              "cubeSize": {
+              "colorsPerAxis": {
                 "type": "integer",
                 "minimum": 2,
                 "maximum": 256,
                 "description": "Number of samples on each color-cube axis."
               },
-              "lutColumns": {
+              "sliceColumns": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 256,
                 "description": "Number of blue slices arranged horizontally in the LUT image."
               },
-              "lutRows": {
+              "sliceRows": {
                 "type": "integer",
                 "minimum": 1,
                 "maximum": 256,
@@ -12414,10 +12414,10 @@
               "mix",
               "cycles",
               "phase",
-              "lutSource",
-              "cubeSize",
-              "lutColumns",
-              "lutRows"
+              "lutImage",
+              "colorsPerAxis",
+              "sliceColumns",
+              "sliceRows"
             ],
             "type": "object",
             "title": "Color LUT",
@@ -12864,10 +12864,10 @@
                 "maximum": 1,
                 "description": "Normalized position inside the effect cycle. The editor exposes it as delay/time offset."
               },
-              "flowSource": {
+              "motionMap": {
                 "minLength": 1,
                 "type": "string",
-                "description": "Project flow map whose red and green channels encode direction."
+                "description": "Project motion map whose red and green channels encode direction."
               },
               "radius": {
                 "type": "number",
@@ -12888,7 +12888,7 @@
               "strength",
               "cycles",
               "phase",
-              "flowSource",
+              "motionMap",
               "radius",
               "sampleCount"
             ],
